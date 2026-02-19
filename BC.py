@@ -1,6 +1,6 @@
 import json
 
-with open("BC_Subclasses.json", "r") as file: #opens JSON path
+with open("BC_Compendium.json", "r") as file: #opens JSON path
     classes = json.load(file) #loads json file
     clist = classes["subclasses"]
     for c in clist:
@@ -15,3 +15,5 @@ with open("BC_Subclasses.json", "r") as file: #opens JSON path
             for feat in clist[key]["features"]:
                 print(f'\n{clist[key]["features"][feat]["name"]}')
                 print(f'{clist[key]["features"][feat]["description"]}')
+    
+    
