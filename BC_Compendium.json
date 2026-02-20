@@ -1,80 +1,122 @@
 {
-    "black_company": {
+    "black company": {
 		"brother": {
-		    "description": "Your character is a Brother of the Black Company, the last of the famous Free Companies of Khatovar. You use the Fighter class table, save where noted below.",
+		    "description": "Your character is a Brother of the Black Company, the last of the famous Free Companies of Khatovar. You use the Fighter class table save where noted below.",
 		    "features": {
-		        "hit_point_die": "d10 per Fighter level",
-		        "saving_throws": {
-		            "choose_one_from": ["Str", "Int", "Cha"],
-		            "choose_one_from_2": ["Con", "Dex", "Wis"]
+		        "hit_point_die": {
+		            "name": "Hit Point Die",
+		            "description": "d10 per Fighter level"
 		        },
-		        "skills": "Choose five skill proficiencies and one tool proficiency",
-		        "weapon_proficiencies": "Simple and Martial weapons",
-		        "armor_training": "Light and Medium armors and Shields. Heavy armor proficiency if Sawbones, Bump, Deacon, or Salt",
-		        "ability_score_modifiers": "+2 to one ability score and +1 to another, OR +1 to three ability scores. None can raise a score above 16 at level 1",
-		        "languages": "Common, Khato. Bonus language per Intelligence modifier point",
-		        "starting_money": "200gp",
-		        "subclass": "Choose at 1st level from available Fighter subclasses"
+		        "saving_throws": {
+		            "name": "Saving Throws",
+		            "description": "Choose one of Str, Int, or Cha and one of Con, Dex, or Wis. You gain proficiency in your chosen saving throws."
+		        },
+		        "skills": {
+		            "name": "Skills",
+		            "description": "Choose five skill proficiencies and one tool proficiency."
+		        },
+		        "weapon_proficiencies": {
+		            "name": "Weapon Proficiencies",
+		            "description": "Simple and Martial weapons."
+		        },
+		        "armor_training": {
+		            "name": "Armor Training",
+		            "description": "Light and Medium armors and Shields. Heavy armor proficiency if Sawbones, Bump, Deacon, or Salt."
+		        },
+		        "ability_score_modifiers": {
+		            "name": "Ability Score Modifiers",
+		            "description": "+2 to one ability score and +1 to another, OR +1 to three ability scores. None can raise a score above 16 at level 1."
+		        },
+		        "languages": {
+		            "name": "Languages",
+		            "description": "Common, Khato. Bonus language per Intelligence modifier point."
+		        },
+		        "starting_money": {
+		            "name": "Starting Money",
+		            "description": "200gp. You may purchase gear from the PHB at listed prices."
+		        },
+		        "subclass": {
+		            "name": "Subclass",
+		            "description": "Choose one Fighter subclass at 1st level from the available list."
+		        }
 		    }
 		},
-        "traits": {
-            "Fast": {
-                "description": "Your base speed is increased by 15 ft."
-            },
-            "Fey-Touched": {
-                "description": "Choose an ability such as Int, Wis, or Con. You are proficient with saving throws for that ability."
-            },
-            "Jumpy": {
-                "description": "You roll initiative as normal, but your result can never be lower than 10 unless you choose to accept a lower result. In addition, add your proficiency bonus to weapon damage you deal during the first round of an encounter."
-            },
-            "Lingerer": {
-                "description": "Increase your maximum hit points by +2 at 1st level, and +1 hp each level thereafter."
-            },
-            "Lucky": {
-                "description": "Once per day you may reroll a natural 1 on a D20 Test."
-            },
-            "Odd Fellow": {
-                "description": "Choose two of the following damage types: acid, cold, fire, lightning, thunder, or necrotic. You gain resistance against those two damage types. This also applies to environmental effects such as excessively hot or cold weather."
-            },
-            "Relentless": {
-                "description": "When you are dropped to 0 hit points, you instead are dropped to 1 hit point. This trait recharges with a Long Rest."
-            },
-            "Savage": {
-                "description": "You roll two extra weapon dice on critical hits."
-            },
-            "Skill Monkey": {
-                "description": "You gain proficiency in two skills, and you gain two languages or tool proficiencies."
-            }
-        },
-        "quirks": {
-            "Bird Bones": {
-                "description": "You suffer a -1 penalty to AC while wearing Medium or Heavy armor."
-            },
-            "Borrowed Time": {
-                "description": "You suffer a -2 penalty on death checks."
-            },
-            "Brittle": {
-                "description": "Reduce your hit point die to d8."
-            },
-            "Not a Killer": {
-                "description": "When you score a critical hit, make a Luck check. On a failure, the hit becomes a normal hit."
-            },
-            "Shiftless": {
-                "description": "You roll initiative as normal, but your result can never be higher than 10. In addition, any damage you deal on the first round of an encounter is halved."
-            },
-            "Slow": {
-                "description": "Your base speed is reduced by -15 ft. with a minimum of 10 ft."
-            },
-            "Sponge": {
-                "description": "Choose two of the following damage types: acid, cold, fire, lightning, thunder, or necrotic. You take +1 damage per die from those damage types."
-            },
-            "Star-Crossed": {
-                "description": "You suffer a -1 penalty to saving throws."
-            },
-            "Unfortunate": {
-                "description": "When making an individual (not a group) Luck check, you suffer a -2 penalty to Luck check rolls."
-            }
-        }
+		"traits": {
+		    "Fast": {
+		        "name": "Fast",
+		        "description": "Your base speed is increased by 15 ft."
+		    },
+		    "Fey-Touched": {
+		        "name": "Fey-Touched",
+		        "description": "Choose an ability such as Int, Wis, or Con. You are proficient with saving throws for that ability."
+		    },
+		    "Jumpy": {
+		        "name": "Jumpy",
+		        "description": "You roll initiative as normal, but your result can never be lower than 10 unless you choose to accept a lower result. In addition, add your proficiency bonus to weapon damage you deal during the first round of an encounter."
+		    },
+		    "Lingerer": {
+		        "name": "Lingerer",
+		        "description": "Increase your maximum hit points by +2 at 1st level, and +1 hp each level thereafter."
+		    },
+		    "Lucky": {
+		        "name": "Lucky",
+		        "description": "Once per day you may reroll a natural 1 on a D20 Test."
+		    },
+		    "Odd Fellow": {
+		        "name": "Odd Fellow",
+		        "description": "Choose two of the following damage types: acid, cold, fire, lightning, thunder, or necrotic. You gain resistance against those two damage types. This also applies to environmental effects such as excessively hot or cold weather."
+		    },
+		    "Relentless": {
+		        "name": "Relentless",
+		        "description": "When you are dropped to 0 hit points, you instead are dropped to 1 hit point. This trait recharges with a Long Rest."
+		    },
+		    "Savage": {
+		        "name": "Savage",
+		        "description": "You roll two extra weapon dice on critical hits."
+		    },
+		    "Skill Monkey": {
+		        "name": "Skill Monkey",
+		        "description": "You gain proficiency in two skills, and you gain two languages or tool proficiencies."
+		    }
+		},
+		"quirks": {
+		    "Bird Bones": {
+		        "name": "Bird Bones",
+		        "description": "You suffer a -1 penalty to AC while wearing Medium or Heavy armor."
+		    },
+		    "Borrowed Time": {
+		        "name": "Borrowed Time",
+		        "description": "You suffer a -2 penalty on death checks."
+		    },
+		    "Brittle": {
+		        "name": "Brittle",
+		        "description": "Reduce your hit point die to d8."
+		    },
+		    "Not a Killer": {
+		        "name": "Not a Killer",
+		        "description": "When you score a critical hit, make a Luck check. On a failure, the hit becomes a normal hit."
+		    },
+		    "Shiftless": {
+		        "name": "Shiftless",
+		        "description": "You roll initiative as normal, but your result can never be higher than 10. In addition, any damage you deal on the first round of an encounter is halved."
+		    },
+		    "Slow": {
+		        "name": "Slow",
+		        "description": "Your base speed is reduced by -15 ft. with a minimum of 10 ft."
+		    },
+		    "Sponge": {
+		        "name": "Sponge",
+		        "description": "Choose two of the following damage types: acid, cold, fire, lightning, thunder, or necrotic. You take +1 damage per die from those damage types."
+		    },
+		    "Star-Crossed": {
+		        "name": "Star-Crossed",
+		        "description": "You suffer a -1 penalty to saving throws."
+		    },
+		    "Unfortunate": {
+		        "name": "Unfortunate",
+		        "description": "When making an individual (not a group) Luck check, you suffer a -2 penalty to Luck check rolls."
+		    }
+		}
     },
 	"subclasses": {
 		"Sawbones": {
