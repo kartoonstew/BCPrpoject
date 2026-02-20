@@ -1,7 +1,12 @@
 import json
 
-with open("BC_Compendium.json", "r") as file: #opens JSON path as read
-    index = json.load(file) #loads json file
+try:
+    with open("BC_Compendium.json", "r") as file:
+        index = json.load(file)
+except FileNotFoundError:
+    print("Compendium file not found. Check the file path.")
+    exit()
+    
     clist = index["subclasses"]
     blist = index["black company"]
     banlist = index["black banner"]
