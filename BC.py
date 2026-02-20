@@ -5,6 +5,9 @@ with open("BC_Compendium.json", "r") as file: #opens JSON path as read
     clist = index["subclasses"]
     blist = index["black company"]
     banlist = index["black banner"]
+    mlist = index["morale"]
+    comlist = index["commissary"]
+    #charlist = index[]
 
     print("Welcome to Black Company, ye' cunts. Look around, but don't touch nothin\n")
     for c in index.keys():
@@ -25,30 +28,38 @@ with open("BC_Compendium.json", "r") as file: #opens JSON path as read
                     print(f'\n{clist[key]["features"][feat]["name"]}')
                     print(f'{clist[key]["features"][feat]["description"]}')
     elif choice.lower() == "black company":
-            for c in blist.keys():
-                print(c.title())
-            choice= input("\nChoose, ye cunt.", ).strip().lower()
-            if choice == "brother":
-                print(f'\nDescription: {blist["brother"]["description"]}\n') 
-                print("Features:") 
-                for feat in blist["brother"]["features"]:
-                    print(f'\n{blist["brother"]["features"][feat]["name"]}')
-                    print(f'{blist["brother"]["features"][feat]["description"]}')
-            elif choice == "traits" or choice == "quirks":
-                print(f'\n{choice.title()}:\n')
-                for t in blist[choice]:
-                    print(f'\n{blist[choice][t]["name"]}:')
-                    print(blist[choice][t]["description"])
+        for c in blist.keys():
+            print(c.title())
+        choice= input("\nChoose, ye cunt.", ).strip().lower()
+        if choice == "brother":
+            print(f'\nDescription: {blist["brother"]["description"]}\n') 
+            print("Features:") 
+            for feat in blist["brother"]["features"]:
+                print(f'\n{blist["brother"]["features"][feat]["name"]}')
+                print(f'{blist["brother"]["features"][feat]["description"]}')
+        elif choice == "traits" or choice == "quirks":
+            print(f'\n{choice.title()}:\n')
+            for t in blist[choice]:
+                print(f'\n{blist[choice][t]["name"]}:')
+                print(blist[choice][t]["description"])
     elif choice.lower() == "black banner":
-            print(f'Description: {banlist["description"]}')
-            print(f'\nUsage: {banlist["use"]}')
-            for c in banlist["features"]:
-                 print(f'\n{banlist["features"][c]["name"]}:')
-                 print(f'\n{banlist["features"][c]["description"]}')
-            for c in banlist["auras"]:
-                 print(f'\n{banlist["auras"][c]["name"]}, Level: {banlist["auras"][c]["level"]}')
-                 print(f'\n{banlist["auras"][c]["description"]}')
-         
-
+        print(f'Description: {banlist["description"]}')
+        print(f'\nUsage: {banlist["use"]}')
+        for c in banlist["features"]:
+                print(f'\n{banlist["features"][c]["name"]}:')
+                print(f'\n{banlist["features"][c]["description"]}')
+        for c in banlist["auras"]:
+                print(f'\n{banlist["auras"][c]["name"]}, Level: {banlist["auras"][c]["level"]}')
+                print(f'\n{banlist["auras"][c]["description"]}')
+    elif choice.lower() == "morale":
+        print(f'Description: {mlist["description"]}\n')
+        for c in mlist["features"]:
+            print(f'\n{mlist["features"][c]["name"]}:')
+            print(mlist["features"][c]["description"])
+    elif choice.lower() == "commissary":
+        print(f'Description: {comlist["description"]}\n')
+        for c in comlist["features"]:
+            print(f'\n{comlist["features"][c]["name"]}:')
+            print(comlist["features"][c]["description"])
     
     
