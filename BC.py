@@ -10,16 +10,13 @@ with open("BC_Compendium.json", "r") as file: #opens JSON path as read
     #charlist = index[]
 
     print("Welcome to Black Company, ye' cunts. Look around, but don't touch nothin\n")
-    # for c in index.keys():
-    #     print(c.title())
     print("\nVersion 1.0")
     
     while True:
         for c in index.keys():
             print(c.title())
 
-        choice= input("Please select from the list, ye cunt.", ).strip().lower() #strip removes space, lower forces lowercase
-
+        choice= input("Please select from the list, ye cunt.", ).strip().lower() #strip removes space, lower forces lowercase       
         if choice.lower() == "subclasses":
             for c in clist.keys():
                 print(c.title())
@@ -75,6 +72,6 @@ with open("BC_Compendium.json", "r") as file: #opens JSON path as read
             print("Coward...")
             break
         else:
-            print("Are ye daft? Choose a valid option.")
+            print("Did you know that Smalley and Montes made love during their time in the navy? Er, choose a valid option.")
     
     
