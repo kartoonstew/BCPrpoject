@@ -118,6 +118,67 @@
 		    }
 		}
     },
+	"black banner": {
+    "description": "The Banner is more than cloth and pole. It is the Company's soul given color and shape. When raised, it steadies men's hearts and binds them to purpose. When it falls, the line falters.",
+	"use": "When a brother plants the banner, its magic flares to life, filling the air with a faint shimmer visible only to other brothers. Its magic cannot be dispelled.", 
+    "features": {
+        "action": {
+            "name": "Action",
+            "description": "Planting or hoisting the Banner is a free action that must be done on your turn. The Banner must be set firmly into the ground or another stable surface."
+        },
+        "aura_radius": {
+            "name": "Aura Radius",
+            "description": "While upright, the Banner emits a 10-foot aura. At 10th level, this radius increases to 20 feet."
+        },
+        "aura_effect": {
+            "name": "Aura Effect",
+            "description": "The aura effect depends on the type of aura chosen when first planted. Only one aura may be active per encounter. The aura persists until the banner is moved, destroyed, or the encounter ends."
+        },
+        "durability": {
+            "name": "Durability",
+            "description": "The banner has 30 hit points +4hp per banner level. The banner's AC is equal to 15 plus the party's proficiency bonus. It is immune to psychic and poison damage and has resistance to piercing damage."
+        },
+        "restoration": {
+            "name": "Restoration",
+            "description": "The banner regains all hit points after a Short or Long Rest."
+        },
+        "replacement": {
+            "name": "Replacement",
+            "description": "If a banner has been destroyed, any Brother can create a new one. Creating a banner requires one day of work and costs 50gp in materials per banner level."
+        },
+        "advancing": {
+            "name": "Advancing in Level",
+            "description": "The banner levels with the party. At 2nd level, three aura effects first become available. At 5th level and again at 8th level an additional aura effect becomes available."
+        }
+    },
+    "auras": {
+        "Aura of Discipline": {
+            "name": "Aura of Discipline",
+            "level": "2",
+            "description": "Brothers gain +1 bonus to saving throws and ability checks, and have advantage on saving throws against being frightened. At 9th level, this bonus increases to +2 and Brothers are immune to being frightened."
+        },
+        "Aura of Valor": {
+            "name": "Aura of Valor",
+            "level": "2",
+            "description": "Brothers within the aura gain +1 bonus to attack rolls if they are below half their normal hit point maximum. At 9th level, this bonus increases to +2."
+        },
+        "Aura of Resolve": {
+            "name": "Aura of Resolve",
+            "level": "2",
+            "description": "If a Brother starts or ends his turn within the aura, that Brother gains temporary hit points equal to his proficiency bonus if they are below half their hit point maximum. At 9th level, this bonus increases to twice a Brother's proficiency bonus."
+        },
+        "Aura of Defiance": {
+            "name": "Aura of Defiance",
+            "level": "5",
+            "description": "Once per round, whenever a Brother within the aura scores a critical hit, he may choose a different Brother within the aura. The chosen Brother may immediately take a Reaction to make a weapon attack with advantage."
+        },
+        "Aura of Brotherhood": {
+            "name": "Aura of Brotherhood",
+            "level": "8",
+            "description": "When a Brother within the aura would be reduced to 0 hit points but not killed outright, another conscious Brother within the aura can use their reaction to move up to half their speed toward that ally, ending adjacent to them. The fallen Brother instead remains at 1 hit point."
+			}
+        }
+    },
 	"subclasses": {
 		"Sawbones": {
 			"description": "Physician, barber, and torturer.",

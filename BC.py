@@ -4,7 +4,8 @@ with open("BC_Compendium.json", "r") as file: #opens JSON path as read
     index = json.load(file) #loads json file
     clist = index["subclasses"]
     blist = index["black company"]
-    
+    banlist = index["black banner"]
+
     print("Welcome to Black Company, ye' cunts. Look around, but don't touch nothin\n")
     for c in index.keys():
         print(c.title())
@@ -38,6 +39,16 @@ with open("BC_Compendium.json", "r") as file: #opens JSON path as read
                 for t in blist[choice]:
                     print(f'\n{blist[choice][t]["name"]}:')
                     print(blist[choice][t]["description"])
+    elif choice.lower() == "black banner":
+            print(f'Description: {banlist["description"]}')
+            print(f'\nUsage: {banlist["use"]}')
+            for c in banlist["features"]:
+                 print(f'\n{banlist["features"][c]["name"]}:')
+                 print(f'\n{banlist["features"][c]["description"]}')
+            for c in banlist["auras"]:
+                 print(f'\n{banlist["auras"][c]["name"]}, Level: {banlist["auras"][c]["level"]}')
+                 print(f'\n{banlist["auras"][c]["description"]}')
+         
 
     
     
