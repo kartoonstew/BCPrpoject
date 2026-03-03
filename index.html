@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Company Compendium</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0a0a0b;
+    --bg-surface: #111114;
+    --bg-card: #18181c;
+    --bg-card-hover: #1e1e24;
+    --border: #2a2a32;
+    --border-accent: #3a2020;
+    --red: #8b2020;
+    --red-bright: #c03030;
+    --red-glow: #ff3030;
+    --red-dim: #5a1515;
+    --gold: #a08050;
+    --gold-bright: #c8a060;
+    --text: #c8c4bc;
+    --text-dim: #78756e;
+    --text-bright: #e8e4dc;
+    --parchment: #d4c8a8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.65;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* === NOISE OVERLAY === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* === HEADER === */
+  .header {
+    text-align: center;
+    padding: 48px 24px 32px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    background: linear-gradient(180deg, #0f0808 0%, var(--bg-deep) 100%);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: var(--red);
+    box-shadow: 0 0 20px var(--red-glow);
+  }
+
+  .header-symbol {
+    font-size: 32px;
+    color: var(--red);
+    margin-bottom: 8px;
+    letter-spacing: 12px;
+    text-shadow: 0 0 30px rgba(139, 32, 32, 0.5);
+  }
+
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 44px);
+    color: var(--text-bright);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .header-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  /* === NAV === */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding: 16px 12px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-btn {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+
+  .nav-btn:hover {
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .nav-btn.active {
+    color: var(--red-bright);
+    border-color: var(--red-dim);
+    background: rgba(139, 32, 32, 0.08);
+  }
+
+  .nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    background: var(--red);
+  }
+
+  /* === MAIN LAYOUT === */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* === SECTION HEADER === */
+  .section-header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3.5vw, 30px);
+    color: var(--text-bright);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .section-header p {
+    color: var(--text-dim);
+    font-size: 16px;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* === CARDS === */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--red);
+    transition: height 0.3s ease;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .card:hover::before {
+    height: 100%;
+  }
+
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-bright);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    color: var(--text-dim);
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  .card-level {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--red-bright);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  /* === DETAIL VIEW === */
+  .detail-view {
+    animation: fadeUp 0.35s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .back-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 8px 20px;
+    cursor: pointer;
+    margin-bottom: 28px;
+    transition: all 0.2s ease;
+  }
+
+  .back-btn:hover {
+    color: var(--text);
+    border-color: var(--text-dim);
+  }
+
+  .detail-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(24px, 4vw, 36px);
+    color: var(--text-bright);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .detail-subtitle {
+    color: var(--gold);
+    font-size: 17px;
+    font-style: italic;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feature-block {
+    margin-bottom: 24px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border-left: 3px solid var(--red-dim);
+    position: relative;
+  }
+
+  .feature-block .level-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--red-bright);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: inline-block;
+    background: rgba(139, 32, 32, 0.12);
+    padding: 2px 8px;
+  }
+
+  .feature-block h4 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-bright);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .feature-block p {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* === LIST ITEMS (Traits / Quirks) === */
+  .list-item {
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .list-item:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
+  }
+
+  .list-item h4 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--gold-bright);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .list-item p {
+    color: var(--text);
+    font-size: 15px;
+  }
+
+  /* === RULE SECTION (Morale, Commissary, etc) === */
+  .rule-block {
+    margin-bottom: 20px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+  }
+
+  .rule-block h4 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-bright);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .rule-block p {
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* === SEARCH === */
+  .search-wrap {
+    max-width: 400px;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-wrap input::placeholder {
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .search-wrap input:focus {
+    border-color: var(--red-dim);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  /* === BROTHER CREATION === */
+  .brother-section {
+    margin-bottom: 32px;
+  }
+
+  .brother-section h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-bright);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* === BANNER AURA SPECIAL STYLING === */
+  .aura-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .aura-tag.rule { color: var(--gold); background: rgba(160, 128, 80, 0.1); }
+  .aura-tag.aura { color: var(--red-bright); background: rgba(139, 32, 32, 0.12); }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 600px) {
+    .nav { gap: 2px; padding: 10px 8px; }
+    .nav-btn { font-size: 10px; padding: 6px 10px; letter-spacing: 1px; }
+    .main { padding: 20px 16px 60px; }
+    .feature-block { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-symbol">⬥ ⬥ ⬥</div>
+  <h1>Black Company</h1>
+  <div class="header-sub">Compendium</div>
+</div>
+
+<nav class="nav" id="nav"></nav>
+
+<div class="main" id="content"></div>
+
+<div class="footer">
+  The Black Company — Last of the Free Companies of Khatovar
+</div>
+
+<script>
+const DATA = {
+    "black company": {
+        "brother": {
+            "description": "Your character is a Brother of the Black Company, the last of the famous Free Companies of Khatovar. You use the Fighter class table save where noted below.",
+            "features": {
+                "hit point die": { "description": "d10 per Fighter level" },
+                "saving throws": { "description": "Choose one of Str, Int, or Cha and one of Con, Dex, or Wis. You gain proficiency in your chosen saving throws." },
+                "skills": { "description": "Choose five skill proficiencies and one tool proficiency." },
+                "weapon proficiencies": { "description": "Simple and Martial weapons." },
+                "armor training": { "description": "Light and Medium armors and Shields. Heavy armor proficiency if Sawbones, Bump, Deacon, or Salt." },
+                "ability score modifiers": { "description": "+2 to one ability score and +1 to another, OR +1 to three ability scores. None can raise a score above 16 at level 1." },
+                "languages": { "description": "Common, Khato. Bonus language per Intelligence modifier point." },
+                "starting money": { "description": "200gp. You may purchase gear from the PHB at listed prices." },
+                "subclass": { "description": "Choose one Fighter subclass at 1st level from the available list." }
+            }
+        }
+    },
+    "traits": {
+        "fast": { "description": "Your base speed is increased by 15 ft." },
+        "fey-touched": { "description": "Choose an ability such as Int, Wis, or Con. You are proficient with saving throws for that ability." },
+        "jumpy": { "description": "You roll initiative as normal, but your result can never be lower than 10 unless you choose to accept a lower result. In addition, add your proficiency bonus to weapon damage you deal during the first round of an encounter." },
+        "lingerer": { "description": "Increase your maximum hit points by +2 at 1st level, and +1 hp each level thereafter." },
+        "lucky": { "description": "Once per day you may reroll a natural 1 on a D20 Test." },
+        "odd fellow": { "description": "Choose two of the following damage types: acid, cold, fire, lightning, thunder, or necrotic. You gain resistance against those two damage types. This also applies to environmental effects such as excessively hot or cold weather." },
+        "relentless": { "description": "When you are dropped to 0 hit points, you instead are dropped to 1 hit point. This trait recharges with a Long Rest." },
+        "savage": { "description": "You roll two extra weapon dice on critical hits." },
+        "skill monkey": { "description": "You gain proficiency in two skills, and you gain two languages or tool proficiencies." }
+    },
+    "quirks": {
+        "bird bones": { "description": "You suffer a -1 penalty to AC while wearing Medium or Heavy armor." },
+        "borrowed time": { "description": "You suffer a -2 penalty on death checks." },
+        "brittle": { "description": "Reduce your hit point die to d8." },
+        "not a killer": { "description": "When you score a critical hit, make a Luck check. On a failure, the hit becomes a normal hit." },
+        "shiftless": { "description": "You roll initiative as normal, but your result can never be higher than 10. In addition, any damage you deal on the first round of an encounter is halved." },
+        "slow": { "description": "Your base speed is reduced by -15 ft. with a minimum of 10 ft." },
+        "sponge": { "description": "Choose two of the following damage types: acid, cold, fire, lightning, thunder, or necrotic. You take +1 damage per die from those damage types." },
+        "star-crossed": { "description": "You suffer a -1 penalty to saving throws." },
+        "unfortunate": { "description": "When making an individual (not a group) Luck check, you suffer a -2 penalty to Luck check rolls." }
+    },
+    "subclasses": {
+        "sawbones": {
+            "description": "Physician, barber, and torturer.",
+            "features": {
+                "what comes after": { "level": "1", "description": "Once per encounter, you may remind enemy combatants that what happens after the fight may be worse than anything that could happen during it. As a Bonus Action, you brandish your weapon (or torture implements) and shout out a few threats. Each enemy within 30 feet of you who can see you must make a Wisdom saving throw. On a failure, that enemy suffers disadvantage on its Morale Check if triggered during the encounter. Non-intelligent enemies (such as beasts) are immune to this ability, as are unbreakable enemies." },
+                "snip & stitch": { "level": "3", "description": "Once per turn when you make an attack roll with a weapon against an enemy combatant, you may grant hit points equal to your proficiency bonus to an ally within 10 ft. You may use this ability a number of times equal to your proficiency bonus and regain all uses when you finish a Long Rest." },
+                "red pool": { "level": "7", "description": "You have a pool of healing power that replenishes when you finish a Long Rest. With that pool, you can restore a total number of hit points equal to five times your level. As a Bonus Action, you can touch a creature (which could be yourself) and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in the pool." },
+                "drip": { "level": "10", "description": "Once on your turn when you deal damage with a weapon attack, you may assign additional damage to the target equal to twice your proficiency bonus." }
+            }
+        },
+        "bump": {
+            "description": "Defensive anchor and formation fighter.",
+            "features": {
+                "iron cocoon": { "level": "1", "description": "You gain Heavy Armor proficiency. Additionally, whenever you are wearing Heavy armor, you gain damage reduction equal to your proficiency bonus against piercing, slashing, and bludgeoning attacks." },
+                "linebreaker": { "level": "3", "description": "Once per turn if you attack a creature within 5 feet of you as part of the Attack Action and hit with a melee weapon, you can immediately bash the target with your Shield if it is equipped, forcing the target to make a Strength saving throw. On a failed save, you either push the target 5 feet from you in any direction or cause it to have the Prone condition, your choice." },
+                "shieldwall": { "level": "7", "description": "While you are wielding a shield, you and any allies adjacent to you gain a +1 bonus to AC. A creature can benefit from only one Shieldwall bonus at a time. In addition, if you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you can take a Reaction to take no damage if you succeed on the saving throw and are holding a Shield." },
+                "the anchor": { "level": "10", "description": "Once per encounter on your turn, you may enter a defensive stance with no action required. While in this stance, your speed is halved, attack rolls against you have Disadvantage, and you have advantage on Strength, Dexterity, and Constitution saving throws. This stance ends if you become incapacitated." }
+            }
+        },
+        "deacon": {
+            "description": "Morale officer and chief inspirer.",
+            "features": {
+                "deacon's inspiration": { "level": "1", "description": "During an encounter you can use a Bonus Action to choose one creature other than yourself within 60 feet of you who can hear or see you. That creature gains one Inspiration die, a d6. Before the end of the encounter, the creature can roll the die and add the number rolled to one D20 Test. The creature can wait until after it rolls the d20 before deciding to use the Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Inspiration die is rolled it is lost. A creature can have only one Deacon's Inspiration die at a time. You can use this feature a number of times equal to your proficiency bonus and regain all expended uses when you finish a Long Rest. At level 7 your Deacon's Inspiration die becomes a d8. At level 10 it becomes a d10." },
+                "cutting words": { "level": "3", "description": "When a creature that you can see within 60 feet of you makes a damage roll or succeeds on an ability check or attack roll, you can use a Reaction to expend one use of your Deacon's Inspiration, roll your Deacon's Inspiration die, and subtract the number rolled from the creature's roll, reducing the damage or potentially turning the success into a failure. Non-intelligent enemies such as beasts are immune to this feature." },
+                "rally": { "level": "7", "description": "Whenever you or an ally you can see uses the Second Wind feature, choose a different ally you can see. That ally may expend a Reaction to also use the Second Wind feature, provided they have one available." },
+                "bark orders": { "level": "10", "description": "When an ally you can see is about to make a D20 Test, you can grant the roll advantage. You must declare this use before your ally makes the roll. You can use this feature a number of times equal to your proficiency bonus, regaining all uses when you finish a Long Rest." }
+            }
+        },
+        "payday": {
+            "description": "Frontline damage dealer and shock trooper.",
+            "features": {
+                "fury": { "level": "1", "description": "As long as you are not wearing Heavy Armor, as a Bonus Action you may enter a Fury which lasts until the end of the encounter or until you are incapacitated. You may enter a Fury a number of times equal to your proficiency bonus and regain all uses with a Long Rest. While Fury is active, you have resistance to bludgeoning, piercing, and slashing damage. When you make a weapon attack using Strength and deal damage to the target, you gain a bonus to damage equal to your proficiency bonus." },
+                "reckless attacker": { "level": "3", "description": "When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time as well." },
+                "bloodsport": { "level": "7", "description": "Whenever an enemy suffers a critical hit made by you, you can immediately make a single melee attack against that enemy using a Bonus Action. In addition, whenever an enemy suffers a critical hit made by your ally, you can take a Reaction to immediately make a single melee attack against that enemy." },
+                "kingpin": { "level": "10", "description": "When you take the Attack action with a melee weapon with the Heavy or Versatile property, you may activate the Push or Topple mastery property in addition to a different mastery property you are already using with that weapon." }
+            }
+        },
+        "salt": {
+            "description": "Veteran and ultimate survivor.",
+            "features": {
+                "been here, done this": { "level": "1", "description": "At the start of an encounter, roll two d20s and record the numbers rolled. During the encounter, you can replace any D20 Test made by you or a creature that you can see with one of these rolls. You must choose to do so before the roll, and you can replace a roll in this way only once per turn." },
+                "survivor": { "level": "3", "description": "You add your proficiency bonus to death checks. In addition, at the start of an encounter, you gain a pool of hit points equal to twice your proficiency bonus. You may assign damage you take to this pool. Whenever you land a critical hit with a weapon, or after you take damage from a critical hit, you refresh your pool." },
+                "hard road": { "level": "7", "description": "Your Luck score for a session may never be less than 14, regardless of what you roll. In addition, you gain a pool of Hard Road points equal to your Luck score for the session. You may use these points as chips (+1 bonus to d20 Tests) and to adjust Luck checks for yourself or your fellow PCs. You do not lose these points when you roll a natural 1." },
+                "last brother standing": { "level": "10", "description": "You do not fall unconscious when dying, and may act normally when at 0 hp, until you fail your first death check. This ability resets with a Long Rest." }
+            }
+        },
+        "scrapper": {
+            "description": "Brawler and grappler.",
+            "features": {
+                "jab": { "level": "1", "description": "You can make an Unarmed Strike as a Bonus Action. Your Unarmed Strikes deal 1d6 points plus your Strength modifier bludgeoning damage. This damage increases at 5th level to d8 and again at 11th level to d10. You may choose to treat your Unarmed Strike as a finesse weapon, using your Dexterity instead of your Strength for attack and damage rolls." },
+                "jab and grab": { "level": "3", "description": "When you hit a Large or smaller creature with two or more Unarmed Strikes during your turn, you may knock that creature Prone and Grapple it." },
+                "hugs": { "level": "7", "description": "If you start your turn in a grapple, all enemies in the grapple take your Unarmed Strike damage." },
+                "human shield": { "level": "10", "description": "Once per round, when an enemy targets you with a melee or ranged attack, you may position a creature you are grappling into the line of fire. Your attacker rolls with disadvantage and on a miss, the attack hits one of your grappled foes, your choice." }
+            }
+        },
+        "slenderman": {
+            "description": "Precision killer and opportunist.",
+            "features": {
+                "stabber": { "level": "1", "description": "Once per turn, you can deal extra damage equal to twice your proficiency bonus if you are using a finesse weapon. At 7th level, you may do this up to twice per turn." },
+                "slippery little bitch": { "level": "3", "description": "On your turn, you can take a Bonus Action to use both Dash and Disengage." },
+                "uncanny dodge": { "level": "7", "description": "When an attacker that you can see hits you with a weapon attack, you can take a Reaction to halve the attack's damage against you, rounding down." },
+                "evasion": { "level": "10", "description": "When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail." }
+            }
+        },
+        "snake": {
+            "description": "Scout, tracker, and ambusher.",
+            "features": {
+                "ambusher": { "level": "1", "description": "You roll initiative with advantage and add your proficiency bonus to initiative rolls. Additionally, during the first round of combat, your attack rolls against creatures that have not yet acted have Advantage, your speed is increased by 20 ft., all weapon damage you deal is maximized, and your critical hit range is increased by +1." },
+                "slayer": { "level": "3", "description": "When you hit a creature with a weapon, the weapon deals an extra 1d8 damage to the target if it is missing any of its hit points. You can deal this extra damage only once per turn." },
+                "prey": { "level": "7", "description": "When you hit a creature with an attack, you may mark it as your prey. Thereafter, your prey takes 1d4 damage each time you hit it with a weapon attack. You cannot mark new prey until your current prey is dead or the encounter is over, whichever occurs first." },
+                "low profile": { "level": "10", "description": "You have learned to move with the terrain, staying beneath lines of sight. Ranged and thrown weapon attacks against you are made with disadvantage." }
+            }
+        },
+        "thunk": {
+            "description": "Marksman and sniper.",
+            "features": {
+                "aim small, miss small": { "level": "1", "description": "Ranged and thrown weapons gain the Graze weapon mastery property when wielded by you, in addition to whatever weapon mastery property the weapon normally has." },
+                "steady aim": { "level": "3", "description": "Being within 5 feet of an enemy does not impose Disadvantage on your attack rolls with ranged weapons." },
+                "drawing a bead": { "level": "7", "description": "Whenever you miss a target with a ranged attack, you have Advantage on the next attack you make against that target, provided you make that attack before the end of your next turn." },
+                "killing calm": { "level": "10", "description": "Once per encounter on your turn, you may enter a marksman's stance with no action required. While in this stance, your speed is halved and you have Advantage on ranged attack rolls. If you take damage, make a DC 10 Constitution saving throw and on a failure the stance ends. This stance also ends if you become incapacitated." }
+            }
+        }
+    },
+    "black banner": {
+        "description": "The Banner is more than cloth and pole. It is the Company's soul given color and shape. When raised, it steadies men's hearts and binds them to purpose. When it falls, the line falters.\nUsage:\nWhen a brother plants the banner, its magic flares to life, filling the air with a faint shimmer visible only to other brothers. Its magic cannot be dispelled.",
+        "features": {
+            "action": { "description": "Planting or hoisting the Banner is a free action that must be done on your turn. The Banner must be set firmly into the ground or another stable surface." },
+            "aura radius": { "description": "While upright, the Banner emits a 10-foot aura. At 10th level, this radius increases to 20 feet." },
+            "aura effect": { "description": "The aura effect depends on the type of aura chosen when first planted. Only one aura may be active per encounter. The aura persists until the banner is moved, destroyed, or the encounter ends." },
+            "durability": { "description": "The banner has 30 hit points +4hp per banner level. The banner's AC is equal to 15 plus the party's proficiency bonus. It is immune to psychic and poison damage and has resistance to piercing damage." },
+            "restoration": { "description": "The banner regains all hit points after a Short or Long Rest." },
+            "replacement": { "description": "If a banner has been destroyed, any Brother can create a new one. Creating a banner requires one day of work and costs 50gp in materials per banner level." },
+            "advancing in level": { "description": "The banner levels with the party. At 2nd level, three aura effects first become available. At 5th level and again at 8th level an additional aura effect becomes available." },
+            "aura of discipline": { "level": "2", "description": "Brothers gain +1 bonus to saving throws and ability checks, and have advantage on saving throws against being frightened. At 9th level, this bonus increases to +2 and Brothers are immune to being frightened." },
+            "aura of valor": { "level": "2", "description": "Brothers within the aura gain +1 bonus to attack rolls if they are below half their normal hit point maximum. At 9th level, this bonus increases to +2." },
+            "aura of resolve": { "level": "2", "description": "If a Brother starts or ends his turn within the aura, that Brother gains temporary hit points equal to his proficiency bonus if they are below half their hit point maximum. At 9th level, this bonus increases to twice a Brother's proficiency bonus." },
+            "aura of defiance": { "level": "5", "description": "Once per round, whenever a Brother within the aura scores a critical hit, he may choose a different Brother within the aura. The chosen Brother may immediately take a Reaction to make a weapon attack with advantage." },
+            "aura of brotherhood": { "level": "8", "description": "When a Brother within the aura would be reduced to 0 hit points but not killed outright, another conscious Brother within the aura can use their reaction to move up to half their speed toward that ally, ending adjacent to them. The fallen Brother instead remains at 1 hit point." }
+        }
+    },
+    "morale": {
+        "description": "Many enemies will need to contend with morale. As a PC you do not need to worry about it \u2014 you stay in the fight until you choose otherwise.",
+        "features": {
+            "triggers": { "description": "Morale checks are most commonly triggered when an enemy leader is killed, or when half or more of the enemy force is killed. Checks are not made until the next Lair Action (Initiative 20)." },
+            "morale check": { "description": "A Morale check is a DC 10 Wisdom saving throw. On a failure, the enemy gains the frightened condition until the end of its next Long Rest and either flees or surrenders. On a success, the enemy continues to fight and does not make Morale Checks the remainder of the encounter." },
+            "dc increases": { "description": "The Morale Check DC may increase when: the party has a reputation for being even-handed and fair; the party kills an enemy commander within the first few rounds; an enemy leader is killed in a particularly gruesome or dramatic fashion; or several enemies are killed on the same turn." },
+            "dc decreases": { "description": "The Morale Check DC may decrease when: the party is known to execute or torture vanquished foes; the enemy seems to be holding their own with three or more PCs dropped; or enemies are more afraid of their leader than they are of the party." },
+            "unbreakable enemies": { "description": "The DM determines whether enemies make Morale Checks as a group, multiple groups, or individually. Unusually powerful, brave, or foolish enemies may be unbreakable." }
+        }
+    },
+    "commissary": {
+        "description": "A handful of multi-colored and well-patched canvas tents. Makeshift shelves. Trunks older than dirt. The Commissary of the Black Company \u2014 it goes where the Company goes.",
+        "features": {
+            "magic weapons": { "description": "A weapon loses 1 Durability Point each time its wielder rolls a natural 1 on an attack roll. The base DP of a magical weapon is 4. When Durability reaches 0, the item loses any magical properties and becomes a normal item of its kind." },
+            "magic armor and shields": { "description": "A suit of armor or shield loses 1 DP each time its owner suffers a critical hit. If the owner has both magical armor and a magical shield, the player makes a Luck check to determine which item loses 1 DP. The base DP of armor and shields is 2." },
+            "wondrous items": { "description": "A magic item that is not a weapon, armor, or shield. Wondrous items do not have durability but have an assigned number of charges or uses. When charges reach 0, the item loses any magical properties. Consumable wondrous items such as potions have 1 charge." },
+            "repairs": { "description": "There is no known method to repair or increase an item's durability." }
+        }
+    }
+};
+
+const SECTIONS = [
+  { id: 'brothers', label: 'Brothers' },
+  { id: 'subclasses', label: 'Subclasses' },
+  { id: 'traits', label: 'Traits' },
+  { id: 'quirks', label: 'Quirks' },
+  { id: 'banner', label: 'Black Banner' },
+  { id: 'morale', label: 'Morale' },
+  { id: 'commissary', label: 'Commissary' },
+];
+
+let currentSection = 'brothers';
+let currentDetail = null;
+
+// Build nav
+const nav = document.getElementById('nav');
+SECTIONS.forEach(s => {
+  const btn = document.createElement('button');
+  btn.className = 'nav-btn' + (s.id === currentSection ? ' active' : '');
+  btn.textContent = s.label;
+  btn.dataset.section = s.id;
+  btn.onclick = () => {
+    currentSection = s.id;
+    currentDetail = null;
+    render();
+  };
+  nav.appendChild(btn);
+});
+
+function updateNav() {
+  nav.querySelectorAll('.nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.section === currentSection);
+  });
+}
+
+function titleCase(str) {
+  return str.replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function render() {
+  updateNav();
+  const el = document.getElementById('content');
+
+  if (currentDetail) {
+    renderDetail(el);
+    return;
+  }
+
+  switch (currentSection) {
+    case 'brothers': renderBrothers(el); break;
+    case 'subclasses': renderSubclasses(el); break;
+    case 'traits': renderList(el, 'traits'); break;
+    case 'quirks': renderList(el, 'quirks'); break;
+    case 'banner': renderRuleSection(el, 'black banner'); break;
+    case 'morale': renderRuleSection(el, 'morale'); break;
+    case 'commissary': renderRuleSection(el, 'commissary'); break;
+  }
+
+  el.querySelector('.detail-view, .section-header')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderBrothers(el) {
+  const brother = DATA["black company"]["brother"];
+  let html = `<div class="detail-view">
+    <div class="section-header">
+      <h2>Brother Creation</h2>
+      <p>${brother.description}</p>
+    </div>`;
+
+  for (const [name, feat] of Object.entries(brother.features)) {
+    html += `<div class="feature-block">
+      <h4>${titleCase(name)}</h4>
+      <p>${feat.description}</p>
+    </div>`;
+  }
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function renderSubclasses(el) {
+  let html = `<div class="detail-view">
+    <div class="section-header">
+      <h2>Subclasses</h2>
+      <p>Nine paths a Brother may walk. Choose wisely.</p>
+    </div>
+    <div class="card-grid">`;
+
+  for (const [name, sub] of Object.entries(DATA.subclasses)) {
+    const featureNames = Object.keys(sub.features).map(f => titleCase(f)).join(' · ');
+    html += `<div class="card" onclick="openSubclass('${name}')">
+      <div class="card-title">${titleCase(name)}</div>
+      <div class="card-desc">${sub.description}</div>
+    </div>`;
+  }
+
+  html += '</div></div>';
+  el.innerHTML = html;
+}
+
+function openSubclass(name) {
+  currentDetail = { type: 'subclass', name };
+  render();
+}
+
+function renderDetail(el) {
+  const d = currentDetail;
+  if (d.type === 'subclass') {
+    const sub = DATA.subclasses[d.name];
+    let html = `<div class="detail-view">
+      <button class="back-btn" onclick="currentDetail=null;render();">&#8592; All Subclasses</button>
+      <div class="detail-title">${titleCase(d.name)}</div>
+      <div class="detail-subtitle">${sub.description}</div>`;
+
+    for (const [fname, feat] of Object.entries(sub.features)) {
+      html += `<div class="feature-block">
+        <div class="level-tag">Level ${feat.level}</div>
+        <h4>${titleCase(fname)}</h4>
+        <p>${feat.description}</p>
+      </div>`;
+    }
+    html += '</div>';
+    el.innerHTML = html;
+  }
+}
+
+function renderList(el, key) {
+  const items = DATA[key];
+  const label = key === 'traits' ? 'Traits' : 'Quirks';
+  const desc = key === 'traits'
+    ? 'Gifts that set a Brother apart from the rank and file.'
+    : 'Every Brother carries a burden. These are yours.';
+
+  let html = `<div class="detail-view">
+    <div class="section-header">
+      <h2>${label}</h2>
+      <p>${desc}</p>
+    </div>`;
+
+  for (const [name, item] of Object.entries(items)) {
+    html += `<div class="list-item">
+      <h4>${titleCase(name)}</h4>
+      <p>${item.description}</p>
+    </div>`;
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function renderRuleSection(el, key) {
+  const section = DATA[key];
+  const isAura = (name) => name.startsWith('aura of');
+  const isRule = (name, feat) => !feat.level && !isAura(name);
+
+  let html = `<div class="detail-view">
+    <div class="section-header">
+      <h2>${titleCase(key)}</h2>
+      <p>${section.description.replace(/\n/g, '<br>')}</p>
+    </div>`;
+
+  if (key === 'black banner') {
+    // Rules first
+    html += `<div class="brother-section"><h3>Banner Rules</h3>`;
+    for (const [name, feat] of Object.entries(section.features)) {
+      if (!feat.level) {
+        html += `<div class="rule-block">
+          <h4>${titleCase(name)}</h4>
+          <p>${feat.description}</p>
+        </div>`;
+      }
+    }
+    html += '</div>';
+
+    // Auras
+    html += `<div class="brother-section"><h3>Aura Effects</h3>`;
+    for (const [name, feat] of Object.entries(section.features)) {
+      if (feat.level) {
+        html += `<div class="feature-block">
+          <div class="level-tag">Level ${feat.level}</div>
+          <h4>${titleCase(name)}</h4>
+          <p>${feat.description}</p>
+        </div>`;
+      }
+    }
+    html += '</div>';
+  } else {
+    for (const [name, feat] of Object.entries(section.features)) {
+      html += `<div class="rule-block">
+        <h4>${titleCase(name)}</h4>
+        <p>${feat.description}</p>
+      </div>`;
+    }
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// Initial render
+render();
+</script>
+</body>
+</html>
