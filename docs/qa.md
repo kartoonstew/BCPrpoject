@@ -1,5 +1,13 @@
 # Verification — 2026-09-05
 
+## Reference desk redesign
+
+- Seven Node tests pass, including full-text search, exact title ranking, apostrophe normalization, saved/topic intersections, source-page sorting, and compatibility with existing deep links.
+- Chrome workflow checks pass for same-view search and reading, preserved query/topic across rule selection and browser Back, saved-rule persistence, preserved result scroll position when bookmarking, empty searches, legacy rule links, nine-class roster, four-feature continuous progression, and the existing class-to-workshop action.
+- Desktop layouts inspected at 1440px; reference desk, roster, progression, and workshop checked at 390px without horizontal document overflow. Mobile selection opens the reading view, and Results returns to the same search. Keyboard result movement and focus restoration are implemented with native links/buttons.
+- Existing workshop persistence, JSON backup/import, editable PDF export, blank PDF export, and long-note export pass their regression flows. The workshop function block, `styles.css`, `character.js`, `pdf-generator.js`, and the existing blank PDF were compared byte-for-byte to the preceding commit and remain unchanged. Regression PDF downloads go to ignored QA files, not the committed blank.
+- The production build includes the new isolated desk JS/CSS assets.
+
 ## Passed
 
 - Audited v1.14 source: 196 unique entries, nine subclasses with levels 1/3/7/10, nine Traits, nine Quirks, five banner auras, 75 named Brothers, and page references limited to campaign pages 1–8.
