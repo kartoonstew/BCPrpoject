@@ -11,6 +11,12 @@ export function calculateBonuses(c) {
   var level=number(c.level,1,20,true),pb=level===null?null:2+Math.floor((level-1)/4);
   var penalty=same(c.quirk,'Star-Crossed')?-1:0;
   var out={proficiency:pb===null?'':pb,saveDC:pb===null?'':9+2*pb,hitDie:same(c.quirk,'Brittle')?'d8':'d10',deathPenalty:same(c.quirk,'Borrowed Time')?-2:0,luckPenalty:same(c.quirk,'Unfortunate')?-2:0,lingerHpBonus:trait('Lingerer')?(level===null?'':level+1):0};
+  out.attacksPerAction=level===null?'':level>=20?4:level>=11?3:level>=5?2:1;
+  out.secondWindMax=level===null?'':level>=10?4:level>=4?3:2;
+  out.actionSurgeMax=level===null?'':level>=17?2:level>=2?1:0;
+  out.indomitableMax=level===null?'':level>=17?3:level>=13?2:level>=9?1:0;
+  out.masteryMax=level===null?'':level>=16?6:level>=10?5:level>=4?4:3;
+  out.secondWindHealing=level===null?'':'1d10+'+level;
   var extra=String(c.extraSaves||'').toLowerCase().match(/[a-z]+/g)||[];
   for(var i=0;i<names.length;i++){
     var a=names[i],key=a.toLowerCase(),score=number(c[key],1,30,true),mod=score===null?null:Math.floor((score-10)/2);
@@ -33,6 +39,7 @@ export function calculateBonuses(c) {
 }
 
 export const calculatedFieldNames = [
+  'attacksPerAction','secondWindMax','actionSurgeMax','indomitableMax','masteryMax','secondWindHealing',
   'proficiency','saveDC','hitDie','initiative','speed','passivePerception','lingerHpBonus','deathPenalty','luckPenalty','strAttack','dexAttack',
   ...['strength','dexterity','constitution','intelligence','wisdom','charisma'].map(a=>a+'_mod'),
   ...['Strength','Dexterity','Constitution','Intelligence','Wisdom','Charisma'].map(a=>'save_'+a+'_bonus'),

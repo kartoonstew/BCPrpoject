@@ -16,6 +16,8 @@ A gritty, responsive companion to **BC PHB 1.14**, with a complete searchable ca
 - Weathered, editable PDF AcroForms with new edge grime and dried blood on each export. Appearance streams and field-local fonts keep values readable without clicking. Includes abilities, saving throws, skills, HP, resources, equipment, traits, history, and full unlocked subclass/trait reference text. Long notes continue onto additional editable pages. Skills carry small base-ability letters.
 - Bonuses are calculated before export. Embedded scripts also support recalculation in capable readers; for iPad Preview and LibreOffice, update the website and download again after changing levels or scores. Reference pages contain only unlocked, editable features.
 - Shared math covers ability modifiers, proficiency, saves (including Star-Crossed), skills/expertise, initiative, speed, campaign DC, passive Perception, and attack baselines. HP, AC and equipment/resource totals remain manual; Lingerer HP is shown separately.
+- Combat pages group attacks, defenses, death checks and remaining uses. Separate training and unlocked ability pages include normal 2024 Fighter features alongside campaign subclasses; bookmarks navigate every PDF page. Fighter resource maxima, attacks per Attack action, mastery count and Second Wind healing scale with level.
+- Dedicated Fighting Style, mastery and feat choices, three structured weapon rows and attunement notes persist in drafts and JSON backups. The full legacy loadout is retained; long notes continue onto editable pages.
 - The original rulebook remains downloadable, and its parchment artwork is reused. Original generated battlefield art is documented in `docs/art-direction.md`.
 
 ## Run locally
@@ -37,9 +39,9 @@ GitHub Actions runs checks and publishes `dist/` to GitHub Pages on pushes to `m
 
 `BC PHB 1.14.pdf` is the current authority. `data/rules.json` is the site’s edition-specific index. `data/source-pages.json` preserves the complete column-ordered source text for the eight campaign pages. Pages 9–10 are unrelated Homebrewery help and intentionally excluded. Source typos/ambiguities are retained, with separate editorial notes where they affect interpretation.
 
-Rebuild the index with Python and `pdfplumber`:
-
 Campaign updates are applied by the importer and noted on the affected rules. On 2026-09-05, Sawbones’ level 3 Snip & Stitch healing increased to 4X proficiency bonus; its trigger, range and use limit remain unchanged. New character PDF exports use the updated rule. The original PDF and extracted source pages retain the original wording.
+
+Rebuild the index with Python and `pdfplumber`:
 
 ```sh
 python3 scripts/extract_rules.py
@@ -48,13 +50,13 @@ npm test
 
 The importer deliberately asserts the audited source layout. A different PDF edition requires re-auditing section boundaries instead of silently guessing them. The older `BC_Compendium.json`, Python terminal tools, and v1.12 PDF remain for history; the website does **not** use that older data.
 
-The supplied booklet references the core Fighter table, PHB equipment, Luck, chips, and death checks without reproducing all underlying rules. The site does not invent those procedures. Proficiency, ability modifiers, subclass DC, hit die, Snake initiative, and Fast/Slow speed adjustments are calculated. HP, AC, resources, conditional effects, and other bonuses/penalties are manual. Users should confirm any incomplete rules with their DM.
+The supplied booklet references the core Fighter table, PHB equipment, Luck, chips, and death checks without reproducing all underlying rules. Character PDFs supplement the campaign with condensed 2024 Fighter references from SRD 5.2.1; see [Fighter sources and scope](docs/fighter-rules.md). The site does not invent those procedures. Proficiency, ability modifiers, subclass DC, hit die, Snake initiative, and Fast/Slow speed adjustments are calculated. HP, AC, remaining resources, conditional effects, and other bonuses/penalties are manual. Users should confirm any incomplete rules with their DM.
 
 ## PDF and privacy
 
 `pdf-generator.js` uses the locally vendored MIT-licensed `pdf-lib` library. Character data stays in the browser. No account, backend, or API key is needed. PDF fields are editable in compatible PDF editors; PDF edits do not synchronize into the workshop. Use JSON for workshop backup/restore.
 
-The printable blank is `output/pdf/black-company-universal-editable.pdf`. The PDF’s standard fonts cover Latin/Western European text; unsupported characters produce an export error rather than silently deleting input. JSON backups retain all text.
+The printable blank is `output/pdf/black-company-universal-editable.pdf`; `output/pdf/rook-field-kit-example.pdf` is a six-page level 7 example. Actual exports grow as abilities unlock or notes need more room. The PDF’s standard fonts cover Latin/Western European text; unsupported characters produce an export error rather than silently deleting input. JSON backups retain all text.
 
 ## Verification
 

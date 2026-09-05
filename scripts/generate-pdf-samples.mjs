@@ -11,5 +11,6 @@ const snake={...defaults(),name:'Rook',subclass:'Snake',level:7,strength:16,dext
 for(const [file,c,options] of [
  ['output/pdf/black-company-universal-editable.pdf',defaults(),{blank:true}],
  ['tmp/qa/rook-final.pdf',snake,{}],
+ ['output/pdf/rook-field-kit-example.pdf',snake,{}],
  ['tmp/qa/rook-final-variant.pdf',snake,{}],
 ]){await writeFile(file,await createCharacterPDF(c,db,options));console.log(file);}

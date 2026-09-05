@@ -1,5 +1,6 @@
-import {abilities, skills, skillAbilities} from './character.js';
-import {calculateBonuses,calculatedFieldNames,formatBonus,signedField,pdfCalculationScript} from './sheet-math.js';
+import {fighterFeatures,weaponRows} from './fighter-features.js?v=fieldkit1';
+import {abilities, skills, skillAbilities} from './character.js?v=fieldkit1';
+import {calculateBonuses,calculatedFieldNames,formatBonus,signedField,pdfCalculationScript} from './sheet-math.js?v=fieldkit1';
 import {drawWear,randomSeed,seededRandom} from './pdf-wear.js';
 
 /** Browser-only AcroForm generator. No network, backend, or flattened fields. */
@@ -15,7 +16,8 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
   if(!response.ok)throw new Error('Could not load the sheet parchment.');
   const texture=await pdf.embedJpg(await response.arrayBuffer());
   const font=await pdf.embedFont(StandardFonts.Helvetica),bold=await pdf.embedFont(StandardFonts.HelveticaBold),serif=await pdf.embedFont(StandardFonts.TimesRomanBold);
-  const form=pdf.getForm(),c=character,v=calculateBonuses(blank?{}:c),overflow=[];
+  const form=pdf.getForm(),c=character,v=calculateBonuses(blank?{}:c),overflow=[],sections=[];
+  const level=blank?0:Number(c.level);
   const auto=key=>formatBonus(v[key],signedField(key));
   // Complete AcroForm defaults let viewers regenerate appearances after edits.
   form.acroForm.dict.set(PDFName.of('DR'),pdf.context.obj({Font:{Helvetica:font.ref}}));
@@ -28,11 +30,11 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
   const text=s=>String(s??'').replace(/[‐‑–—]/g,'-').replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/\u2028|\u2029/g,'\n').replace(/\t/g,'  ');
   const draw=(s,x,top,size=10,f=font,color=ink)=>page.drawText(text(s),{x,y:792-top-size,size,font:f,color});
   function addPage(title,subtitle){
-    page=pdf.addPage([612,792]);page.drawRectangle({x:0,y:0,width:612,height:792,color:paper});
+    page=pdf.addPage([612,792]);sections.push({title,page});page.drawRectangle({x:0,y:0,width:612,height:792,color:paper});
     page.drawImage(texture,{x:0,y:0,width:612,height:792,opacity:.34});drawWear(page,globalThis.PDFLib,random);
     page.drawRectangle({x:28,y:706,width:556,height:64,color:ink});
     page.drawLine({start:{x:36,y:713},end:{x:576,y:713},color:gold,thickness:.6});
-    draw('THE BLACK COMPANY  /  COMPANY ARCHIVES',40,30,7,bold,gold);draw(title,40,44,25,serif,paper);
+    draw('THE BLACK COMPANY  /  COMPANY ARCHIVES',40,30,7,bold,gold);draw(title,40,44,24,serif,paper);
     page.drawCircle({x:555,y:743,size:16,borderColor:gold,borderWidth:.7});draw(String(pdf.getPageCount()).padStart(2,'0'),546,40,15,serif,gold);
     draw(subtitle,36,96,7.5,bold,red);
     draw('PHB 1.14  /  KEEP WITH YOUR KIT',36,766,6.5,bold,gray);
@@ -48,52 +50,81 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
     return f;
   }
   function row(items,top,height=30){const gap=10,w=(540-gap*(items.length-1))/items.length;items.forEach(([key,label,value],i)=>field(key,label,value,36+i*(w+gap),top,w,height));}
-  function check(key,label,checked,x,top){const f=form.createCheckBox(key);f.addToPage(page,{x,y:792-top-11,width:11,height:11,borderWidth:.6,borderColor:line,backgroundColor:white});if(!blank&&checked)f.check();draw(label,x+18,top,8);}
-  addPage('A Brother of the Company','01 / IDENTITY, ABILITIES & FIELD READINESS');
+  function check(key,label,checked,x,top){const f=form.createCheckBox(key);f.addToPage(page,{x,y:792-top-11,width:11,height:11,borderWidth:.6,borderColor:line,backgroundColor:white});if(!blank&&checked)f.check();draw(label,x+18,top,9);}
+  // Combat stays together. Descriptions and training have their own pages.
+  addPage('Ready for the field','COMBAT / ATTACKS, DEFENSES & RESOURCES');
   row([['name','Company name',c.name],['player','Player',c.player]],115);
-  row([['subclass','Subclass',c.subclass],['level','Fighter level',c.level],['unit','Fist / Finger / Knuckle',c.companyUnit]],173);
-  abilities.forEach((a,i)=>{const x=36+i*92;draw(a.toUpperCase(),x,233,7,bold,red);field(a.toLowerCase(),'Score',c[a.toLowerCase()],x,249,45,32,false,16);field(a.toLowerCase()+'_mod','Mod *',auto(a.toLowerCase()+'_mod'),x+49,249,33,32,false,12);});
-  row([['hpMax','Maximum HP',c.hpMax],['hpCurrent','Current HP',c.hpCurrent],['hpTemp','Temporary HP',c.hpTemp],['ac','Armor / manual',c.ac],['initiative','Initiative / auto',auto('initiative')],['speed','Speed / auto',auto('speed')]],310,28);
-  row([['proficiency','Prof. / auto',auto('proficiency')],['saveDC','DC / auto',auto('saveDC')],['hitDie','HP die / auto',auto('hitDie')],['hitDice','Hit dice left',c.hitDice],['luck','Session Luck',c.luck],['chips','Chips',c.chips]],368,28);
-  draw('SAVING THROWS',36,425,9,bold,red);draw('Tick proficiency. Enter any extra modifier in ADJ.',215,426,7,font,gray);
-  abilities.forEach((a,i)=>{const extra=String(c.extraSaves||'').toLowerCase().match(/[a-z]+/g)||[];const trained=c.save1===a||c.save2===a||extra.includes(a.toLowerCase())||extra.includes(a.slice(0,3).toLowerCase());const x=36+i*92;check(`save_${a}_trained`,a.slice(0,3),trained,x,448);field(`save_${a}_bonus`,'Total *',auto(`save_${a}_bonus`),x,472,45,24,false,12);field(`save_${a}_misc`,'Adj.',c[`save_${a}_misc`]||'',x+50,472,32,24,false,9);});
-  draw('SKILLS',36,526,9,bold,red);draw('P = proficiency  /  E = expertise  /  ADJ = other modifiers',103,527,7,font,gray);
-  for(let col=0;col<2;col++){const x=36+col*278;draw('P',x+2,547,6,bold,gray);draw('E',x+150,547,6,bold,gray);draw('ADJ',x+177,547,6,bold,gray);draw('TOTAL',x+218,547,6,bold,gray);}
-  skills.forEach((s,i)=>{const col=i<9?0:1,n=i%9,x=36+col*278,t=562+n*18;check(`skill_${s}`,s,c.skills.includes(s),x,t);draw('('+abilities[skillAbilities[i]][0].toLowerCase()+')',x+22+font.widthOfTextAtSize(s,8),t+1,6.5,font,gray);check(`skill_${s}_expert`,'',(c.expertise||[]).includes(s),x+147,t);for(const [key,value,offset,width] of [[`skill_${s}_misc`,c[`skill_${s}_misc`]||'',173,28],[`skill_${s}_bonus`,auto(`skill_${s}_bonus`),213,42]]){const f=form.createTextField(key);f.setText(blank&&!calculatedFieldNames.includes(key)?'':String(value));f.addToPage(page,{x:x+offset,y:792-t-13,width,height:15,borderWidth:.4,borderColor:line,backgroundColor:calculatedFieldNames.includes(key)?paper:white,font,textColor:ink});f.setFontSize(8);f.acroField.dict.set(PDFName.of('TU'),PDFHexString.fromText(s+' ('+abilities[skillAbilities[i]]+')'+(key.endsWith('_misc')?' - extra modifier':' - calculated total')));}});
-  draw('(s) Strength / (d) Dexterity / (i) Intelligence / (w) Wisdom / (c) Charisma. Letters show the base ability.',36,727,7,font,gray);
-  draw('Values are calculated at download. In Preview/LibreOffice, change level and scores on the website, then export again.',36,740,6.5,font,gray);
-  addPage('Steel, gifts & scars','02 / EQUIPMENT, TRAITS & RESOURCES');
-  row([['trait','First Trait',c.trait],['trait2','Second Trait',c.trait2],['quirk','Quirk',c.quirk]],115);
-  field('traitChoices','Trait choices / resistances / penalties',c.traitChoices,36,173,540,40,true);
-  row([['tools','Tool proficiencies',c.tools],['languages','Languages',c.languages]],242,28);
-  field('weapons','Weapons / final attack bonus / damage / mastery',c.weapons,36,300,540,58,true);
-  row([['armor','Armor & shield',c.armor],['magicItems','Magic items / durability / charges',c.magicItems]],388,32);
-  field('equipment','Equipment & supplies',c.equipment,36,450,540,54,true);
-  field('resources','Subclass resources / current & maximum',c.resources,36,534,540,46,true);
-  row([['secondWind','Second Wind',c.secondWind],['actionSurge','Action Surge',c.actionSurge],['indomitable','Indomitable',c.indomitable],['gold','Gold remaining',c.gold]],610,26);
-  row([['baseSpeed','Base speed / before traits',c.speed],['initiativeMisc','Initiative / extra modifier',c.initiativeMisc||''],['initiativeOverride','Initiative / override total',c.initiative]],666,23);
-  draw('HP, AC, equipment and resource totals stay manual. Bird Bones: apply -1 AC in medium/heavy armor.',36,720,7,font,gray);
-  draw('Fey-Touched: tick its extra save on page 1. Star-Crossed, Fast, Slow and Brittle update automatically.',36,732,7,font,gray);
-  draw('Use exact printed trait, quirk and subclass names. Expertise applies only when a rule grants it.',36,744,7,font,gray);
-  addPage('A name in the Annals','03 / FIELDCRAFT, HISTORY & CONDITIONS');
-  field('pronouns','Pronouns / description',c.pronouns,36,115,296,28);
-  field('strAttack','STR attack / auto',auto('strAttack'),342,115,112,28);
-  field('dexAttack','DEX attack / auto',auto('dexAttack'),464,115,112,28);
-  draw('Attack baselines include proficiency; add weapon/magic bonuses. Damage uses the ability modifier.',36,161,7,font,gray);
-  field('passivePerception','Passive Perception / auto',auto('passivePerception'),36,179,260,28);
-  field('lingerHpBonus','Lingerer HP / add to manual HP',auto('lingerHpBonus'),306,179,270,28);
-  field('history','Before the Company',c.history,36,240,540,63,true);
-  field('allies','Brothers, bonds & enemies',c.allies,36,333,540,50,true);
-  field('notes','Field notes / conditions / wounds',c.notes,36,413,540,83,true);
-  field('featureNotes','Fighter features / masteries / other rules',c.featureNotes,36,526,540,92,true);
-  draw('DEATH CHECKS',36,654,9,bold,red);draw('SUCCESSES',36,678,7,bold,gray);draw('FAILURES',200,678,7,bold,gray);
-  for(let i=0;i<3;i++){check(`death_success_${i+1}`,'',Number(c.deathSuccesses)>i,36+i*28,696);check(`death_failure_${i+1}`,'',Number(c.deathFailures)>i,200+i*28,696);}
-  field('deathPenalty','Death adj. / auto',auto('deathPenalty'),363,675,97,24);
-  field('luckPenalty','Solo Luck adj. / auto',auto('luckPenalty'),475,675,101,24);
-  draw('Snake: initiative advantage; +20 ft. in round 1. Jumpy/Shiftless change the rolled total, not the bonus.',36,730,7,font,gray);
-  draw('Death checks and Luck follow your table’s procedures. Export again after leveling to include newly unlocked features.',36,742,7,font,gray);
-  const features=blank?[]:db.records.filter(r=>(r.subclass===c.subclass&&r.level&&r.level<=Number(c.level))||(['Traits','Quirks'].includes(r.category)&&[c.trait,c.trait2,c.quirk].includes(r.title)));
-  if(features.length){addPage(`${c.subclass} / Field reference`,'04 / UNLOCKED SUBCLASS FEATURES, TRAITS & QUIRKS');let top=119;for(const r of features){const rows=wrap(r.body,520,9),height=Math.ceil(rows.length*10.8)+20;if(top+height+45>742){addPage(`${c.subclass} / Field reference`,'CONTINUED / SOURCE TEXT FROM PLAYER’S HANDBOOK 1.14');top=119;}field(`reference_${r.id}`,`${r.title}${r.level?' / Level '+r.level:''} / PHB p. ${r.page}`,r.body,36,top,540,height,true,9);top+=height+40;}}
+  row([['subclass','Subclass',c.subclass],['level','Fighter level',c.level],['unit','Fist / Finger / Knuckle',c.companyUnit]],170);
+  row([['hpMax','Maximum HP',c.hpMax],['hpCurrent','Current HP',c.hpCurrent],['hpTemp','Temporary HP',c.hpTemp],['ac','Armor / manual',c.ac],['initiative','Initiative / auto',auto('initiative')],['speed','Speed / auto',auto('speed')]],225,30);
+  row([['strAttack','STR attack *',auto('strAttack')],['dexAttack','DEX attack *',auto('dexAttack')],['attacksPerAction','Attacks / action *',auto('attacksPerAction')],['saveDC','Subclass DC *',auto('saveDC')],['hitDie','HP die *',auto('hitDie')],['hitDice','Hit dice left',c.hitDice]],283,26);
+  draw('DEATH CHECKS',36,338,9,bold,red);
+  draw('Success',36,359,8,font,gray);draw('Failure',166,359,8,font,gray);
+  for(let i=0;i<3;i++){check(`death_success_${i+1}`,'',Number(c.deathSuccesses)>i,87+i*21,359);check(`death_failure_${i+1}`,'',Number(c.deathFailures)>i,213+i*21,359);}
+  field('deathPenalty','Death adj. *',auto('deathPenalty'),290,341,76,24);
+  field('luck','Session Luck',c.luck,376,341,95,24);field('chips','Chips',c.chips,481,341,95,24);
+  draw('FIGHTER RESOURCES',36,396,9,bold,red);draw('Track remaining uses; a new export does not spend or restore them.',197,398,7,font,gray);
+  const resources=[['secondWind','Second Wind','secondWindMax','Short Rest: +1 / Long Rest: all',1],['actionSurge','Action Surge','actionSurgeMax','Short or Long Rest: all',2],['indomitable','Indomitable','indomitableMax','Long Rest: all',9]].filter(r=>blank||level>=r[4]);
+  resources.forEach(([key,label,max,recharge],i)=>{const x=36+i*184;draw(label,x,420,11,bold);field(key,'Left',c[key],x,439,65,24);field(max,'Max *',auto(max),x+74,439,65,24);draw(recharge,x,482,7,font,gray);});
+  draw('WEAPONS',36,512,9,bold,red);draw('Final bonuses and damage are editable. STR / DEX above include proficiency.',113,514,7,font,gray);
+  weaponRows(c).forEach((values,i)=>{const top=536+i*59;[['Name','Weapon',36,170],['Bonus','To hit',216,70],['Damage','Damage / type',296,133],['Mastery','Mastery / notes',439,137]].forEach(([key,label,x,w],j)=>field('attack'+(i+1)+key,label,values[j],x,top,w,32,true,9));});
+  draw('More weapon details and the original loadout are in Equipment & notes.',36,711,8,font,gray);
+  draw('After changing level, export again to refresh ability descriptions and unlocked resources.',36,731,7,font,gray);
+
+  addPage('Training & instincts','TRAINING / ABILITY SCORES, SAVES & SKILLS');
+  abilities.forEach((a,i)=>{const x=36+i*92;draw(a.toUpperCase(),x,119,7,bold,red);field(a.toLowerCase(),'Score',c[a.toLowerCase()],x,140,45,35,false,16);field(a.toLowerCase()+'_mod','Mod *',auto(a.toLowerCase()+'_mod'),x+49,140,33,35,false,12);});
+  field('proficiency','Proficiency *',auto('proficiency'),36,211,100,26);
+  draw('SAVING THROWS',157,211,9,bold,red);draw('Tick proficiency. ADJ adds other modifiers.',157,233,9,font,gray);
+  abilities.forEach((a,i)=>{const extra=String(c.extraSaves||'').toLowerCase().match(/[a-z]+/g)||[];const trained=c.save1===a||c.save2===a||extra.includes(a.toLowerCase())||extra.includes(a.slice(0,3).toLowerCase());const x=36+i*92;check(`save_${a}_trained`,a.slice(0,3),trained,x,272);field(`save_${a}_bonus`,'Total *',auto(`save_${a}_bonus`),x,298,45,25,false,12);field(`save_${a}_misc`,'Adj.',c[`save_${a}_misc`]||'',x+50,298,32,25,false,9);});
+  draw('SKILLS',36,361,11,bold,red);draw('P = proficiency / E = expertise / ADJ = other modifiers',111,364,8,font,gray);
+  for(let col=0;col<2;col++){const x=36+col*278;draw('P',x+2,391,7,bold,gray);draw('E',x+149,391,7,bold,gray);draw('ADJ',x+174,391,7,bold,gray);draw('TOTAL',x+216,391,7,bold,gray);}
+  skills.forEach((s,i)=>{const col=i<9?0:1,n=i%9,x=36+col*278,t=414+n*28;check(`skill_${s}`,s,c.skills.includes(s),x,t);draw('('+abilities[skillAbilities[i]][0].toLowerCase()+')',x+22+font.widthOfTextAtSize(s,9),t+1,7,font,gray);check(`skill_${s}_expert`,'',(c.expertise||[]).includes(s),x+147,t);for(const [key,value,offset,width] of [[`skill_${s}_misc`,c[`skill_${s}_misc`]||'',173,28],[`skill_${s}_bonus`,auto(`skill_${s}_bonus`),213,42]]){const f=form.createTextField(key);f.setText(blank&&!calculatedFieldNames.includes(key)?'':String(value));f.addToPage(page,{x:x+offset,y:792-t-16,width,height:21,borderWidth:.4,borderColor:line,backgroundColor:calculatedFieldNames.includes(key)?paper:white,font,textColor:ink});f.setFontSize(10);f.acroField.dict.set(PDFName.of('TU'),PDFHexString.fromText(s+' ('+abilities[skillAbilities[i]]+')'+(key.endsWith('_misc')?' - extra modifier':' - calculated total')));}});
+  draw('(s) Strength / (d) Dexterity / (i) Intelligence / (w) Wisdom / (c) Charisma',36,670,8,font,gray);
+  row([['passivePerception','Passive Perception *',auto('passivePerception')],['lingerHpBonus','Lingerer HP / add to HP',auto('lingerHpBonus')],['luckPenalty','Solo Luck adj. *',auto('luckPenalty')]],698,24);
+
+  // One-column, editable ability blocks grow onto new pages, never into tiny print.
+  let referenceTop=119,referenceTitle='Abilities';
+  function referencePage(title,subtitle){referenceTitle=title;addPage(title,subtitle);referenceTop=119;}
+  function referenceBlock(key,title,meta,body){
+    const height=Math.ceil(wrap(body,520,10).length*12)+16;
+    if(referenceTop+height+47>738)referencePage(referenceTitle.replace(' / continued','')+' / continued','ABILITIES / UNLOCKED AT EXPORT');
+    draw(title,36,referenceTop,13,serif,red);draw(meta,36,referenceTop+21,7,bold,gray);
+    const reference=field(key,'',body,36,referenceTop+25,540,height,true,10);
+    reference.acroField.dict.set(PDFName.of('TU'),PDFHexString.fromText(title+' - '+meta+' - editable description'));
+    referenceTop+=height+48;
+  }
+  referencePage("The Fighter's craft",'ABILITIES / CORE FIGHTER FEATURES AT YOUR LEVEL');
+  field('fightingStyle','Chosen Fighting Style / benefits',c.fightingStyle,36,119,300,40,true);
+  field('masteryMax','Mastery choices / max *',auto('masteryMax'),346,119,110,40);
+  field('secondWindHealing','Second Wind healing *',auto('secondWindHealing'),466,119,110,40);
+  field('masteries','Chosen mastery weapons / properties',c.masteries,36,183,540,35,true);
+  field('feats','Chosen feats / ASIs / benefits',c.feats,36,247,540,45,true);
+  referenceTop=332;
+  if(blank){field('fighter_reference_notes','Fighter ability descriptions / manual notes','',36,340,540,220,true);draw('For a sheet with unlocked rules already filled in, choose your level on the website and export.',36,602,8,font,gray);}
+  for(const r of blank?[]:fighterFeatures({...c,fightingStyle:'',masteries:''}))referenceBlock(r.id,r.title,`FIGHTER / LEVEL ${r.level} / SRD 5.2.1, PP. 47-48`,r.body);
+  const features=blank?[]:db.records.filter(r=>(r.subclass===c.subclass&&r.level&&r.level<=level)||(['Traits','Quirks'].includes(r.category)&&[c.trait,c.trait2,c.quirk].includes(r.title)));
+  if(features.length){referencePage(`${c.subclass} / gifts & scars`,'ABILITIES / UNLOCKED SUBCLASS FEATURES, TRAITS & QUIRKS');
+    for(const r of [...features.filter(r=>r.level),...features.filter(r=>!r.level)])referenceBlock(`reference_${r.id}`,r.title,`${r.level?'LEVEL '+r.level:r.category.toUpperCase()} / CAMPAIGN PHB P. ${r.page}${r.note?.startsWith('Campaign update')?' / CAMPAIGN UPDATE':''}`,r.body);
+  }
+
+  addPage('Equipment & notes','EQUIPMENT / POSSESSIONS, BONDS & THE ANNALS');
+  row([['trait','First Trait',c.trait],['trait2','Second Trait',c.trait2],['quirk','Quirk',c.quirk]],115,24);
+  row([['tools','Tool proficiencies',c.tools],['languages','Languages',c.languages]],162,25);
+  field('armorTraining','Armor & weapon training',blank?'':'Simple & Martial weapons; Light & Medium armor; Shields'+(['Sawbones','Bump','Deacon','Salt'].includes(c.subclass)?'; Heavy armor.':'.'),36,210,540,25,true,9);
+  row([['armor','Armor / shield / alternate AC',c.armor],['magicItems','Magic items / attunement / charges',c.magicItems]],258,30);
+  field('equipment','Equipment & supplies',c.equipment,36,311,260,48,true,9);
+  field('resources','Subclass resources / current & max',c.resources,316,311,260,48,true,9);
+  field('weapons','Weapon notes / original loadout',c.weapons,36,383,260,40,true,9);
+  field('traitChoices','Trait choices / resistances / penalties',c.traitChoices,316,383,260,40,true,9);
+  row([['gold','Gold remaining',c.gold],['baseSpeed','Base speed / before traits',c.speed],['initiativeMisc','Initiative / extra modifier',c.initiativeMisc||''],['initiativeOverride','Initiative / override total',c.initiative]],447,24);
+  field('pronouns','Pronouns / description',c.pronouns,36,492,260,38,true,9);
+  field('history','Before the Company',c.history,316,492,260,38,true,9);
+  field('allies','Brothers, bonds & enemies',c.allies,36,550,260,36,true,9);
+  field('notes','Field notes / conditions / wounds',c.notes,316,550,260,36,true,9);
+  field('featureNotes','Additional features / house rules',c.featureNotes,36,610,260,36,true,9);
+  field('attunedItems','Attuned items / slots used',c.attunedItems,316,610,260,36,true,9);
+  const credit='This work includes material from the System Reference Document 5.2.1 ("SRD 5.2.1") by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.';
+  wrap(credit,540,7).forEach((line,i)=>draw(line,36,683+i*10,7,font,gray));
+  draw('Fighter descriptions are condensed adaptations. Campaign PHB 1.14 and noted updates override core rules.',36,730,7,font,gray);
   // Print overflow on additional editable pages rather than clipping long notes.
   let index=0;
   while(index<overflow.length){const item=overflow[index++];const all=item.lines.join('\n');const rows=wrap(all,520,10);for(let start=0,part=1;start<rows.length;start+=43,part++){addPage('Continued field notes',`${item.label.toUpperCase()} / CONTINUATION ${part}`);field(`${item.key}_continued_${part}`,`${item.label} (continued)`,rows.slice(start,start+43).join('\n'),36,120,540,550,true,10);}}
@@ -103,7 +134,7 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
     abilities.map(a=>a.toLowerCase()).includes(name)||['level','subclass','trait','trait2','quirk','baseSpeed','initiativeOverride','initiativeMisc'].includes(name)||/^save_.*_(trained|misc)$/.test(name)||(/^skill_/.test(name)&&!name.endsWith('_bonus')));
   pdf.addJavaScript('BlackCompanyCalculations',pdfCalculationScript(inputNames));
   const order=[];
-  for(const key of calculatedFieldNames){const f=form.getTextField(key);f.enableReadOnly();f.acroField.dict.set(PDFName.of('AA'),pdf.context.obj({C:{S:'JavaScript',JS:PDFHexString.fromText('event.value = BCValue(this, '+JSON.stringify(key)+');')}}));order.push(f.ref);}
+  for(const key of calculatedFieldNames){const f=form.getFields().find(f=>f.getName()===key);if(!f)continue;f.enableReadOnly();f.acroField.dict.set(PDFName.of('AA'),pdf.context.obj({C:{S:'JavaScript',JS:PDFHexString.fromText('event.value = BCValue(this, '+JSON.stringify(key)+');')}}));order.push(f.ref);}
   form.acroForm.dict.set(PDFName.of('CO'),pdf.context.obj(order));
   // Reject malformed scores/levels instead of treating a blank as a score of zero.
   for(const [key,min,max] of [...abilities.map(a=>[a.toLowerCase(),1,30]),['level',1,20]]){
@@ -113,5 +144,12 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
   form.updateFieldAppearances(font);
   // PDFKit reads widget-local appearance settings when recreating editable text.
   for(const f of form.getFields()){const da=f.acroField.dict.get(PDFName.of('DA'));if(da)for(const widget of f.acroField.getWidgets()){widget.dict.set(PDFName.of('DA'),da);widget.dict.set(PDFName.of('Q'),pdf.context.obj(0));}}
+  // Native PDF bookmarks make long ability sections easy to reach on a tablet.
+  const outline=pdf.context.obj({Type:'Outlines',Count:sections.length});
+  const outlineRef=pdf.context.register(outline);
+  const entries=sections.map(({title,page})=>pdf.context.obj({Title:PDFHexString.fromText(title),Parent:outlineRef,Dest:[page.ref,'Fit']}));
+  const refs=entries.map(e=>pdf.context.register(e));
+  entries.forEach((e,i)=>{if(i)e.set(PDFName.of('Prev'),refs[i-1]);if(i+1<refs.length)e.set(PDFName.of('Next'),refs[i+1]);});
+  outline.set(PDFName.of('First'),refs[0]);outline.set(PDFName.of('Last'),refs.at(-1));pdf.catalog.set(PDFName.of('Outlines'),outlineRef);
   return pdf.save();
 }

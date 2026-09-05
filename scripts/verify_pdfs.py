@@ -20,8 +20,10 @@ for path in ['tmp/qa/gravel-editable.pdf','output/pdf/black-company-universal-ed
             widgets.append(widget)
     assert len(widgets)==len(fields),(len(widgets),len(fields))
     assert len(fields)>=154
+    assert len(reader.outline)==len(reader.pages)
     order=reader.trailer['/Root']['/AcroForm']['/CO']
-    assert len(order)==41
+    expected_calcs=47-(0 if 'universal' in path else 1)
+    assert len(order)==expected_calcs,(path,len(order))
     for ref in order:
         f=ref.get_object()
         assert f['/AA']['/C']['/S']=='/JavaScript'
@@ -31,9 +33,13 @@ for path in ['tmp/qa/gravel-editable.pdf','output/pdf/black-company-universal-ed
         assert fields['name']['/V']=='Gravel'
         assert fields['subclass']['/V']=='Salt'
         assert fields['saveDC']['/V']=='15'
+        assert fields['secondWind']['/V']=='0'
+        assert fields['secondWindMax']['/V']=='3'
+        assert fields['attack1Name']['/V']=='Longsword'
+        assert fields['fightingStyle']['/V']=='Defense (+1 AC while wearing armor)'
     if 'universal' in path:
         assert fields['name'].get('/V','')==''
-        assert len(reader.pages)==3
+        assert len(reader.pages)==4
     if 'long-notes' in path:
         chunks=[str(fields['notes']['/V'])]+[str(v['/V']) for k,v in fields.items() if k.startswith('notes_continued_')]
         assert ' '.join(' '.join(chunks).split())==' '.join(('Long field note about the Company. '*200).split())
