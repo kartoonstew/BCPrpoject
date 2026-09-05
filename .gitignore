@@ -1,3 +1,5 @@
-venv/
+tmp/
+node_modules/
 .DS_Store
-Old/
+test-results/
+dist/
