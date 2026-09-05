@@ -1,3 +1,4 @@
+import {calculateBonuses} from './sheet-math.js';
 export const abilities = ['Strength','Dexterity','Constitution','Intelligence','Wisdom','Charisma'];
 export const skills = ['Acrobatics','Animal Handling','Arcana','Athletics','Deception','History','Insight','Intimidation','Investigation','Medicine','Nature','Perception','Performance','Persuasion','Religion','Sleight of Hand','Stealth','Survival'];
 export const skillAbilities = [1,4,3,0,5,3,4,5,3,4,3,4,5,5,3,1,1,4];
@@ -5,7 +6,7 @@ export const defaults = () => ({name:'',player:'',subclass:'Sawbones',level:1,co
 export const modifier = score => Math.floor((Number(score)-10)/2);
 export const signed = value => value>=0?`+${value}`:`${value}`;
 export const proficiency = level => 2+Math.floor((Number(level)-1)/4);
-export function derived(c){const pb=proficiency(c.level);return {pb,dc:9+2*pb,hitDie:c.quirk==='Brittle'?'d8':'d10',heavy:['Sawbones','Bump','Deacon','Salt'].includes(c.subclass),initiative:modifier(c.dexterity)+(c.subclass==='Snake'?pb:0),speed:Math.max(10,Number(c.speed)+(c.trait==='Fast'||c.trait2==='Fast'?15:0)-(c.quirk==='Slow'?15:0))};}
+export function derived(c){const v=calculateBonuses(c);return {pb:v.proficiency,dc:v.saveDC,hitDie:v.hitDie,heavy:['Sawbones','Bump','Deacon','Salt'].includes(c.subclass),initiative:v.initiative,speed:v.speed};}
 export function validate(c){const messages=[];if(!c.trait)messages.push('Choose one Trait.');if(c.trait2&&!c.quirk)messages.push('A second Trait requires a Quirk.');if(c.trait2&&c.trait2===c.trait)messages.push('Choose two different Traits.');if(Number(c.level)===1&&abilities.some(a=>Number(c[a.toLowerCase()])>16))messages.push('At level 1, the book’s ability-score increases cannot raise a score above 16. Confirm higher scores with your DM.');const expected=5+(c.trait==='Skill Monkey'||c.trait2==='Skill Monkey'?2:0);if(c.skills.length!==expected)messages.push(`Choose ${expected} skill proficiencies (${c.skills.length} selected).`);if(!c.tools.trim())messages.push('Record one tool proficiency.');return messages;}
 export function sanitizeCharacter(input,classes,traits,quirks){
   if(!input||typeof input!=='object'||Array.isArray(input))throw new Error('This is not a character file.');

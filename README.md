@@ -13,7 +13,9 @@ A gritty, responsive companion to **BC PHB 1.14**, with a complete searchable ca
 - A scan-friendly subclass roster with roles, armor training and four milestone features, plus continuous subclass progression pages.
 - One universal character workshop for all nine subclasses, with unlocked feature references and trait/quirk guidance.
 - Browser autosave and portable JSON backups. Import downloads a backup of the previous draft before replacement.
-- Genuine editable PDF AcroForms, not a print-only HTML export. Includes abilities, saving throws, skills, HP, resources, equipment, traits, history, and full unlocked subclass/trait reference text. Long notes continue onto additional editable pages.
+- Weathered, editable PDF AcroForms with new edge grime and dried blood on each export. Appearance streams and field-local fonts keep values readable without clicking. Includes abilities, saving throws, skills, HP, resources, equipment, traits, history, and full unlocked subclass/trait reference text. Long notes continue onto additional editable pages. Skills carry small base-ability letters.
+- Bonuses are calculated before export. Embedded scripts also support recalculation in capable readers; for iPad Preview and LibreOffice, update the website and download again after changing levels or scores. Reference pages contain only unlocked, editable features.
+- Shared math covers ability modifiers, proficiency, saves (including Star-Crossed), skills/expertise, initiative, speed, campaign DC, passive Perception, and attack baselines. HP, AC and equipment/resource totals remain manual; Lingerer HP is shown separately.
 - The original rulebook remains downloadable, and its parchment artwork is reused. Original generated battlefield art is documented in `docs/art-direction.md`.
 
 ## Run locally

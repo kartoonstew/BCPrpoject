@@ -1,0 +1,33 @@
+import {readFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const root=process.env.PDFJS_PATH||'/Users/ryanstewart/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pdfjs-dist/';
+const {getDocument}=await import(root+'legacy/build/pdf.mjs');
+const pdf=await getDocument({data:new Uint8Array(await readFile('tmp/qa/rook-final.pdf')),disableFontFace:true}).promise;
+const objects=await pdf.getFieldObjects(),order=await pdf.getCalculationOrderIds(),actions=await pdf.getJSActions();
+const updates=[];
+globalThis.window={setTimeout,clearTimeout,setInterval,clearInterval,URL,alert:message=>{throw new Error(message);},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options.detail;}},dispatchEvent:event=>updates.push(event.detail)};
+await import(root+'build/pdf.sandbox.mjs');
+const sandbox=await globalThis.pdfjsSandbox.QuickJSSandbox();
+sandbox.create({objects,calculationOrder:order,appInfo:{platform:'MAC',language:'en-US'},docInfo:{actions,numPages:pdf.numPages,filename:'rook-final.pdf'}});
+sandbox.dispatchEvent({id:'doc',name:'Open'});
+const id=name=>objects[name].find(f=>f.type!=='').id;
+const value=name=>updates.filter(v=>v.id===id(name)&&'value' in v).at(-1)?.value;
+function edit(name,text){sandbox.dispatchEvent({id:id(name),name:'Keystroke',value:text,willCommit:true,commitKey:1,selStart:0,selEnd:0,change:''});}
+edit('dexterity','20');
+assert.equal(value('dexterity_mod'),'+5');
+assert.equal(value('initiative'),'+8');
+assert.equal(value('skill_Stealth_bonus'),'+8');
+assert.equal(value('save_Dexterity_bonus'),'+7');
+edit('level','9');
+assert.equal(value('proficiency'),'+4');assert.equal(value('saveDC'),'17');assert.equal(value('initiative'),'+9');assert.equal(value('lingerHpBonus'),'10');
+edit('quirk','Brittle');assert.equal(value('hitDie'),'d8');assert.equal(value('save_Dexterity_bonus'),'+9');
+edit('initiativeOverride','0');assert.equal(value('initiative'),'+0');
+edit('baseSpeed','20');edit('quirk','Slow');edit('trait','');assert.equal(value('speed'),'10');
+// The checkbox mouse event follows the same path as the PDF viewer's form controls.
+sandbox.dispatchEvent({id:id('skill_Stealth_expert'),name:'Action',value:true});
+assert.equal(value('skill_Stealth_bonus'),'+13');
+sandbox.dispatchEvent({id:id('save_Dexterity_trained'),name:'Action',value:false});
+assert.equal(value('save_Dexterity_bonus'),'+5');
+const errors=updates.filter(x=>x.command==='error');assert.deepEqual(errors,[]);
+console.log('PDF.js QuickJS engine passed: actual embedded scripts, committed edits, level scaling, checkbox changes, expertise, quirk penalties, zero override and speed floor.');
+sandbox.nukeSandbox();await pdf.destroy();
