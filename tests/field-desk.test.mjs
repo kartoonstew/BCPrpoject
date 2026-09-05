@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {findEntries,isDeskPath} from '../field-desk.js';
+import {findEntries,isDeskPath,chapterURL} from '../field-desk.js';
 const db=JSON.parse(readFileSync(new URL('../data/rules.json',import.meta.url)));
 
 test('reference desk searches source text and prioritizes exact feature names',()=>{
@@ -20,6 +20,12 @@ test('search and saved collections respect active topics',()=>{
 test('source-page sorting and old deep links remain supported',()=>{
   const rows=findEntries(db.records,{sort:'page'});
   assert(rows.every((r,i)=>!i||r.page>=rows[i-1].page));
-  assert(isDeskPath('home'));assert(isDeskPath('rules'));assert(isDeskPath('rule/sawbones-snip-stitch'));
+  assert(!isDeskPath('home'));assert(isDeskPath('rules'));assert(isDeskPath('rule/sawbones-snip-stitch'));
   assert(!isDeskPath('sheet'));assert(!isDeskPath('subclasses'));
+});
+
+test('chapter links start a fresh navigation without stale search or selection',()=>{
+  assert.equal(chapterURL('Black Banner'),'#rules?category=Black%20Banner');
+  assert.equal(chapterURL('Morale'),'#rules?category=Morale');
+  assert.equal(chapterURL(''),'#rules');
 });

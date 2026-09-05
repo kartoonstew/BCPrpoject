@@ -1,12 +1,13 @@
 # Verification — 2026-09-05
 
-## Reference desk redesign
+## Homepage and chapter navigation revision
 
-- Seven Node tests pass, including full-text search, exact title ranking, apostrophe normalization, saved/topic intersections, source-page sorting, and compatibility with existing deep links.
-- Chrome workflow checks pass for same-view search and reading, preserved query/topic across rule selection and browser Back, saved-rule persistence, preserved result scroll position when bookmarking, empty searches, legacy rule links, nine-class roster, four-feature continuous progression, and the existing class-to-workshop action.
-- Desktop layouts inspected at 1440px; reference desk, roster, progression, and workshop checked at 390px without horizontal document overflow. Mobile selection opens the reading view, and Results returns to the same search. Keyboard result movement and focus restoration are implemented with native links/buttons.
-- Existing workshop persistence, JSON backup/import, editable PDF export, blank PDF export, and long-note export pass their regression flows. The workshop function block, `styles.css`, `character.js`, `pdf-generator.js`, and the existing blank PDF were compared byte-for-byte to the preceding commit and remain unchanged. Regression PDF downloads go to ignored QA files, not the committed blank.
-- The production build includes the new isolated desk JS/CSS assets.
+- Eight Node tests pass: search ranking/normalization, record filtering, source ordering, route compatibility, clean chapter URLs, dataset integrity, and character calculations/import validation.
+- Chrome checks exercise all nine chapter links after a search, asserting the exact expected entries, cleared search, active chapter, and no stale selected rule. Global search ignores old conflicting topic parameters; legacy and mismatched-category entry links open their actual source chapter. Empty searches, missing entries, saved persistence, and expand/collapse controls pass.
+- Homepage navigation and search work. The Brothers roster measures 1898px at a 2200px viewport, a 30% increase over its previous cap. All nine callings and four-feature subclass progressions remain accessible.
+- Desktop screenshots inspected at 1440px and the wide roster at 2200px. Homepage, rules, roster, subclass, and workshop checked at 390px without horizontal overflow. Mobile chapter selection clears previous searches; native rule summaries open by keyboard.
+- Existing character persistence, JSON backup/import, editable PDF export, blank PDF export, and long-note export pass. Regression downloads remain in ignored QA files.
+- Production build and diff whitespace checks pass. The unchanged workshop block and associated files are verified against the previous release.
 
 ## Passed
 

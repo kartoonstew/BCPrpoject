@@ -7,8 +7,9 @@ A gritty, responsive companion to **BC PHB 1.14**, with a complete searchable ca
 ## Features
 
 - 196 searchable, page-cited campaign entries from pages 1–8: all nine subclasses and 36 features, traits, quirks, banner rules and auras, morale, equipment, leadership, and 75 Brothers.
-- A three-pane reference desk: topic navigation, compact results, and a full rule reader in one view. Search/filter context and list position stay intact while reading; related rules and recent entries open alongside the current results.
-- Full-text search, chapter filters, recommended/A–Z/source-page sorting, shareable rule links, saved rules, and keyboard search (`/`). Mobile uses a dedicated results/reader flow with a back button.
+- An illustrated homepage with direct routes to rules, Brothers, and character creation, plus quick references and optional search.
+- A chapter-based rules index: every topic opens its complete chapter in book order, with rules expanding inline. Search covers the whole book; changing chapters clears earlier searches and selections.
+- Shareable rule links, saved rules, recently opened entries, expand/collapse controls, and keyboard search (`/`). Phones use a chapter selector and the same inline reading flow.
 - A scan-friendly subclass roster with roles, armor training and four milestone features, plus continuous subclass progression pages.
 - One universal character workshop for all nine subclasses, with unlocked feature references and trait/quirk guidance.
 - Browser autosave and portable JSON backups. Import downloads a backup of the previous draft before replacement.
