@@ -78,6 +78,9 @@ for a,b in zip(starts,starts[1:]+[len(lines)]):
     add(title,'Brothers',a,b,body)
 assert len({r['id'] for r in records})==len(records)
 for r in records:
+    if r['id']=='sawbones-snip-stitch':
+        r['body']=r['body'].replace('2X your proficiency bonus', '4X your proficiency bonus')
+        r['note']='Campaign update (2026-09-05): healing increased from 2X to 4X proficiency bonus. The original v1.14 PDF retains the earlier value.'
     if r['id']=='armor-shield':
         r['note']='Source note: the book says “base DC” here, within the Durability Points rules. The wording is preserved; confirm the intended DP with your DM.'
     if r['id']=='aura-effect':

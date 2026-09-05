@@ -39,6 +39,8 @@ GitHub Actions runs checks and publishes `dist/` to GitHub Pages on pushes to `m
 
 Rebuild the index with Python and `pdfplumber`:
 
+Campaign updates are applied by the importer and noted on the affected rules. On 2026-09-05, Sawbones’ level 3 Snip & Stitch healing increased to 4X proficiency bonus; its trigger, range and use limit remain unchanged. New character PDF exports use the updated rule. The original PDF and extracted source pages retain the original wording.
+
 ```sh
 python3 scripts/extract_rules.py
 npm test

@@ -344,9 +344,10 @@
       "category": "Subclasses",
       "page": 2,
       "endPage": 2,
-      "body": "You may not be able to stitch a man as quick as you can slice ‘em, but it’s damned close. Once per turn when you make an attack roll with a weapon against an enemy combatant, you may grant hit points equal to 2X your proficiency bonus to yourself or an ally within 10 ft. You may use this ability a number of times equal to your proficiency bonus and regain all uses when you finish a Long Rest.",
+      "body": "You may not be able to stitch a man as quick as you can slice ‘em, but it’s damned close. Once per turn when you make an attack roll with a weapon against an enemy combatant, you may grant hit points equal to 4X your proficiency bonus to yourself or an ally within 10 ft. You may use this ability a number of times equal to your proficiency bonus and regain all uses when you finish a Long Rest.",
       "subclass": "Sawbones",
-      "level": 3
+      "level": 3,
+      "note": "Campaign update (2026-09-05): healing increased from 2X to 4X proficiency bonus. The original v1.14 PDF retains the earlier value."
     },
     {
       "id": "sawbones-red-pool",
