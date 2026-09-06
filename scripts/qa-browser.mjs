@@ -12,7 +12,7 @@ await mkdir('tmp/qa',{recursive:true});
 const db=JSON.parse(await readFile('data/rules.json','utf8'));
 await page.goto('http://127.0.0.1:4173');
 await page.locator('.home-destinations').waitFor();
-assert.equal(await page.locator('.home-destinations>a').count(),3);
+assert.equal(await page.locator('.home-destinations>a').count(),4);
 await page.screenshot({path:'tmp/qa/home-desktop.png',fullPage:true});
 await page.locator('#home-search').fill('snip');
 await page.locator('#home-search').press('Enter');
