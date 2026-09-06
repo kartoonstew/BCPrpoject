@@ -22,7 +22,7 @@ for path in ['tmp/qa/gravel-editable.pdf','output/pdf/black-company-universal-ed
     assert len(fields)>=154
     assert len(reader.outline)==len(reader.pages)
     order=reader.trailer['/Root']['/AcroForm']['/CO']
-    expected_calcs=47-(0 if 'universal' in path else 1)
+    expected_calcs=59-(0 if 'universal' in path else 1)
     assert len(order)==expected_calcs,(path,len(order))
     for ref in order:
         f=ref.get_object()
@@ -39,7 +39,7 @@ for path in ['tmp/qa/gravel-editable.pdf','output/pdf/black-company-universal-ed
         assert fields['fightingStyle']['/V']=='Defense (+1 AC while wearing armor)'
     if 'universal' in path:
         assert fields['name'].get('/V','')==''
-        assert len(reader.pages)==4
+        assert len(reader.pages)==6
     if 'long-notes' in path:
         chunks=[str(fields['notes']['/V'])]+[str(v['/V']) for k,v in fields.items() if k.startswith('notes_continued_')]
         assert ' '.join(' '.join(chunks).split())==' '.join(('Long field note about the Company. '*200).split())

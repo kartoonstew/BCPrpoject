@@ -1,3 +1,4 @@
+import {armors,applyConditionals,conditionalOutputNames} from './conditional-rules.js?v=conditions1';
 /** Shared rules engine. ES5 syntax intentionally supports Acrobat's JavaScript runtime. */
 export function calculateBonuses(c) {
   var names=['Strength','Dexterity','Constitution','Intelligence','Wisdom','Charisma'];
@@ -35,10 +36,10 @@ export function calculateBonuses(c) {
   out.passivePerception=out.skill_Perception_bonus===''?'':10+out.skill_Perception_bonus;
   out.strAttack=out.strength_mod===''||pb===null?'':out.strength_mod+pb;
   out.dexAttack=dex===''||pb===null?'':dex+pb;
-  return out;
+  return applyConditionals(c,out,armors);
 }
 
-export const calculatedFieldNames = [
+export const calculatedFieldNames = [...conditionalOutputNames,
   'attacksPerAction','secondWindMax','actionSurgeMax','indomitableMax','masteryMax','secondWindHealing',
   'proficiency','saveDC','hitDie','initiative','speed','passivePerception','lingerHpBonus','deathPenalty','luckPenalty','strAttack','dexAttack',
   ...['strength','dexterity','constitution','intelligence','wisdom','charisma'].map(a=>a+'_mod'),
@@ -49,7 +50,7 @@ export const signedField = name => /_mod$|_bonus$|Attack$/.test(name)||['profici
 export function formatBonus(value,signed=false){return value===''?'':typeof value==='number'&&signed&&value>=0?'+'+value:String(value);}
 
 /** Document-level script: field inputs only; no network, files, or privileged APIs. */
-export function pdfCalculationScript(inputNames){return 'var BCCalculate = '+calculateBonuses.toString()+';\nvar BCInputs = '+JSON.stringify(inputNames)+';\n'+`
+export function pdfCalculationScript(inputNames){return 'var armors = '+JSON.stringify(armors)+'; var applyConditionals = '+applyConditionals.toString()+';\nvar BCCalculate = '+calculateBonuses.toString()+';\nvar BCInputs = '+JSON.stringify(inputNames)+';\n'+`
 function BCValue(doc,key) {
   var c={},names=['Strength','Dexterity','Constitution','Intelligence','Wisdom','Charisma'];
   for(var i=0;i<BCInputs.length;i++){var f=doc.getField(BCInputs[i]);c[BCInputs[i]]=f?f.value:'';}

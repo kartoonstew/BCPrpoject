@@ -6,3 +6,5 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}@media print{.site-header,.site-footer,.reader-aside,.reader-actions,.breadcrumb{display:none}.reader-layout{display:block;padding:0}.reader-paper{background:white;color:black;padding:20px}.reader-paper h1{font-size:36px}body{background:white}.rule-body{font-size:16px}}
 
 .button.light:hover{background:#d3cab1;color:#171815}.hero-copy{max-width:660px}@media(min-width:1001px){.hero h1{font-size:76px}}
+
+.conditional-group {border-top:1px solid var(--line, #514734);padding:16px 0}.conditional-group summary {cursor:pointer;font-weight:600;margin-bottom:16px}.conditional-results {border-left:3px solid #aa8952;padding:12px 18px;background:rgba(170,137,82,.07)}.conditional-results p {line-height:1.65}.conditional-group .fields {margin-top:16px}
