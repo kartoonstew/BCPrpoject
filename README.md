@@ -7,7 +7,7 @@ A gritty, responsive companion to **BC PHB 1.14**, with a complete searchable ca
 ## Features
 
 - 196 searchable, page-cited campaign entries from pages 1–8: all nine subclasses and 36 features, traits, quirks, banner rules and auras, morale, equipment, leadership, and 75 Brothers.
-- A campaign records archive with seven complete writings, 197 IC posts, maps and artwork. A mixed chronology, contributor/month filters, full-text search, reply links, and dedicated manuscript readers preserve the original voices. See [archive sources and chronology](docs/campaign-archive.md).
+- A campaign records archive with seven complete writings, 197 IC posts, maps and artwork. Twelve browsable scenes, grouped conversations, optional table talk, search links into context, and dedicated manuscript readers preserve the original voices. The full chronological feed and contributor/month filters remain available. See [archive sources and chronology](docs/campaign-archive.md).
 - An illustrated homepage with direct routes to rules, Brothers, and character creation, plus quick references and optional search.
 - A chapter-based rules index: every topic opens its complete chapter in book order, with rules expanding inline. Search covers the whole book; changing chapters clears earlier searches and selections.
 - Shareable rule links, saved rules, recently opened entries, expand/collapse controls, and keyboard search (`/`). Phones use a chapter selector and the same inline reading flow.

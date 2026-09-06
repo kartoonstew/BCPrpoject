@@ -24,3 +24,16 @@ test('search spans complete writing text and combines type, contributor and mont
 test('Discord formatting escapes executable content and preserves paragraph and line breaks',()=>{
  const html=messageMarkup('<img src=x onerror=alert(1)>\n**Orders**\n\n*Move out.*');assert(!html.includes('<img'));assert(html.includes('&lt;img'));assert(html.includes('<strong>Orders</strong>'));assert(html.includes('<em>Move out.</em>'));assert.equal((html.match(/<p>/g)||[]).length,2);
 });
+
+test('editorial scenes cover every original post exactly once in chronological order',async()=>{
+ const {buildScenes}=await import('../campaign-scenes.js');const scenes=buildScenes(entries),posts=entries.filter(e=>e.kind==='ic');
+ assert.equal(scenes.length,12);assert.deepEqual(scenes.flatMap(s=>s.posts.map(p=>p.id)),posts.map(p=>p.id));
+ for(const s of scenes){assert.equal(s.published,s.posts[0].published);assert.equal(s.ended,s.posts.at(-1).published);assert(s.title&&s.summary);assert(s.posts.every(p=>posts.includes(p)));}
+ const tent=scenes.find(s=>s.id==='tadpoles-tent');const records=entries.filter(e=>tent.posts.includes(e)||(e.kind!=='ic'&&e.published>=tent.published&&e.published<=tent.ended));
+ const recap=records.findIndex(e=>e.id==='session-two');assert.equal(records[recap+1].id,'ic-1522738687207800983');assert.equal(records[recap+2].id,'fourth-ur-annals');
+});
+test('contributor grouping retains every original timestamp and respects asides and filing boundaries',async()=>{
+ const {groupSceneRecords}=await import('../campaign-scenes.js');
+ const records=[{id:'a',kind:'ic',author:'A',aside:false,published:'1'},{id:'b',kind:'ic',author:'A',aside:false,published:'2'},{id:'c',kind:'ic',author:'A',aside:true,published:'3'},{id:'d',kind:'ic',author:'A',aside:false,published:'4'},{id:'doc',kind:'document'},{id:'e',kind:'ic',author:'A',aside:false,published:'5'},{id:'f',kind:'ic',author:'B',aside:false,published:'6'}];
+ const groups=groupSceneRecords(records);assert.equal(groups.length,6);assert.deepEqual(groups[0].posts,records.slice(0,2));assert.deepEqual(groups.flatMap(g=>g.kind==='record'?[g.record]:g.posts),records);
+});

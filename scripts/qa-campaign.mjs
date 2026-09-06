@@ -7,9 +7,12 @@ const page=await browser.newPage({viewport:{width:1440,height:1100}}),errors=[];
 await mkdir('tmp/qa',{recursive:true});
 const base=process.env.QA_BASE||'http://127.0.0.1:4173/';
 await page.goto(base+'#campaign');await page.locator('.archive-entry').first().waitFor();
-assert.equal(await page.locator('.archive-entry').count(),40);
+assert.equal(await page.locator('.archive-entry').count(),21);
+assert.equal(await page.locator('.scene-card').count(),12);
+assert.equal(await page.locator('[data-view=scenes]').getAttribute('aria-pressed'),'true');
 assert.equal(await page.locator('[data-nav=campaign]').getAttribute('class'),'active');
 await page.screenshot({path:'tmp/qa/campaign-desktop.png',fullPage:false});
+await page.locator('[data-view=feed]').click();assert.equal(await page.locator('.archive-entry').count(),40);
 await page.locator('[data-more]').click();assert.equal(await page.locator('.archive-entry').count(),80);
 await page.locator('[data-kind=documents]').click();assert.equal(await page.locator('.annals-entry').count(),9);assert.equal(await page.locator('.dispatch').count(),0);
 await page.locator('[data-kind=all]').click();await page.locator('#archive-month').selectOption('2026-07');
@@ -22,9 +25,30 @@ await page.locator('[data-passage]').filter({hasText:'The Hand'}).first().click(
 await page.screenshot({path:'tmp/qa/annals-reader-desktop.png',fullPage:false});
 await page.goto(base+'#campaign?entry=ic-1522738687207800983');await page.locator('#record-ic-1522738687207800983').waitFor();assert(await page.locator('#record-ic-1522738687207800983 details').evaluate(e=>e.open));
 await page.goto(base+'#campaign?entry=ic-1501268501724270703');await page.locator('#record-ic-1501268501724270703 .dispatch-reply').click();await page.locator('#record-ic-1501264366169882714 details[open]').waitFor();
+// Scenes retain source posts and timestamps, group adjacent contributors, and expose asides on demand.
+const db=JSON.parse(await readFile('data/campaign.json','utf8'));
+const {buildScenes}=await import('../campaign-scenes.js');const scenes=buildScenes(db.entries);
+for(const scene of scenes){
+ await page.goto(base+'#campaign/scene/'+scene.id);await page.locator('#scene-conversation').waitFor();
+ assert.equal(await page.locator('.scene-post').count(),scene.posts.filter(p=>!p.aside).length);
+ await page.locator('#scene-talk').check();
+ assert.deepEqual(await page.locator('.scene-post').evaluateAll(es=>es.map(e=>e.id.replace('record-',''))),scene.posts.map(p=>p.id));
+ assert.equal(await page.locator('.scene-post>.entry-time time').count(),scene.posts.length);
+}
+await page.goto(base+'#campaign/scene/unopened-letter');await page.locator('#scene-conversation').waitFor();
+assert(await page.locator('.scene-dispatch').count()<await page.locator('.scene-post').count());
+await page.locator('.scene-adjacent').first().getByRole('link',{name:/Next scene/}).click();await page.getByRole('heading',{name:'The hooded man',exact:true}).waitFor();
+await page.locator('#scene-jump').selectOption('tadpoles-tent');await page.getByRole('heading',{name:'Questions in Tadpole’s tent',exact:true}).waitFor();
+const sceneOrder=await page.locator('#scene-conversation article').evaluateAll(es=>es.map(e=>e.id));const recap=sceneOrder.indexOf('record-session-two');assert.equal(sceneOrder[recap+1],'record-ic-1522738687207800983');assert.equal(sceneOrder[recap+2],'record-fourth-ur-annals');
+await page.screenshot({path:'tmp/qa/scene-reader-desktop.png',fullPage:false});
+await page.goto(base+'#campaign');await page.locator('#archive-search').fill('Prancer');await page.locator('.scene-matches a').first().waitFor();
+const firstMatch=page.locator('.scene-matches a').first();const matchUrl=await firstMatch.getAttribute('href');await firstMatch.click();await page.locator('.selected-post').waitFor();assert(page.url().endsWith(matchUrl));assert((await page.locator('.scene-post').count())>1);
+await page.reload();await page.locator('.selected-post').waitFor();
+const aside=scenes[0].posts.find(p=>p.aside);await page.goto(base+'#campaign/scene/'+scenes[0].id+'?entry='+aside.id);await page.locator('.selected-post').waitFor();assert(await page.locator('#scene-talk').isChecked());await page.locator('#scene-talk').uncheck();assert.equal(await page.locator('.dispatch-aside').count(),0);
+await page.goto(base+'#campaign/scene/missing');await page.getByRole('heading',{name:'This scene is not in the archive.'}).waitFor();
 await page.goto(base+'#campaign/read/missing');await page.getByRole('heading',{name:'This writing is not in the archive.'}).waitFor();
 await page.goto(base+'#home');assert.equal(await page.locator('.home-destinations>a').count(),4);await page.screenshot({path:'tmp/qa/home-with-campaign.png',fullPage:false});
 await page.setViewportSize({width:390,height:844});
-for(const [hash,file] of [['campaign','campaign-mobile'],['campaign/read/road-to-gregors-ditch','annals-mobile'],['home','home-with-campaign-mobile'],['sheet','sheet-nav-mobile']]){await page.goto(base+'#'+hash);await page.locator(hash.startsWith('campaign/read')?'.archive-manuscript':hash==='campaign'?'.archive-entry':hash==='home'?'.home-destinations':'#character-form').first().waitFor();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),hash+' mobile overflow');await page.screenshot({path:'tmp/qa/'+file+'.png',fullPage:false});}
+for(const [hash,file] of [['campaign','campaign-mobile'],['campaign/read/road-to-gregors-ditch','annals-mobile'],['campaign/scene/tadpoles-tent','scene-reader-mobile'],['home','home-with-campaign-mobile'],['sheet','sheet-nav-mobile']]){await page.goto(base+'#'+hash);await page.locator(hash.startsWith('campaign/read')?'.archive-manuscript':hash.startsWith('campaign/scene')?'#scene-conversation':hash==='campaign'?'.archive-entry':hash==='home'?'.home-destinations':'#character-form').first().waitFor();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),hash+' mobile overflow');await page.screenshot({path:'tmp/qa/'+file+'.png',fullPage:false});}
 await page.goto(base+'#campaign');await page.locator('.archive-entry').first().waitFor();await page.locator('[data-kind=ic]').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('[data-kind=ic]').getAttribute('aria-pressed'),'true');
-assert.deepEqual(errors,[]);await browser.close();console.log('Campaign browser QA passed: interleaving, filters, full text search, deep links, replies, contents, pagination, mobile, keyboard and existing navigation.');
+assert.deepEqual(errors,[]);await browser.close();console.log('Campaign browser QA passed: all 12 scenes, exact post preservation, grouping, table-talk toggle, scene navigation, search in context, interleaving, filters, full text search, deep links, replies, contents, pagination, mobile, keyboard and existing navigation.');
