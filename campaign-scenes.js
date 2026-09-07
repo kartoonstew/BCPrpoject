@@ -1,3 +1,4 @@
+import {sceneRecaps} from './campaign-recaps.js?v=recaps1';
 /** Editorial scene boundaries. Original records remain unchanged in data/campaign.json. */
 export const sceneDefinitions = [
   {
@@ -91,7 +92,7 @@ export function buildScenes(entries){
   const start=posts.findIndex(p=>p.id===s.first),end=posts.findIndex(p=>p.id===s.last);
   if(start<0||end<start)throw new Error('Missing scene boundary: '+s.id);
   const messages=posts.slice(start,end+1);
-  return {...s,kind:'scene',number:i+1,published:messages[0].published,ended:messages.at(-1).published,posts:messages,authors:[...new Set(messages.map(p=>p.author))],voices:[...new Set(messages.filter(p=>!p.aside).map(p=>p.voice))],words:messages.reduce((n,p)=>n+p.body.split(/\s+/).filter(Boolean).length,0)};
+  return {...s,recap:sceneRecaps[s.id],kind:'scene',number:i+1,published:messages[0].published,ended:messages.at(-1).published,posts:messages,authors:[...new Set(messages.map(p=>p.author))],voices:[...new Set(messages.filter(p=>!p.aside).map(p=>p.voice))],words:messages.reduce((n,p)=>n+p.body.split(/\s+/).filter(Boolean).length,0)};
  });
 }
 /** Keep groups faithful to adjacency, including hidden asides and filing boundaries. */

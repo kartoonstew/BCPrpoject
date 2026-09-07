@@ -12,6 +12,17 @@ assert.equal(await page.locator('.scene-card').count(),12);
 assert.equal(await page.locator('[data-view=scenes]').getAttribute('aria-pressed'),'true');
 assert.equal(await page.locator('[data-nav=campaign]').getAttribute('class'),'active');
 await page.screenshot({path:'tmp/qa/campaign-desktop.png',fullPage:false});
+assert.equal(await page.locator('.scene-recap').count(),12);assert.equal(await page.locator('.scene-recap[open]').count(),0);
+assert.equal(await page.locator('#campaign-briefing').evaluate(e=>e.open),false);
+await page.locator('#campaign-briefing>summary').focus();await page.keyboard.press('Enter');assert(await page.locator('#campaign-briefing').evaluate(e=>e.open));
+assert.equal(await page.locator('.briefing-beats>li').count(),12);assert.equal(await page.locator('.briefing-threads li').count(),4);
+const briefingText=await page.locator('.briefing-body').innerText();await page.locator('[data-kind=documents]').click();assert.equal(await page.locator('.briefing-body').innerText(),briefingText);
+await page.locator('#campaign-briefing [data-close-recap]').click();assert.equal(await page.locator('#campaign-briefing').evaluate(e=>e.open),false);await page.locator('[data-kind=all]').click();
+await page.locator('#record-crossing-caras .scene-recap>summary').focus();await page.keyboard.press('Enter');assert(await page.locator('#record-crossing-caras .recap-body').isVisible());
+await page.screenshot({path:'tmp/qa/scene-recap-desktop.png',fullPage:false});
+await page.locator('#record-crossing-caras [data-close-recap]').click();assert.equal(await page.locator('#record-crossing-caras .scene-recap').evaluate(e=>e.open),false);
+await page.locator('#archive-search').fill('nauseating');await page.locator('#record-after-telembor .scene-recap[open]').waitFor();assert.equal(await page.locator('.scene-card').count(),1);
+await page.locator('#archive-search').fill('');await page.waitForFunction(()=>document.querySelectorAll('.scene-card').length===12);
 await page.locator('[data-view=feed]').click();assert.equal(await page.locator('.archive-entry').count(),40);
 await page.locator('[data-more]').click();assert.equal(await page.locator('.archive-entry').count(),80);
 await page.locator('[data-kind=documents]').click();assert.equal(await page.locator('.annals-entry').count(),9);assert.equal(await page.locator('.dispatch').count(),0);
@@ -31,6 +42,7 @@ const {buildScenes}=await import('../campaign-scenes.js');const scenes=buildScen
 for(const scene of scenes){
  await page.goto(base+'#campaign/scene/'+scene.id);await page.locator('#scene-conversation').waitFor();
  assert.equal(await page.locator('.scene-post').count(),scene.posts.filter(p=>!p.aside).length);
+ await page.locator('.scene-recap>summary').click();assert((await page.locator('.recap-body').innerText()).includes(scene.recap.context));await page.locator('.scene-recap [data-close-recap]').click();
  await page.locator('#scene-talk').check();
  assert.deepEqual(await page.locator('.scene-post').evaluateAll(es=>es.map(e=>e.id.replace('record-',''))),scene.posts.map(p=>p.id));
  assert.equal(await page.locator('.scene-post>.entry-time time').count(),scene.posts.length);
@@ -45,10 +57,16 @@ await page.goto(base+'#campaign');await page.locator('#archive-search').fill('Pr
 const firstMatch=page.locator('.scene-matches a').first();const matchUrl=await firstMatch.getAttribute('href');await firstMatch.click();await page.locator('.selected-post').waitFor();assert(page.url().endsWith(matchUrl));assert((await page.locator('.scene-post').count())>1);
 await page.reload();await page.locator('.selected-post').waitFor();
 const aside=scenes[0].posts.find(p=>p.aside);await page.goto(base+'#campaign/scene/'+scenes[0].id+'?entry='+aside.id);await page.locator('.selected-post').waitFor();assert(await page.locator('#scene-talk').isChecked());await page.locator('#scene-talk').uncheck();assert.equal(await page.locator('.dispatch-aside').count(),0);
+await page.goto(base+'#campaign');await page.locator('#campaign-briefing>summary').click();await page.locator('#campaign-briefing a[href="#campaign/scene/after-telembor?recap=1"]').click();await page.locator('.scene-recap[open]').waitFor();await page.reload();await page.locator('.scene-recap[open]').waitFor();
+await page.locator('.scene-recap .recap-sources a').first().click();await page.locator('.archive-manuscript').waitFor();
 await page.goto(base+'#campaign/scene/missing');await page.getByRole('heading',{name:'This scene is not in the archive.'}).waitFor();
 await page.goto(base+'#campaign/read/missing');await page.getByRole('heading',{name:'This writing is not in the archive.'}).waitFor();
 await page.goto(base+'#home');assert.equal(await page.locator('.home-destinations>a').count(),4);await page.screenshot({path:'tmp/qa/home-with-campaign.png',fullPage:false});
 await page.setViewportSize({width:390,height:844});
 for(const [hash,file] of [['campaign','campaign-mobile'],['campaign/read/road-to-gregors-ditch','annals-mobile'],['campaign/scene/tadpoles-tent','scene-reader-mobile'],['home','home-with-campaign-mobile'],['sheet','sheet-nav-mobile']]){await page.goto(base+'#'+hash);await page.locator(hash.startsWith('campaign/read')?'.archive-manuscript':hash.startsWith('campaign/scene')?'#scene-conversation':hash==='campaign'?'.archive-entry':hash==='home'?'.home-destinations':'#character-form').first().waitFor();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),hash+' mobile overflow');await page.screenshot({path:'tmp/qa/'+file+'.png',fullPage:false});}
 await page.goto(base+'#campaign');await page.locator('.archive-entry').first().waitFor();await page.locator('[data-kind=ic]').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('[data-kind=ic]').getAttribute('aria-pressed'),'true');
-assert.deepEqual(errors,[]);await browser.close();console.log('Campaign browser QA passed: all 12 scenes, exact post preservation, grouping, table-talk toggle, scene navigation, search in context, interleaving, filters, full text search, deep links, replies, contents, pagination, mobile, keyboard and existing navigation.');
+for(const width of [390,820]){
+ await page.setViewportSize({width,height:1100});await page.goto(base+'#campaign');await page.reload();await page.locator('#campaign-briefing>summary').click();await page.locator('#campaign-briefing').scrollIntoViewIfNeeded();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'expanded briefing overflow');await page.screenshot({path:'tmp/qa/campaign-briefing-'+width+'.png',fullPage:false});
+ await page.locator('#campaign-briefing [data-close-recap]').click();await page.locator('#record-after-telembor .scene-recap>summary').click();await page.locator('#record-after-telembor .scene-recap').scrollIntoViewIfNeeded();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'expanded recap overflow');await page.screenshot({path:'tmp/qa/scene-recap-'+width+'.png',fullPage:false});
+}
+assert.deepEqual(errors,[]);await browser.close();console.log('Campaign browser QA passed: expandable recaps, briefing sources, recap search, keyboard controls, tablet layouts, all 12 scenes, exact post preservation, grouping, table-talk toggle, scene navigation, search in context, interleaving, filters, full text search, deep links, replies, contents, pagination, mobile, keyboard and existing navigation.');

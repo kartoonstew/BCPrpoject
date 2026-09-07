@@ -37,3 +37,15 @@ test('contributor grouping retains every original timestamp and respects asides 
  const records=[{id:'a',kind:'ic',author:'A',aside:false,published:'1'},{id:'b',kind:'ic',author:'A',aside:false,published:'2'},{id:'c',kind:'ic',author:'A',aside:true,published:'3'},{id:'d',kind:'ic',author:'A',aside:false,published:'4'},{id:'doc',kind:'document'},{id:'e',kind:'ic',author:'A',aside:false,published:'5'},{id:'f',kind:'ic',author:'B',aside:false,published:'6'}];
  const groups=groupSceneRecords(records);assert.equal(groups.length,6);assert.deepEqual(groups[0].posts,records.slice(0,2));assert.deepEqual(groups.flatMap(g=>g.kind==='record'?[g.record]:g.posts),records);
 });
+
+
+test('recaps cover all scenes, cut reading length, and link to retained sources',async()=>{
+ const {buildScenes}=await import('../campaign-scenes.js');
+ const {sceneRecaps,recapText,campaignBriefing}=await import('../campaign-recaps.js');
+ const scenes=buildScenes(entries),docIds=new Set(entries.filter(e=>e.kind==='document').map(e=>e.id)),sceneIds=new Set(scenes.map(s=>s.id));
+ assert.deepEqual(new Set(Object.keys(sceneRecaps)),sceneIds);
+ for(const scene of scenes){const r=scene.recap;assert(r.context&&r.outcome&&r.events.length>=2);const words=recapText(r).split(/\s+/).length;assert(words>=90&&words<scene.words/2,scene.id+' is a substantial but shorter recap');for(const id of r.sources)assert(docIds.has(id));}
+ assert(campaignBriefing.beats.length>=10);assert(campaignBriefing.threads.length>=3);
+ assert.equal(campaignBriefing.through,entries.at(-1).published.slice(0,10));
+ for(const beat of campaignBriefing.beats){assert(beat.title&&beat.text);assert((beat.sources?.length||0)+(beat.scenes?.length||0)>0);for(const id of beat.sources||[])assert(docIds.has(id));for(const id of beat.scenes||[])assert(sceneIds.has(id));}
+});
