@@ -11,3 +11,5 @@
 
 /* Weapon inputs mirror the downloadable combat page. */
 .weapon-entry{border-top:1px solid var(--line);padding:22px 0}.weapon-entry h3{margin:0 0 14px;font-size:18px}.weapon-totals{display:grid;grid-template-columns:1fr 2fr 1fr;gap:16px;margin:16px 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.weapon-totals span{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.weapon-totals output{display:block;font-weight:600;overflow-wrap:anywhere}.weapon-custom{align-items:end}.weapon-custom>.check-label{min-height:44px}.weapon-custom input[type=checkbox]{width:20px;height:20px;flex:none}.weapon-entry .field{min-width:0}@media(max-width:600px){.weapon-custom.fields.three{grid-template-columns:1fr}.weapon-totals{gap:10px;grid-template-columns:1fr 2fr}.weapon-totals>div:last-child{grid-column:1/-1}}
+
+.pdf-orientation{margin-bottom:16px}.pdf-orientation select{font-size:16px;min-height:44px}

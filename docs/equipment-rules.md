@@ -30,3 +30,9 @@ This batch does not automate general conditions, spells, banners/auras, Fury/Soa
 - Campaign source: supplied `BC PHB 1.14.pdf`, normalized in `data/rules.json`.
 
 This work includes material from the System Reference Document 5.2.1 (“SRD 5.2.1”) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode. Mechanical tables and rule summaries above are adaptations.
+
+## PDF orientation
+
+The download panel offers Portrait / upright and Landscape / wide. Portrait retains the original letter-size layout (612 x 792 points). Landscape is composed separately at 792 x 612 points, with combat/resources beside weapons, wider skill rows, balanced feature columns, and a dedicated notes page. Both use the same AcroForm field names, source data, calculation engine, and editable custom totals. PDFs have fixed pages and do not reflow on device rotation; choose the export that suits the viewing orientation. Separate downloads do not synchronize later edits.
+
+The two optional front-page size percentage fields are manual character notes; they do not affect rules calculations. They are retained in drafts and JSON backups.

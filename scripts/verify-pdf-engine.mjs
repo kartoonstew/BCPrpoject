@@ -2,7 +2,7 @@ import {readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const root=process.env.PDFJS_PATH||'/Users/ryanstewart/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pdfjs-dist/';
 const {getDocument}=await import(root+'legacy/build/pdf.mjs');
-const pdf=await getDocument({data:new Uint8Array(await readFile('tmp/qa/rook-final.pdf')),disableFontFace:true}).promise;
+const pdf=await getDocument({data:new Uint8Array(await readFile(process.env.PDF_FILE||'tmp/qa/rook-final.pdf')),disableFontFace:true}).promise;
 const objects=await pdf.getFieldObjects(),order=await pdf.getCalculationOrderIds(),actions=await pdf.getJSActions();
 const updates=[];
 globalThis.window={setTimeout,clearTimeout,setInterval,clearInterval,URL,alert:message=>{throw new Error(message);},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options.detail;}},dispatchEvent:event=>updates.push(event.detail)};
