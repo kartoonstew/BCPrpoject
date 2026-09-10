@@ -1,9 +1,9 @@
-import {drawLandscapeSheet} from './pdf-landscape.js?v=landscape1';
+import {drawLandscapeSheet} from './pdf-landscape.js?v=ticks1';
 import {conditionalGroups,conditionalInputNames} from './conditional-rules.js?v=weaponinputs1';
 import {fighterFeatures,weaponRows} from './fighter-features.js?v=weaponinputs1';
-import {abilities, skills, skillAbilities} from './character.js?v=landscape1';
+import {abilities, skills, skillAbilities} from './character.js?v=ticks1';
 import {calculateBonuses,calculatedFieldNames,formatBonus,signedField,pdfCalculationScript} from './sheet-math.js?v=weaponinputs1';
-import {drawWear,randomSeed,seededRandom} from './pdf-wear.js?v=landscape1';
+import {drawWear,randomSeed,seededRandom} from './pdf-wear.js?v=ticks1';
 
 /** Browser-only AcroForm generator. No network, backend, or flattened fields. */
 export async function createCharacterPDF(character, db, {blank=false,wearSeed=randomSeed(),orientation='portrait'}={}) {
@@ -63,7 +63,7 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
   // Combat stays together. Descriptions and training have their own pages.
   addPage('Ready for the field','COMBAT / ATTACKS, DEFENSES & RESOURCES');
   row([['name','Company name',c.name],['player','Player',c.player],['penisSize','Penis size (%)',c.penisSize],['ballSize','Ball size (%)',c.ballSize]],115);
-  row([['subclass','Subclass',c.subclass],['level','Fighter level',c.level],['unit','Fist / Finger / Knuckle',c.companyUnit]],170);
+  row([['subclass','Subclass',c.subclass],['level','Fighter level',c.level],['ticks','Ticks',c.ticks],['unit','Fist / Finger / Knuckle',c.companyUnit]],170);
   row([['hpMax','Maximum HP',c.hpMax],['hpCurrent','Current HP',c.hpCurrent],['hpTemp','Temporary HP',c.hpTemp],['armorClass','Armor class *',auto('armorClass')],['initiative','Initiative / auto',auto('initiative')],['speed','Speed / auto',auto('speed')]],225,30);
   row([['strAttack','STR attack *',auto('strAttack')],['dexAttack','DEX attack *',auto('dexAttack')],['attacksPerAction','Attacks / action *',auto('attacksPerAction')],['saveDC','Subclass DC *',auto('saveDC')],['hitDie','HP die *',auto('hitDie')],['hitDice','Hit dice left',c.hitDice]],283,26);
   draw('DEATH CHECKS',36,338,9,bold,red);

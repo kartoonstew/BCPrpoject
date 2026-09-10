@@ -4,7 +4,7 @@ export function drawLandscapeSheet(ctx){
  const row=(items,top,height=26,x=36,width=720)=>{const w=(width-10*(items.length-1))/items.length;items.forEach(([key,label,value],i)=>field(key,label,value,x+i*(w+10),top,w,height));};
  const note=(text,x,top,width=720)=>wrap(text,width,8).forEach((line,i)=>draw(line,x,top+i*11,8,font,gray));
  addPage('Ready for the field','COMBAT / LANDSCAPE SERVICE RECORD');
- row([['name','Company name',c.name],['player','Player',c.player],['subclass','Subclass',c.subclass],['level','Fighter level',c.level],['unit','Unit',c.companyUnit],['penisSize','Penis size (%)',c.penisSize],['ballSize','Ball size (%)',c.ballSize]],111);
+ row([['name','Company name',c.name],['player','Player',c.player],['subclass','Subclass',c.subclass],['level','Fighter level',c.level],['ticks','Ticks',c.ticks],['unit','Unit',c.companyUnit],['penisSize','Penis size (%)',c.penisSize],['ballSize','Ball size (%)',c.ballSize]],111);
  row([['hpMax','Maximum HP',c.hpMax],['hpCurrent','Current HP',c.hpCurrent],['hpTemp','Temporary HP',c.hpTemp],['armorClass','Armor class *',auto('armorClass')],['initiative','Initiative *',auto('initiative')],['speed','Speed *',auto('speed')]],163);
  draw('ATTACKS & RESOURCES',36,213,10,bold,red);draw('WEAPONS',308,213,10,bold,red);
  row([['strAttack','STR attack *',auto('strAttack')],['dexAttack','DEX attack *',auto('dexAttack')]],231,22,36,252);
