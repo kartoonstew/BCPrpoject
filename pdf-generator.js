@@ -1,9 +1,9 @@
-import {drawLandscapeSheet} from './pdf-landscape.js?v=ticks1';
+import {drawLandscapeSheet} from './pdf-landscape.js?v=chosenstyle1';
 import {conditionalGroups,conditionalInputNames} from './conditional-rules.js?v=weaponinputs1';
-import {fighterFeatures,weaponRows} from './fighter-features.js?v=weaponinputs1';
-import {abilities, skills, skillAbilities} from './character.js?v=ticks1';
+import {fighterFeatures,weaponRows} from './fighter-features.js?v=chosenstyle1';
+import {abilities, skills, skillAbilities} from './character.js?v=chosenstyle1';
 import {calculateBonuses,calculatedFieldNames,formatBonus,signedField,pdfCalculationScript} from './sheet-math.js?v=weaponinputs1';
-import {drawWear,randomSeed,seededRandom} from './pdf-wear.js?v=ticks1';
+import {drawWear,randomSeed,seededRandom} from './pdf-wear.js?v=chosenstyle1';
 
 /** Browser-only AcroForm generator. No network, backend, or flattened fields. */
 export async function createCharacterPDF(character, db, {blank=false,wearSeed=randomSeed(),orientation='portrait'}={}) {
@@ -112,14 +112,14 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
     referenceTop+=height+48;
   }
   referencePage("The Fighter's craft",'ABILITIES / CORE FIGHTER FEATURES AT YOUR LEVEL');
-  field('fightingStyleReference','Fighting Style / at export',[c.styleRule==='None / custom'?'':c.styleRule,c.fightingStyle].filter(Boolean).join(' - '),36,119,300,40,true);
+  field('fightingStyleReference','Fighting Style / at export',[c.styleRule==='None / custom'?'':c.styleRule,c.fightingStyle].filter(Boolean).join(' - '),36,119,300,40,true,8);
   field('masteryMax','Mastery choices / max *',auto('masteryMax'),346,119,110,40);
   field('secondWindHealing','Second Wind healing *',auto('secondWindHealing'),466,119,110,40);
   field('masteries','Chosen mastery weapons / properties',c.masteries,36,183,540,35,true);
   field('feats','Chosen feats / ASIs / benefits',c.feats,36,247,540,45,true);
   referenceTop=332;
   if(blank){field('fighter_reference_notes','Fighter ability descriptions / manual notes','',36,340,540,220,true);draw('For a sheet with unlocked rules already filled in, choose your level on the website and export.',36,602,8,font,gray);}
-  for(const r of blank?[]:fighterFeatures({...c,fightingStyle:'',masteries:''}))referenceBlock(r.id,r.title,`FIGHTER / LEVEL ${r.level} / SRD 5.2.1, PP. 47-48`,r.body);
+  for(const r of blank?[]:fighterFeatures({...c,masteries:''}))referenceBlock(r.id,r.title,`FIGHTER / LEVEL ${r.level} / SRD 5.2.1, PP. 47-48`,r.body);
   const features=blank?[]:db.records.filter(r=>(r.subclass===c.subclass&&r.level&&r.level<=level)||(['Traits','Quirks'].includes(r.category)&&[c.trait,c.trait2,c.quirk].includes(r.title)));
   if(features.length){referencePage(`${c.subclass} / gifts & scars`,'ABILITIES / UNLOCKED SUBCLASS FEATURES, TRAITS & QUIRKS');
     for(const r of [...features.filter(r=>r.level),...features.filter(r=>!r.level)])referenceBlock(`reference_${r.id}`,r.title,`${r.level?'LEVEL '+r.level:r.category.toUpperCase()} / CAMPAIGN PHB P. ${r.page}${r.note?.startsWith('Campaign update')?' / CAMPAIGN UPDATE':''}`,r.body);

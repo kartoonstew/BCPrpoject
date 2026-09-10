@@ -58,14 +58,14 @@ export function drawLandscapeSheet(ctx){
   });
  }
  referencePage("The Fighter's craft",'CORE FIGHTER FEATURES / UNLOCKED AT YOUR LEVEL');
- field('fightingStyleReference','Fighting Style / at export',[c.styleRule==='None / custom'?'':c.styleRule,c.fightingStyle].filter(Boolean).join(' - '),36,119,350,42,true);
+ field('fightingStyleReference','Fighting Style / at export',[c.styleRule==='None / custom'?'':c.styleRule,c.fightingStyle].filter(Boolean).join(' - '),36,119,350,42,true,8);
  field('masteryMax','Mastery choices / max *',auto('masteryMax'),406,119,170,42);
  field('secondWindHealing','Second Wind healing *',auto('secondWindHealing'),586,119,170,42);
  field('masteries','Chosen mastery weapons / properties',c.masteries,36,188,350,62,true);
  field('feats','Chosen feats / ASIs / benefits',c.feats,406,188,350,62,true);
  tops=[291,291];
  if(blank)field('fighter_reference_notes','Fighter ability descriptions / manual notes','',36,291,720,230,true);
- for(const r of blank?[]:fighterFeatures({...c,fightingStyle:'',masteries:''}))referenceBlock(r.id,r.title,`FIGHTER / LEVEL ${r.level} / SRD 5.2.1, PP. 47-48`,r.body);
+ for(const r of blank?[]:fighterFeatures({...c,masteries:''}))referenceBlock(r.id,r.title,`FIGHTER / LEVEL ${r.level} / SRD 5.2.1, PP. 47-48`,r.body);
  const features=blank?[]:db.records.filter(r=>(r.subclass===c.subclass&&r.level&&r.level<=level)||(['Traits','Quirks'].includes(r.category)&&[c.trait,c.trait2,c.quirk].includes(r.title)));
  if(features.length){referencePage(c.subclass+' / gifts & scars','SUBCLASS FEATURES / TRAITS / QUIRKS');for(const r of [...features.filter(r=>r.level),...features.filter(r=>!r.level)])referenceBlock('reference_'+r.id,r.title,`${r.level?'LEVEL '+r.level:r.category.toUpperCase()} / CAMPAIGN PHB P. ${r.page}${r.note?.startsWith('Campaign update')?' / CAMPAIGN UPDATE':''}`,r.body);}
  function config(group,x,width,columns=2){draw(group.title,x,119,13,serif,red);const w=(width-10*(columns-1))/columns;group.fields.forEach((f,i)=>{const left=x+(i%columns)*(w+10),t=145+Math.floor(i/columns)*47;if(f.options)select(f,left,t,w);else field(f.key,f.label,c[f.key]??f.value,left,t,w,25,false,9,true);});return 145+Math.ceil(group.fields.length/columns)*47;}

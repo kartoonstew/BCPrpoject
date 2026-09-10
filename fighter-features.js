@@ -7,7 +7,8 @@ export function fighterFeatures(c) {
   if(!Number.isInteger(level)||level<1||level>20)return [];
   const v=calculateBonuses(c),features=[];
   const add=(id,title,unlock,body)=>{if(level>=unlock)features.push({id:'fighter_'+id,title,level:unlock,body});};
-  add('fighting_style','Fighting Style',1,'Choose a Fighting Style feat. You may replace that choice whenever you gain a Fighter level. Record its benefits and apply any equipment bonuses yourself.'+(c.fightingStyle?'\nChosen style: '+c.fightingStyle:''));
+  const chosenStyle=[c.styleRule==='None / custom'?'':c.styleRule,c.fightingStyle].filter(Boolean).join(' - ');
+  add('fighting_style','Fighting Style',1,(chosenStyle?'Chosen style: '+chosenStyle:'Choose a Fighting Style feat. Record its benefits and apply any equipment bonuses yourself.')+'\nYou may replace that choice whenever you gain a Fighter level.');
   add('second_wind','Second Wind',1,`As a Bonus Action, regain 1d10 + your Fighter level hit points (${v.secondWindHealing} at this level). You have ${v.secondWindMax} uses. A Short Rest restores one expended use; a Long Rest restores all uses.`);
   add('weapon_mastery','Weapon Mastery',1,`You can use the mastery properties of ${v.masteryMax} chosen kinds of Simple or Martial weapons. After a Long Rest, you may replace one of those weapon choices.`+(c.masteries?'\nChosen weapons / properties: '+c.masteries:''));
   add('action_surge','Action Surge',2,`On your turn, take one additional action, other than the Magic action. You have ${v.actionSurgeMax} ${v.actionSurgeMax===1?'use':'uses'}, restored by a Short or Long Rest.${level>=17?' You may use Action Surge only once on a turn.':''}`);
