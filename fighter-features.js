@@ -1,6 +1,6 @@
 // Concise adaptations of SRD 5.2.1, pp. 47–48 (CC BY 4.0).
 // Campaign creation rules and subclass milestones override the core Fighter.
-import {calculateBonuses} from './sheet-math.js?v=conditions1';
+import {calculateBonuses} from './sheet-math.js?v=weaponinputs1';
 
 export function fighterFeatures(c) {
   const level=Number(c.level);

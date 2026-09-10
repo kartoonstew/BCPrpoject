@@ -97,7 +97,6 @@ await page.locator('#fightingStyle').fill('Defense (+1 AC while wearing armor)')
 await page.locator('#masteries').fill('Longsword / Sap; Longbow / Slow');
 await page.locator('#feats').fill('Level 4: ability score improvement');
 await page.locator('#secondWind').fill('0');
-await page.locator('details').filter({has:page.locator('#attack1Name')}).locator('summary').click();
 await page.locator('#attack1Name').fill('Longsword');
 await page.locator('.conditional-group').filter({has:page.locator('#weapon1Mode')}).locator('summary').click();
 await page.locator('[data-weapon-preset="1"]').selectOption('Longsword');
@@ -107,6 +106,21 @@ assert.match(await page.locator('#equipment-effects').innerText(),/1d10 slashing
 await page.locator('#weapon1Hands').selectOption('One');
 await page.locator('#attack1Bonus').fill('+6');
 await page.locator('#attack1Damage').fill('1d8+3 slashing');
+await page.locator('#attack1Bonus').fill('0');
+await page.locator('#attack1Damage').fill('2d6+7 fire');
+await page.locator('#weapon1Custom').check();
+assert.equal(await page.locator('#weapon1ToHit').innerText(),'+0');
+assert.equal(await page.locator('#weapon1Damage').innerText(),'2d6+7 fire');
+await page.reload();await page.locator('#weapon1Custom').waitFor();
+assert(await page.locator('#weapon1Custom').isChecked());
+assert.equal(await page.locator('#weapon1Damage').innerText(),'2d6+7 fire');
+await page.locator('#weapon1Custom').uncheck();
+assert.equal(await page.locator('#weapon1ToHit').innerText(),'+6');
+assert.equal(await page.locator('#weapon1Damage').innerText(),'1d8 slashing +3');
+await page.locator('#attack1Bonus').fill('+6');
+await page.locator('#attack1Damage').fill('1d8+3 slashing');
+await page.locator('.weapon-controls').screenshot({path:'tmp/qa/weapon-controls-web.png'});
+
 await page.locator('#armorType').selectOption('Plate');
 await page.locator('#shieldEquipped').selectOption('Yes');
 await page.locator('#styleRule').selectOption('Defense');

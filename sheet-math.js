@@ -1,4 +1,4 @@
-import {armors,applyConditionals,conditionalOutputNames} from './conditional-rules.js?v=conditions1';
+import {armors,applyConditionals,conditionalOutputNames} from './conditional-rules.js?v=weaponinputs1';
 /** Shared rules engine. ES5 syntax intentionally supports Acrobat's JavaScript runtime. */
 export function calculateBonuses(c) {
   var names=['Strength','Dexterity','Constitution','Intelligence','Wisdom','Charisma'];

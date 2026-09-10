@@ -38,6 +38,23 @@ assert.equal(value('armorClass'),'0');assert.equal(value('speed'),'45');assert.e
 edit('houseRules','Off');assert.equal(value('armorClass'),'18');assert.equal(value('speed'),'0');
 edit('weapon1Mode','Ranged');edit('weapon1Dice','1d8');edit('styleRule','Archery');
 assert.equal(value('weapon1ToHit'),'+9');assert.equal(value('weapon1Damage'),'1d8 +5');
+// Combat-page input values must survive actual checkbox events and restore auto totals.
+for(const i of [1,2,3]){
+ const w='weapon'+i,a='attack'+i;
+ edit(w+'Mode','Ranged');edit(w+'Dice','1d8');
+ edit(a+'Bonus','0');edit(a+'Damage','2d6+7 fire');
+ assert.equal(value(w+'ToHit'),'+9');assert.equal(value(w+'Damage'),'1d8 +5');
+ sandbox.dispatchEvent({id:id(w+'Custom'),name:'Action',value:true});
+ assert.equal(value(w+'ToHit'),'+0');assert.equal(value(w+'Damage'),'2d6+7 fire');
+ edit(a+'Damage','1d8+3 slashing');assert.equal(value(w+'Damage'),'1d8+3 slashing');
+ edit(a+'Bonus','');assert.equal(value(w+'ToHit'),'+9');
+ edit(a+'Damage','');assert.equal(value(w+'Damage'),'1d8 +5');
+ edit(a+'Bonus','-2');edit(a+'Damage','7');
+ assert.equal(value(w+'ToHit'),'-2');assert.equal(value(w+'Damage'),'7');
+ sandbox.dispatchEvent({id:id(w+'Custom'),name:'Action',value:false});
+ assert.equal(value(w+'ToHit'),'+9');assert.equal(value(w+'Damage'),'1d8 +5');
+ edit(w+'Mode','Manual');assert.equal(value(w+'ToHit'),'-2');assert.equal(value(w+'Damage'),'7');
+}
 const errors=updates.filter(x=>x.command==='error');assert.deepEqual(errors,[]);
-console.log('PDF.js QuickJS engine passed: actual embedded scripts, committed edits, level scaling, checkbox changes, expertise, quirk penalties, zero override and speed floor.');
+console.log('PDF.js QuickJS engine passed: actual embedded scripts, committed edits, level scaling, checkbox changes, expertise, quirk penalties, zero override, speed floor and all three combat-page custom weapon controls.');
 sandbox.nukeSandbox();await pdf.destroy();

@@ -1,7 +1,7 @@
-import {conditionalGroups,conditionalInputNames} from './conditional-rules.js?v=conditions1';
-import {fighterFeatures,weaponRows} from './fighter-features.js?v=conditions1';
-import {abilities, skills, skillAbilities} from './character.js?v=conditions1';
-import {calculateBonuses,calculatedFieldNames,formatBonus,signedField,pdfCalculationScript} from './sheet-math.js?v=conditions1';
+import {conditionalGroups,conditionalInputNames} from './conditional-rules.js?v=weaponinputs1';
+import {fighterFeatures,weaponRows} from './fighter-features.js?v=weaponinputs1';
+import {abilities, skills, skillAbilities} from './character.js?v=weaponinputs1';
+import {calculateBonuses,calculatedFieldNames,formatBonus,signedField,pdfCalculationScript} from './sheet-math.js?v=weaponinputs1';
 import {drawWear,randomSeed,seededRandom} from './pdf-wear.js';
 
 /** Browser-only AcroForm generator. No network, backend, or flattened fields. */
@@ -68,10 +68,20 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
   draw('FIGHTER RESOURCES',36,396,9,bold,red);draw('Track remaining uses; a new export does not spend or restore them.',197,398,7,font,gray);
   const resources=[['secondWind','Second Wind','secondWindMax','Short Rest: +1 / Long Rest: all',1],['actionSurge','Action Surge','actionSurgeMax','Short or Long Rest: all',2],['indomitable','Indomitable','indomitableMax','Long Rest: all',9]].filter(r=>blank||level>=r[4]);
   resources.forEach(([key,label,max,recharge],i)=>{const x=36+i*184;draw(label,x,420,11,bold);field(key,'Left',c[key],x,439,65,24);field(max,'Max *',auto(max),x+74,439,65,24);draw(recharge,x,482,7,font,gray);});
-  draw('WEAPONS',36,512,9,bold,red);draw('Equipment settings and manual overrides are in the equipment rules pages.',113,514,7,font,gray);
-  weaponRows(c).forEach((values,i)=>{const top=536+i*59,n=i+1;field('attack'+n+'Name','Weapon',values[0],36,top,150,32,true,9);field('weapon'+n+'ToHit','To hit *',auto('weapon'+n+'ToHit'),196,top,55,32);field('weapon'+n+'Damage','Damage *',auto('weapon'+n+'Damage'),261,top,120,32,true,9);field('weapon'+n+'Roll','Roll *',auto('weapon'+n+'Roll'),391,top,80,32,false,8);field('attack'+n+'Mastery','Mastery / notes',values[3],481,top,95,32,true,8);});
-  draw('Armor roll penalties and active house rules: see Equipment rules bookmark.',36,711,8,font,gray);
-  draw('After changing level, export again to refresh ability descriptions and unlocked resources.',36,731,7,font,gray);
+  draw('WEAPONS',36,500,9,bold,red);
+  draw('Fill custom boxes, then tick Use custom. Blank boxes keep the configured result.',113,502,7,font,gray);
+  weaponRows(c).forEach((values,i)=>{
+    const top=519+i*72,n=i+1;
+    field('attack'+n+'Name','Weapon',values[0],36,top,150,18,false,9,true);
+    field('weapon'+n+'ToHit','To hit *',auto('weapon'+n+'ToHit'),196,top,55,18);
+    field('weapon'+n+'Damage','Damage *',auto('weapon'+n+'Damage'),261,top,120,18,false,9,true);
+    field('weapon'+n+'Roll','Roll *',auto('weapon'+n+'Roll'),391,top,80,18,false,8);
+    field('attack'+n+'Mastery','Mastery / notes',values[3],481,top,95,18,false,8,true);
+    check('weapon'+n+'Custom','Use custom',c['weapon'+n+'Custom']==='Yes',36,top+45);
+    field('attack'+n+'Bonus','Custom hit',c['attack'+n+'Bonus'],196,top+35,55,18,false,9,true);
+    field('attack'+n+'Damage','Custom damage / e.g. 1d8+3 slashing',c['attack'+n+'Damage'],261,top+35,315,18,false,9,true);
+  });
+  draw('Custom entries are final totals. Weapon types, dice and properties: Weapon configuration bookmark.',36,738,7,font,gray);
 
   addPage('Training & instincts','TRAINING / ABILITY SCORES, SAVES & SKILLS');
   abilities.forEach((a,i)=>{const x=36+i*92;draw(a.toUpperCase(),x,119,7,bold,red);field(a.toLowerCase(),'Score',c[a.toLowerCase()],x,140,45,35,false,16);field(a.toLowerCase()+'_mod','Mod *',auto(a.toLowerCase()+'_mod'),x+49,140,33,35,false,12);});
@@ -120,10 +130,10 @@ export async function createCharacterPDF(character, db, {blank=false,wearSeed=ra
   field('equipmentSummary','Active effects *',blank?'':v.equipmentSummary,36,configTop,540,Math.min(120,724-configTop-14),true,8);
   addPage('Weapon configuration','WEAPONS / ORIGINAL INPUTS & FINAL OVERRIDES');
   configTop=119;
-  for(const group of conditionalGroups.slice(1,4))configTop=configGroup(group,configTop);
+  for(const group of conditionalGroups.slice(1,4))configTop=configGroup({...group,fields:group.fields.filter(f=>!/^attack[123](Bonus|Damage)$|^weapon[123]Custom$/.test(f.key))},configTop);
   draw('Versatile dice (e.g. 1d8/1d10 slashing) switch with Hands used for melee attacks.',36,configTop,8,font,gray);
   draw('Properties, comma separated: finesse, heavy, light, loading, thrown, two-handed, versatile.',36,configTop+14,8,font,gray);
-  draw('House rules On: manual bonus / damage replace automatic weapon totals when filled.',36,configTop+28,8,font,gray);
+  draw('Combat page: fill Custom hit / damage and tick Use custom to replace weapon totals.',36,configTop+28,8,font,gray);
   draw('Preview / LibreOffice: edit the website and export again to refresh every calculation.',36,configTop+42,8,font,gray);
 
   addPage('Equipment & notes','EQUIPMENT / POSSESSIONS, BONDS & THE ANNALS');

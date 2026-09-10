@@ -1,5 +1,5 @@
-import {conditionalDefaults,conditionalGroups} from './conditional-rules.js?v=conditions1';
-import {calculateBonuses} from './sheet-math.js?v=conditions1';
+import {conditionalDefaults,conditionalGroups} from './conditional-rules.js?v=weaponinputs1';
+import {calculateBonuses} from './sheet-math.js?v=weaponinputs1';
 export const abilities = ['Strength','Dexterity','Constitution','Intelligence','Wisdom','Charisma'];
 export const skills = ['Acrobatics','Animal Handling','Arcana','Athletics','Deception','History','Insight','Intimidation','Investigation','Medicine','Nature','Perception','Performance','Persuasion','Religion','Sleight of Hand','Stealth','Survival'];
 export const skillAbilities = [1,4,3,0,5,3,4,5,3,4,3,4,5,5,3,1,1,4];

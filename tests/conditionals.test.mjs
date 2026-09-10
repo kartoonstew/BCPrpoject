@@ -73,3 +73,17 @@ test('PDF script uses exactly the same conditional engine, including edited drop
  for(const key of ['armorClass','speed','stealthRoll','weapon1ToHit','weapon1Damage','equipmentSummary'])assert.equal(context.BCValue(doc,key),String(calculateBonuses(c)[key]));
  c.houseRules='On';c.overrideAC='0';assert.equal(context.BCValue(doc,'armorClass'),'0');
 });
+
+test('combat custom totals work per weapon without global house rules and restore automation',()=>{
+ for(const i of [1,2,3]){
+  const w='weapon'+i,a='attack'+i;
+  const c={[w+'Mode']:'Melee',[w+'Dice']:'1d8 slashing',[w+'Custom']:'Yes',[a+'Bonus']:'0',[a+'Damage']:'2d6+7 fire',exhaustion:'1'};
+  const v=calc(c);assert.equal(v[w+'ToHit'],'+0');assert.equal(v[w+'Damage'],'2d6+7 fire');assert.equal(v.armorClass,'');
+  assert.equal(calc({...c,[a+'Bonus']:''})[w+'ToHit'],'+4');
+  assert.equal(calc({...c,[a+'Damage']:''})[w+'Damage'],'1d8 slashing +3');
+  assert.equal(calc({...c,[w+'Custom']:'No'})[w+'ToHit'],'+4');
+  assert.equal(calc({...c,[w+'Custom']:'Off'})[w+'Damage'],'1d8 slashing +3');
+  assert.equal(calc({...c,[w+'Mode']:'Manual',[w+'Custom']:'No'})[w+'Damage'],'2d6+7 fire');
+  const saved=sanitizeCharacter({...defaults(),...c},['Sawbones'],[],[]);assert.equal(saved[w+'Custom'],'Yes');assert.equal(saved[a+'Damage'],'2d6+7 fire');
+ }
+});

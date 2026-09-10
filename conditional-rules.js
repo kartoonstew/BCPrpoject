@@ -9,7 +9,7 @@ const text=(key,label,value='')=>({key,label,value});
 const yes=['No','Yes'];
 export const conditionalGroups=[
  {title:'Armor, style & exhaustion',fields:[select('armorType','Worn armor',Object.keys(armors)),select('shieldEquipped','Shield equipped',yes),select('mithralArmor','Mithral armor',yes),text('armorMagic','Armor magic bonus','0'),text('shieldMagic','Shield magic bonus','0'),select('styleRule','Automatic Fighting Style',['None / custom','Defense','Archery','Great Weapon Fighting','Two-Weapon Fighting']),select('exhaustion','Exhaustion (2024)',['0','1','2','3','4','5','6']),text('ac','Manual AC'),text('fightingStyle','Additional style notes')]},
- ...[1,2,3].map(i=>({title:'Weapon '+i+' configuration',fields:[select('weapon'+i+'Mode','Weapon rules',['Manual','Melee','Ranged','Thrown melee']),select('weapon'+i+'Ability','Attack ability',['Auto','Strength','Dexterity']),text('weapon'+i+'Dice','Base damage dice / type'),text('weapon'+i+'Properties','Properties (comma separated)'),select('weapon'+i+'Hands','Hands used',['One','Two']),select('weapon'+i+'Extra','Light extra attack',yes),text('weapon'+i+'Magic','Magic attack & damage bonus','0'),text('attack'+i+'Bonus','Manual / override to hit'),text('attack'+i+'Damage','Manual / override damage')]})),
+ ...[1,2,3].map(i=>({title:'Weapon '+i+' configuration',fields:[select('weapon'+i+'Mode','Weapon rules',['Manual','Melee','Ranged','Thrown melee']),select('weapon'+i+'Ability','Attack ability',['Auto','Strength','Dexterity']),text('weapon'+i+'Dice','Base damage dice / type'),text('weapon'+i+'Properties','Properties (comma separated)'),select('weapon'+i+'Hands','Hands used',['One','Two']),select('weapon'+i+'Extra','Light extra attack',yes),text('weapon'+i+'Magic','Magic attack & damage bonus','0'),select('weapon'+i+'Custom','Use custom totals',yes),text('attack'+i+'Bonus','Custom / manual to hit'),text('attack'+i+'Damage','Custom / manual damage')]})),
  {title:'House rules / conditional override',fields:[select('houseRules','Enable house rules',['Off','On']),text('overrideAC','Replace final AC'),text('overrideSpeed','Replace final speed'),select('overrideTraining','Armor training',['Auto','Trained','Untrained']),select('overrideStealth','Stealth roll',['Auto','Normal','Advantage','Disadvantage']),select('ignoreArmorStealth','Ignore armor Stealth penalty',yes),select('ignoreArmorStrength','Ignore armor Strength limit',yes),select('ignoreExhaustion','Ignore exhaustion penalties',yes),...[1,2,3].map(i=>select('weapon'+i+'RollOverride','Weapon '+i+' roll override',['Auto','Normal','Advantage','Disadvantage'])),text('overrideReason','House-rule explanation')]}
 ];
 export const conditionalDefaults=Object.fromEntries(conditionalGroups.flatMap(g=>g.fields.map(f=>[f.key,f.value])));
@@ -66,8 +66,10 @@ export function applyConditionals(c,out,armorTable){
   if(versatile)dice=(hand&&mode==='Melee'&&has('versatile')?versatile[2]:versatile[1])+versatile[3];
   out[prefix+'Damage']=manual?(explicit?c['attack'+i+'Damage']||'':parts.length>=3?parts[2]:''):damageMod===''||!dice?'':dice+' '+signed(damageMod);
   out[prefix+'Roll']=manual?'Manual':roll;
-  if(custom&&n(c['attack'+i+'Bonus'])!==null)out[prefix+'ToHit']=signed(n(c['attack'+i+'Bonus']));
-  if(custom&&c['attack'+i+'Damage'])out[prefix+'Damage']=c['attack'+i+'Damage'];
+  var customWeapon=custom||yes(c[prefix+'Custom']);
+  if(customWeapon&&n(c['attack'+i+'Bonus'])!==null)out[prefix+'ToHit']=signed(n(c['attack'+i+'Bonus']));
+  if(customWeapon&&c['attack'+i+'Damage'])out[prefix+'Damage']=c['attack'+i+'Damage'];
+  if(yes(c[prefix+'Custom']))notes.push('Weapon '+i+': custom totals enabled; filled values replace final totals, including any penalties.');
   if(manual)continue;
   if(!dice)notes.push('Weapon '+i+': enter base damage dice / type.');
   if(hand&&shield)notes.push('Weapon '+i+': two hands conflict with the equipped shield.');

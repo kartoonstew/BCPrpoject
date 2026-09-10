@@ -8,3 +8,6 @@
 .button.light:hover{background:#d3cab1;color:#171815}.hero-copy{max-width:660px}@media(min-width:1001px){.hero h1{font-size:76px}}
 
 .conditional-group {border-top:1px solid var(--line, #514734);padding:16px 0}.conditional-group summary {cursor:pointer;font-weight:600;margin-bottom:16px}.conditional-results {border-left:3px solid #aa8952;padding:12px 18px;background:rgba(170,137,82,.07)}.conditional-results p {line-height:1.65}.conditional-group .fields {margin-top:16px}
+
+/* Weapon inputs mirror the downloadable combat page. */
+.weapon-entry{border-top:1px solid var(--line);padding:22px 0}.weapon-entry h3{margin:0 0 14px;font-size:18px}.weapon-totals{display:grid;grid-template-columns:1fr 2fr 1fr;gap:16px;margin:16px 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.weapon-totals span{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.weapon-totals output{display:block;font-weight:600;overflow-wrap:anywhere}.weapon-custom{align-items:end}.weapon-custom>.check-label{min-height:44px}.weapon-custom input[type=checkbox]{width:20px;height:20px;flex:none}.weapon-entry .field{min-width:0}@media(max-width:600px){.weapon-custom.fields.three{grid-template-columns:1fr}.weapon-totals{gap:10px;grid-template-columns:1fr 2fr}.weapon-totals>div:last-child{grid-column:1/-1}}

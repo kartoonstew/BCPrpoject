@@ -11,6 +11,12 @@ const db=JSON.parse(await readFile(new URL('../data/rules.json',import.meta.url)
 for(const c of db.classes)for(const level of [1,3,7,10]){
  const bytes=await createCharacterPDF({...defaults(),subclass:c.name,level,trait:'Fast'},db,{wearSeed:1});
  const pdf=await PDFLib.PDFDocument.load(bytes),fields=pdf.getForm().getFields().map(f=>f.getName());
+ // Manual inputs are editable, canonical, and located on the combat page exactly once.
+ for(const i of [1,2,3])for(const key of ['attack'+i+'Bonus','attack'+i+'Damage','weapon'+i+'Custom']){
+  const f=pdf.getForm().getField(key);assert(!f.isReadOnly(),key);assert.equal(f.acroField.getWidgets().length,1,key);
+  const w=f.acroField.getWidgets()[0];assert.equal(w.P().toString(),pdf.getPages()[0].ref.toString(),key);
+  assert(w.getAppearances()?.normal,key);
+ }
  const expected=db.records.filter(r=>r.subclass===c.name&&r.level&&r.level<=level).map(r=>'reference_'+r.id);
  assert.deepEqual(fields.filter(n=>n.startsWith('reference_')&&n!=='reference_fast'),expected,`${c.name} level ${level}`);
  const core=fighterFeatures({...defaults(),level});
