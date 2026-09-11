@@ -1,6 +1,6 @@
 /** Landscape composition. Field identities and calculations are shared with portrait. */
 export function drawLandscapeSheet(ctx){
- const {c,blank,level,auto,addPage,field,check,draw,wrap,select,vitalRow,combatHeading,abilities,skills,skillAbilities,conditionalGroups,fighterFeatures,weaponRows,db,font,bold,serif,red,gray,credit}=ctx;
+ const {c,blank,level,auto,addPage,field,check,draw,wrap,select,vitalRow,combatHeading,abilityCard,skillBand,referenceDossier,abilities,skills,skillAbilities,conditionalGroups,fighterFeatures,weaponRows,db,font,bold,serif,red,gray,credit}=ctx;
  const row=(items,top,height=26,x=36,width=720)=>{const w=(width-10*(items.length-1))/items.length;items.forEach(([key,label,value],i)=>field(key,label,value,x+i*(w+10),top,w,height));};
  const note=(text,x,top,width=720)=>wrap(text,width,8).forEach((line,i)=>draw(line,x,top+i*11,8,font,gray));
  addPage('Ready for the field','COMBAT / LANDSCAPE SERVICE RECORD');
@@ -30,16 +30,16 @@ export function drawLandscapeSheet(ctx){
  });
 
  addPage('Training & instincts','ABILITY SCORES / SAVES / SKILLS');
- abilities.forEach((a,i)=>{const x=36+i*102;draw(a.toUpperCase(),x,115,7,bold,red);field(a.toLowerCase(),'Score',c[a.toLowerCase()],x,134,44,28,false,16);field(a.toLowerCase()+'_mod','Mod *',auto(a.toLowerCase()+'_mod'),x+49,134,43,28,false,12);});
+ abilities.forEach((a,i)=>abilityCard(a,36+i*102,111,92));
  field('proficiency','Proficiency *',auto('proficiency'),656,134,100,28,false,16);
- draw('SAVING THROWS',36,186,10,bold,red);draw('Tick proficiency. ADJ adds other modifiers.',170,188,8,font,gray);
+ combatHeading('SAVING THROWS',36,186,'shield',10);draw('Tick proficiency. ADJ adds other modifiers.',170,188,8,font,gray);
  abilities.forEach((a,i)=>{const x=36+i*122,extra=String(c.extraSaves||'').toLowerCase().match(/[a-z]+/g)||[];
   check('save_'+a+'_trained',a.slice(0,3),c.save1===a||c.save2===a||extra.includes(a.toLowerCase())||extra.includes(a.slice(0,3).toLowerCase()),x,211);
   field('save_'+a+'_bonus','Total *',auto('save_'+a+'_bonus'),x,231,57,22,false,12);field('save_'+a+'_misc','Adj.',c['save_'+a+'_misc']||'',x+62,231,46,22);
  });
- draw('SKILLS',36,279,10,bold,red);draw('P = proficiency / E = expertise / ADJ = other modifiers',120,281,8,font,gray);
+ combatHeading('SKILLS',36,279,'feather',10);draw('P = proficiency / E = expertise / ADJ = other modifiers',120,281,8,font,gray);
  for(let col=0;col<2;col++){const x=36+col*370;draw('P',x,302,7,bold,gray);draw('E',x+218,302,7,bold,gray);draw('ADJ',x+253,302,7,bold,gray);draw('TOTAL',x+305,302,7,bold,gray);}
- skills.forEach((s,i)=>{const x=36+(i<9?0:370),t=321+(i%9)*23;
+ skills.forEach((s,i)=>{const x=36+(i<9?0:370),t=321+(i%9)*23;skillBand(x,t,350,i%9,22);
   check('skill_'+s,s+' ('+abilities[skillAbilities[i]][0].toLowerCase()+')',c.skills.includes(s),x,t);
   check('skill_'+s+'_expert','',(c.expertise||[]).includes(s),x+217,t);
   field('skill_'+s+'_misc','',c['skill_'+s+'_misc']||'',x+249,t-17,40,21,false,10,true);
@@ -47,27 +47,7 @@ export function drawLandscapeSheet(ctx){
  });
  row([['stealthRoll','Stealth roll *',auto('stealthRoll')],['passivePerception','Passive Perception *',auto('passivePerception')],['lingerHpBonus','Lingerer HP / add to HP',auto('lingerHpBonus')],['luckPenalty','Solo Luck adj. *',auto('luckPenalty')]],532,20);
 
- let refTitle='',refSubtitle='',tops=[119,119];
- function referencePage(title,subtitle){refTitle=title;refSubtitle=subtitle;addPage(title,subtitle);tops=[119,119];}
- function referenceBlock(key,title,meta,body){
-  const lines=wrap(body,330,10),chunks=[];for(let i=0;i<lines.length;i+=29)chunks.push(lines.slice(i,i+29));
-  chunks.forEach((lines,i)=>{const h=lines.length*12+16;let column=tops[0]<=tops[1]?0:1;if(tops[column]+h+48>560){referencePage(refTitle.replace(' / continued','')+' / continued',refSubtitle);column=0;}const top=tops[column];
-   const x=36+column*370;draw(title+(i?' / continued':''),x,top,13,serif,red);draw(meta,x,top+21,7,bold,gray);
-   field(i?key+'_continued_'+i:key,'',lines.join('\n'),x,top+25,350,h,true,10);
-   tops[column]=top+h+48;
-  });
- }
- referencePage("The Fighter's craft",'CORE FIGHTER FEATURES / UNLOCKED AT YOUR LEVEL');
- field('fightingStyleReference','Fighting Style / at export',[c.styleRule==='None / custom'?'':c.styleRule,c.fightingStyle].filter(Boolean).join(' - '),36,119,350,42,true,8);
- field('masteryMax','Mastery choices / max *',auto('masteryMax'),406,119,170,42);
- field('secondWindHealing','Second Wind healing *',auto('secondWindHealing'),586,119,170,42);
- field('masteries','Chosen mastery weapons / properties',c.masteries,36,188,350,62,true);
- field('feats','Chosen feats / ASIs / benefits',c.feats,406,188,350,62,true);
- tops=[291,291];
- if(blank)field('fighter_reference_notes','Fighter ability descriptions / manual notes','',36,291,720,230,true);
- for(const r of blank?[]:fighterFeatures({...c,masteries:''}))referenceBlock(r.id,r.title,`FIGHTER / LEVEL ${r.level} / SRD 5.2.1, PP. 47-48`,r.body);
- const features=blank?[]:db.records.filter(r=>(r.subclass===c.subclass&&r.level&&r.level<=level)||(['Traits','Quirks'].includes(r.category)&&[c.trait,c.trait2,c.quirk].includes(r.title)));
- if(features.length){referencePage(c.subclass+' / gifts & scars','SUBCLASS FEATURES / TRAITS / QUIRKS');for(const r of [...features.filter(r=>r.level),...features.filter(r=>!r.level)])referenceBlock('reference_'+r.id,r.title,`${r.level?'LEVEL '+r.level:r.category.toUpperCase()} / CAMPAIGN PHB P. ${r.page}${r.note?.startsWith('Campaign update')?' / CAMPAIGN UPDATE':''}`,r.body);}
+ referenceDossier();
  function config(group,x,width,columns=2){draw(group.title,x,119,13,serif,red);const w=(width-10*(columns-1))/columns;group.fields.forEach((f,i)=>{const left=x+(i%columns)*(w+10),t=145+Math.floor(i/columns)*47;if(f.options)select(f,left,t,w);else field(f.key,f.label,c[f.key]??f.value,left,t,w,25,false,9,true);});return 145+Math.ceil(group.fields.length/columns)*47;}
  addPage('Equipment rules','ARMOR / STYLE / EXHAUSTION / HOUSE RULE OVERRIDES');
  const configEnd=config(conditionalGroups[0],36,350);config(conditionalGroups[4],406,350);
