@@ -1,18 +1,18 @@
 /** Landscape composition. Field identities and calculations are shared with portrait. */
 export function drawLandscapeSheet(ctx){
- const {c,blank,level,auto,addPage,field,check,draw,wrap,select,abilities,skills,skillAbilities,conditionalGroups,fighterFeatures,weaponRows,db,font,bold,serif,red,gray,credit}=ctx;
+ const {c,blank,level,auto,addPage,field,check,draw,wrap,select,vitalRow,combatHeading,abilities,skills,skillAbilities,conditionalGroups,fighterFeatures,weaponRows,db,font,bold,serif,red,gray,credit}=ctx;
  const row=(items,top,height=26,x=36,width=720)=>{const w=(width-10*(items.length-1))/items.length;items.forEach(([key,label,value],i)=>field(key,label,value,x+i*(w+10),top,w,height));};
  const note=(text,x,top,width=720)=>wrap(text,width,8).forEach((line,i)=>draw(line,x,top+i*11,8,font,gray));
  addPage('Ready for the field','COMBAT / LANDSCAPE SERVICE RECORD');
  row([['name','Company name',c.name],['player','Player',c.player],['subclass','Subclass',c.subclass],['level','Fighter level',c.level],['ticks','Ticks',c.ticks],['unit','Unit',c.companyUnit],['penisSize','Penis size (%)',c.penisSize],['ballSize','Ball size (%)',c.ballSize]],111);
- row([['hpMax','Maximum HP',c.hpMax],['hpCurrent','Current HP',c.hpCurrent],['hpTemp','Temporary HP',c.hpTemp],['armorClass','Armor class *',auto('armorClass')],['initiative','Initiative *',auto('initiative')],['speed','Speed *',auto('speed')]],163);
- draw('ATTACKS & RESOURCES',36,213,10,bold,red);draw('WEAPONS',308,213,10,bold,red);
+ vitalRow(158,720);
+ combatHeading('ATTACKS & RESOURCES',36,213,'flame',10);combatHeading('WEAPONS',308,213,'swords',10);
  row([['strAttack','STR attack *',auto('strAttack')],['dexAttack','DEX attack *',auto('dexAttack')]],231,22,36,252);
  row([['attacksPerAction','Attacks / action *',auto('attacksPerAction')],['saveDC','Subclass DC *',auto('saveDC')]],278,22,36,252);
  row([['hitDie','HP die *',auto('hitDie')],['hitDice','Hit dice left',c.hitDice]],325,22,36,252);
  const resources=[['secondWind','Second Wind','secondWindMax',1],['actionSurge','Action Surge','actionSurgeMax',2],['indomitable','Indomitable','indomitableMax',9]].filter(r=>blank||level>=r[3]);
  resources.forEach(([key,label,max],i)=>{const x=36+i*86;draw(label,x,378,9,bold);field(key,'Left',c[key],x,393,35,22);field(max,'Max *',auto(max),x+39,393,35,22);});
- draw('DEATH CHECKS',36,444,9,bold,red);
+ combatHeading('DEATH CHECKS',36,444,'skull');
  draw('Success',36,466,8,font,gray);draw('Failure',170,466,8,font,gray);
  for(let i=0;i<3;i++){check('death_success_'+(i+1),'',Number(c.deathSuccesses)>i,78+i*20,466);check('death_failure_'+(i+1),'',Number(c.deathFailures)>i,210+i*20,466);}
  row([['deathPenalty','Death adj. *',auto('deathPenalty')],['luck','Session Luck',c.luck],['chips','Chips',c.chips]],497,22,36,252);

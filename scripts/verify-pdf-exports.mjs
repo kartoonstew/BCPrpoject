@@ -20,6 +20,16 @@ for(const c of db.classes)for(const level of [1,3,7,10])for(const orientation of
  for(const f of pdf.getForm().getFields())for(const w of f.acroField.getWidgets()){const p=pdf.getPages().find(p=>p.ref.toString()===w.P().toString()),r=w.getRectangle();assert(r.x>=20&&r.y>=35&&r.x+r.width<=p.getWidth()-20&&r.y+r.height<=p.getHeight()-85,`${orientation} ${c.name} ${level} ${f.getName()} outside page`);}
  for(const key of ['penisSize','ballSize','ticks']){const f=pdf.getForm().getTextField(key);assert(!f.isReadOnly());assert.equal(f.acroField.getWidgets()[0].P().toString(),pdf.getPages()[0].ref.toString());}
  for(const page of pdf.getPages()){assert.equal(page.getWidth(),orientation==='landscape'?792:612);assert.equal(page.getHeight(),orientation==='landscape'?612:792);}
+ // Reordering preserves field ownership; calculation settings follow every play page.
+ const pageOf=key=>pdf.getPages().findIndex(p=>p.ref.toString()===pdf.getForm().getField(key).acroField.getWidgets()[0].P().toString());
+ assert.equal(pageOf('armorType'),pdf.getPageCount()-2);
+ assert.equal(pageOf('weapon1Mode'),pdf.getPageCount()-1);
+ assert(pageOf('equipment')<pageOf('armorType'));assert(pageOf('notes')<pageOf('armorType'));
+ for(const key of ['hpMax','hpCurrent','hpTemp','armorClass','initiative','speed']){
+  const f=pdf.getForm().getTextField(key);assert.equal(pageOf(key),0);assert.equal(f.getAlignment(),1);
+  assert.equal(f.isReadOnly(),['armorClass','initiative','speed'].includes(key));
+  assert(f.acroField.getWidgets()[0].getAppearances()?.normal);
+ }
  const expected=db.records.filter(r=>r.subclass===c.name&&r.level&&r.level<=level).map(r=>'reference_'+r.id);
  assert.deepEqual(fields.filter(n=>n.startsWith('reference_')&&n!=='reference_fast'),expected,`${c.name} level ${level}`);
  const core=fighterFeatures({...defaults(),level});
