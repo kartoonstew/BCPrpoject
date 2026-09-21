@@ -1,0 +1,3 @@
+# Accepted
+Root reviewed exact six CSS max-width changes and cache tag against baseline97b4162, plus desktop manuscript/briefing screenshots and worker measurement/browser QA evidence. Desktop actual prose widths increase 24.9–25.4%; mobile container-bound layouts retain width. Campaign tests18/18 and browserQA/build passed. No corrections required. Scope includes analogous campaign feed/scene/recap readers as user requested. Native astra_flash_builder selected; reused prior Flash route configuration, no separate upstream verification this task.
+Accepted for commit/push and Pages verification under standing authorization. Personal untracked PDFs remain excluded.
