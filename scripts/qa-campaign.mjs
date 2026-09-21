@@ -7,7 +7,7 @@ const page=await browser.newPage({viewport:{width:1440,height:1100}}),errors=[];
 await mkdir('tmp/qa',{recursive:true});
 const base=process.env.QA_BASE||'http://127.0.0.1:4173/';
 await page.goto(base+'#campaign');await page.locator('.archive-entry').first().waitFor();
-assert.equal(await page.locator('.archive-entry').count(),21);
+assert.equal(await page.locator('.archive-entry').count(),22);
 assert.equal(await page.locator('.scene-card').count(),12);
 assert.equal(await page.locator('[data-view=scenes]').getAttribute('aria-pressed'),'true');
 assert.equal(await page.locator('[data-nav=campaign]').getAttribute('class'),'active');
@@ -15,7 +15,7 @@ await page.screenshot({path:'tmp/qa/campaign-desktop.png',fullPage:false});
 assert.equal(await page.locator('.scene-recap').count(),12);assert.equal(await page.locator('.scene-recap[open]').count(),0);
 assert.equal(await page.locator('#campaign-briefing').evaluate(e=>e.open),false);
 await page.locator('#campaign-briefing>summary').focus();await page.keyboard.press('Enter');assert(await page.locator('#campaign-briefing').evaluate(e=>e.open));
-assert.equal(await page.locator('.briefing-beats>li').count(),12);assert.equal(await page.locator('.briefing-threads li').count(),4);
+assert.equal(await page.locator('.briefing-beats>li').count(),18);assert.equal(await page.locator('.briefing-threads li').count(),7);
 const briefingText=await page.locator('.briefing-body').innerText();await page.locator('[data-kind=documents]').click();assert.equal(await page.locator('.briefing-body').innerText(),briefingText);
 await page.locator('#campaign-briefing [data-close-recap]').click();assert.equal(await page.locator('#campaign-briefing').evaluate(e=>e.open),false);await page.locator('[data-kind=all]').click();
 await page.locator('#record-crossing-caras .scene-recap>summary').focus();await page.keyboard.press('Enter');assert(await page.locator('#record-crossing-caras .recap-body').isVisible());
@@ -25,7 +25,7 @@ await page.locator('#archive-search').fill('nauseating');await page.locator('#re
 await page.locator('#archive-search').fill('');await page.waitForFunction(()=>document.querySelectorAll('.scene-card').length===12);
 await page.locator('[data-view=feed]').click();assert.equal(await page.locator('.archive-entry').count(),40);
 await page.locator('[data-more]').click();assert.equal(await page.locator('.archive-entry').count(),80);
-await page.locator('[data-kind=documents]').click();assert.equal(await page.locator('.annals-entry').count(),9);assert.equal(await page.locator('.dispatch').count(),0);
+await page.locator('[data-kind=documents]').click();assert.equal(await page.locator('.annals-entry').count(),10);assert.equal(await page.locator('.dispatch').count(),0);
 await page.locator('[data-kind=all]').click();await page.locator('#archive-month').selectOption('2026-07');
 const ids=await page.locator('.archive-entry').evaluateAll(es=>es.map(e=>e.id));const i=ids.indexOf('record-session-two');assert.equal(ids[i+1],'record-ic-1522738687207800983');assert.equal(ids[i+2],'record-fourth-ur-annals');
 await page.locator('#archive-author').selectOption('The_Frostrune');assert.equal(await page.locator('.annals-entry').count(),0);
@@ -34,6 +34,67 @@ await page.locator('#archive-search').fill('Quillslayer');await page.locator('#r
 await page.goto(base+'#campaign/read/first-book');await page.locator('.manuscript-body').waitFor();assert((await page.locator('.manuscript-body').innerText()).length>60000);
 await page.locator('[data-passage]').filter({hasText:'The Hand'}).first().click();assert(page.url().includes('section='));await page.reload();await page.locator('.manuscript-body').waitFor();
 await page.screenshot({path:'tmp/qa/annals-reader-desktop.png',fullPage:false});
+// Session summaries filter: three records, session order, source-grounded previews, composing filters.
+const annals=JSON.parse(await readFile('data/campaign.json','utf8')).entries.find(e=>e.id==='fourth-ur-annals');
+await page.goto(base+'#campaign');await page.locator('.archive-entry').first().waitFor();
+await page.locator('[data-kind=summaries]').click();await page.locator('.summary-card').first().waitFor();
+assert.equal(await page.locator('.summary-card').count(),3);
+assert.deepEqual(await page.locator('.summary-card').evaluateAll(es=>es.map(e=>e.id)),['record-captains-briefing','record-session-two','record-session-three']);
+assert.equal(await page.locator('.summary-card .summary-preview').count(),3);assert.equal(await page.locator('.summary-card .summary-preview[open]').count(),0);
+assert.equal(await page.locator('#archive-meta-note').innerText(),'Session order · Record dates in UTC');
+assert((await page.locator('.archive-controls').innerText()).includes('Filed / added in'));
+await page.locator('[data-view=feed]').click();
+assert.deepEqual(await page.locator('.summary-card').evaluateAll(es=>es.map(e=>e.id)),['record-captains-briefing','record-session-two','record-session-three'],'the feed keeps session order too');
+await page.locator('[data-view=scenes]').click();
+await page.locator('#record-session-three').scrollIntoViewIfNeeded();
+await page.screenshot({path:'tmp/qa/campaign-summaries-desktop.png',fullPage:false});
+await page.locator('#record-session-three .summary-preview>summary').click();
+assert((await page.locator('#record-session-three .recap-body').innerText()).includes('Gregor’s Ditch'));
+await page.locator('#record-session-three [data-close-recap]').click();assert.equal(await page.locator('#record-session-three .summary-preview').evaluate(e=>e.open),false);
+await page.locator('#archive-search').fill('hide a lie');
+await page.waitForFunction(()=>document.querySelectorAll('.summary-card').length===1);
+assert.equal(await page.locator('.summary-card').getAttribute('id'),'record-session-three');assert(await page.locator('#record-session-three .summary-preview').evaluate(e=>e.open),'a preview-only match opens its summary');
+await page.locator('#archive-search').fill('');await page.locator('#archive-month').selectOption('2026-09');
+await page.waitForFunction(()=>document.querySelectorAll('.summary-card').length===1);assert.equal(await page.locator('.summary-card').getAttribute('id'),'record-session-three');
+await page.locator('#archive-month').selectOption('2026-03');
+await page.waitForFunction(()=>document.querySelectorAll('.summary-card').length===1);assert.equal(await page.locator('.summary-card').getAttribute('id'),'record-captains-briefing');
+await page.locator('#archive-month').selectOption('');await page.locator('#archive-search').fill('zzz-no-result');
+await page.getByRole('heading',{name:'No records match.'}).waitFor();await page.locator('[data-clear]').click();
+await page.waitForFunction(()=>document.querySelectorAll('.scene-card').length===12);
+assert.equal(await page.locator('[data-kind=all]').getAttribute('aria-pressed'),'true');assert.equal(await page.locator('#archive-search').inputValue(),'');
+await page.goto(base+'#campaign?kind=summaries');await page.locator('.summary-card').first().waitFor();assert.equal(await page.locator('.summary-card').count(),3);
+// The Fourth Ur-Annals keeps its route, its original filing date and seven working revelation links.
+await page.goto(base+'#campaign/read/fourth-ur-annals');await page.locator('.manuscript-body').waitFor();
+const annalsByline=await page.locator('.manuscript-byline').innerText();
+assert(annalsByline.includes('3 Jul 2026'),'original filing date retained');assert(annalsByline.includes('21 Sept 2026'),'updated source labelled');
+assert.equal(await page.locator('.manuscript-body h2[id^=passage-]').count(),annals.blocks.filter(b=>b.type==='heading').length);
+assert.equal(await page.locator('footer a[download]').count(),2,'current and original filings are both downloadable');
+const revelations=page.locator('.reading-rail [data-passage]');assert.equal(await revelations.count(),7);
+for(let n=0;n<7;n++){
+ const link=revelations.nth(n),target=await link.getAttribute('data-passage');
+ await link.click();
+ assert(await page.evaluate(id=>{const el=document.getElementById('passage-'+id);if(!el||el.tagName!=='H2')return false;const top=el.getBoundingClientRect().top;return top>-8&&top<innerHeight*0.8;},target),'revelation '+(n+1)+' scrolls to its heading');
+}
+assert(page.url().includes('section='));
+assert((await page.locator('.manuscript-body').innerText()).includes('REVEALED WHEN THE PARTY ARRIVED AT THE GREGOR’S WORLD KNOT.'));
+await page.screenshot({path:'tmp/qa/fourth-ur-annals-desktop.png',fullPage:false});
+// Session 3 is an archive addition: no invented posting clock, and the timeline says so.
+await page.goto(base+'#campaign/read/session-three');await page.locator('.manuscript-body').waitFor();
+const threeByline=await page.locator('.manuscript-byline').innerText();
+assert(threeByline.includes('Added to the archive 21 Sept 2026'));assert(!threeByline.includes('UTC'));
+assert((await page.locator('.manuscript-body').innerText()).includes('War in the West'));
+await page.locator('.archive-breadcrumb a').first().click();await page.locator('#record-session-three').waitFor();
+assert.match((await page.locator('#record-session-three .entry-time').innerText()).trim(),/^Added 21 Sept 2026 ↗$/i);
+assert.equal(await page.locator('.archive-day').last().innerText(),'Added to the archive · 21 Sept 2026','the added Session 3 record is labelled in the timeline');
+// Narrow mobile: the summaries filter and an opened preview stay readable without horizontal overflow.
+await page.setViewportSize({width:390,height:844});
+await page.goto(base+'#campaign?kind=summaries');await page.locator('.summary-card').first().waitFor();assert.equal(await page.locator('.summary-card').count(),3);
+assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'summaries mobile overflow');
+await page.locator('#record-session-three').scrollIntoViewIfNeeded();await page.screenshot({path:'tmp/qa/campaign-summaries-mobile.png',fullPage:false});
+await page.locator('#record-session-three .summary-preview>summary').click();await page.locator('#record-session-three .recap-body').waitFor();
+assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'open summary preview mobile overflow');
+await page.screenshot({path:'tmp/qa/summary-preview-mobile.png',fullPage:false});
+await page.setViewportSize({width:1440,height:1100});
 await page.goto(base+'#campaign?entry=ic-1522738687207800983');await page.locator('#record-ic-1522738687207800983').waitFor();assert(await page.locator('#record-ic-1522738687207800983 details').evaluate(e=>e.open));
 await page.goto(base+'#campaign?entry=ic-1501268501724270703');await page.locator('#record-ic-1501268501724270703 .dispatch-reply').click();await page.locator('#record-ic-1501264366169882714 details[open]').waitFor();
 // Scenes retain source posts and timestamps, group adjacent contributors, and expose asides on demand.
@@ -69,4 +130,4 @@ for(const width of [390,820]){
  await page.setViewportSize({width,height:1100});await page.goto(base+'#campaign');await page.reload();await page.locator('#campaign-briefing>summary').click();await page.locator('#campaign-briefing').scrollIntoViewIfNeeded();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'expanded briefing overflow');await page.screenshot({path:'tmp/qa/campaign-briefing-'+width+'.png',fullPage:false});
  await page.locator('#campaign-briefing [data-close-recap]').click();await page.locator('#record-after-telembor .scene-recap>summary').click();await page.locator('#record-after-telembor .scene-recap').scrollIntoViewIfNeeded();assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'expanded recap overflow');await page.screenshot({path:'tmp/qa/scene-recap-'+width+'.png',fullPage:false});
 }
-assert.deepEqual(errors,[]);await browser.close();console.log('Campaign browser QA passed: expandable recaps, briefing sources, recap search, keyboard controls, tablet layouts, all 12 scenes, exact post preservation, grouping, table-talk toggle, scene navigation, search in context, interleaving, filters, full text search, deep links, replies, contents, pagination, mobile, keyboard and existing navigation.');
+assert.deepEqual(errors,[]);await browser.close();console.log('Campaign browser QA passed: session summaries filter and previews, added-date and updated-source provenance, seven revelation contents links, expandable recaps, briefing sources, recap search, keyboard controls, tablet layouts, all 12 scenes, exact post preservation, grouping, table-talk toggle, scene navigation, search in context, interleaving, filters, full text search, deep links, replies, contents, pagination, mobile, keyboard and existing navigation.');

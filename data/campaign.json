@@ -1,6 +1,6 @@
 {
   "edition": 1,
-  "dateBasis": "Original Discord publication timestamps, displayed in UTC. Story dates are retained separately.",
+  "dateBasis": "Original Discord publication timestamps, displayed in UTC. Story dates are retained separately. Supplied writings with no Discord post are labelled with the date they were added to the archive.",
   "entries": [
     {
       "published": "2026-02-15T02:38:58.761000+00:00",
@@ -12,6 +12,8 @@
       "label": "Opening chronicle",
       "period": "Day of Salt · Year of Dust 47",
       "description": "At the end of the Blind Steppes, the Company gathers for the Reading. The Captain promises a new beginning.",
+      "originalName": "Year_of_Dust_47.docx",
+      "download": "assets/campaign/year-of-dust-47.docx",
       "blocks": [
         {
           "type": "heading",
@@ -1259,9 +1261,7 @@
           ]
         }
       ],
-      "words": 1329,
-      "download": "assets/campaign/year-of-dust-47.docx",
-      "originalName": "Year_of_Dust_47.docx"
+      "words": 1329
     },
     {
       "published": "2026-02-15T15:34:03.254000+00:00",
@@ -1273,6 +1273,8 @@
       "label": "Orders & departure",
       "period": "After the Day of Salt gathering",
       "description": "The officers choose a Devil’s Knuckle to cross the ridge, enter the city, and find answers before supplies run out.",
+      "originalName": "Year_47_Part_2.docx",
+      "download": "assets/campaign/year-47-part-two.docx",
       "blocks": [
         {
           "type": "paragraph",
@@ -2055,9 +2057,7 @@
           ]
         }
       ],
-      "words": 1312,
-      "download": "assets/campaign/year-47-part-two.docx",
-      "originalName": "Year_47_Part_2.docx"
+      "words": 1312
     },
     {
       "id": "ic-1473411767206940895",
@@ -2732,6 +2732,8 @@
       "label": "The Annals",
       "period": "Day of Salt through Suraan · Year of Dust 47",
       "description": "The full record of the Devil’s Knuckle: Caras, Dengbi, Gjol Port, Thar Anos, and the Drum of Telembor.",
+      "originalName": "The_Annals_of_the_Black_Company_-_The_First_Book.docx",
+      "download": "assets/campaign/first-book.docx",
       "blocks": [
         {
           "type": "heading",
@@ -7668,9 +7670,7 @@
           ]
         }
       ],
-      "words": 14334,
-      "download": "assets/campaign/first-book.docx",
-      "originalName": "The_Annals_of_the_Black_Company_-_The_First_Book.docx"
+      "words": 14334
     },
     {
       "published": "2026-03-09T02:29:20.142000+00:00",
@@ -7682,6 +7682,8 @@
       "label": "Session 1 · summary",
       "period": "Day of Salt through Suraan · Year of Dust 47",
       "description": "A shorter account of the First Book, prepared at the Captain’s request. The victories, the losses, and the charge left at Telembor.",
+      "originalName": "Annals_Summary_-_Captains_Briefing.docx",
+      "download": "assets/campaign/captains-briefing.docx",
       "blocks": [
         {
           "type": "heading",
@@ -8323,8 +8325,8 @@
         }
       ],
       "words": 1820,
-      "download": "assets/campaign/captains-briefing.docx",
-      "originalName": "Annals_Summary_-_Captains_Briefing.docx"
+      "summary": true,
+      "summaryOrder": 1
     },
     {
       "published": "2026-03-09T02:38:32.278000+00:00",
@@ -9953,6 +9955,8 @@
       "label": "Session recap",
       "period": "Muirthemne, Forest Heart & Harran",
       "description": "From the Rhish ambush and the Inaccessible Collection to the Collector’s Vault, Harran, and a new contract with Soulblighter.",
+      "originalName": "BC_S2_Quick_Recap.docx",
+      "download": "assets/campaign/session-two.docx",
       "blocks": [
         {
           "type": "paragraph",
@@ -10987,8 +10991,8 @@
         }
       ],
       "words": 2310,
-      "download": "assets/campaign/session-two.docx",
-      "originalName": "BC_S2_Quick_Recap.docx"
+      "summary": true,
+      "summaryOrder": 2
     },
     {
       "id": "ic-1522738687207800983",
@@ -11013,18 +11017,18 @@
       "label": "Recovered historical record",
       "period": "The Hand of Chalk · an earlier Company",
       "description": "Entries in the hand of Chalk: older Brothers, their losses, and the road through Dun Thavok and Scholomance. Historical dates remain inside the text.",
+      "originalName": "The_Fourth_Ur_Annals.docx",
+      "download": "assets/campaign/fourth-ur-annals-s1-s3.docx",
+      "originalDownload": "assets/campaign/fourth-ur-annals.docx",
+      "updatedAt": "2026-09-21",
+      "updatedName": "The Fourth Ur Annals S1-S3.docx",
       "blocks": [
         {
           "type": "heading",
           "text": "The Fourth Ur-Annals",
           "runs": [
             {
-              "text": "The ",
-              "bold": false,
-              "italic": false
-            },
-            {
-              "text": "Fourth Ur-Annals",
+              "text": "The Fourth Ur-Annals",
               "bold": false,
               "italic": false
             }
@@ -11038,6 +11042,17 @@
               "text": "The Hand of Chalk",
               "bold": false,
               "italic": true
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "REVEALED WHEN THE PARTY FIRST ARRIVED AT HARRAN.",
+          "runs": [
+            {
+              "text": "REVEALED WHEN THE PARTY FIRST ARRIVED AT HARRAN.",
+              "bold": true,
+              "italic": false
             }
           ]
         },
@@ -11057,7 +11072,27 @@
           "text": "Sapling said I’m s’posed to start a new book on this Day. Said it’s tradition. Ain’t true. This one’s older than me and older than the last two hands that wrote in it.",
           "runs": [
             {
-              "text": "Sapling said I’m s’posed to start a new book on this Day. Said it’s tradition. Ain’t true. This one’s older than me and older than the last two hands that wrote in it.",
+              "text": "Sapling said I’m ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "s’posed",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " to start a new book on this Day. Said it’s tradition. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " true. This one’s older than me and older than the last two hands that wrote in it.",
               "bold": false,
               "italic": false
             }
@@ -11068,7 +11103,17 @@
           "text": "‘Sides, where the hell am I gonna find a new book anyhow.  ",
           "runs": [
             {
-              "text": "‘Sides, where the hell am I gonna find a new book anyhow.  ",
+              "text": "‘Sides, where the hell am I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gonna",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " find a new book anyhow.  ",
               "bold": false,
               "italic": false
             }
@@ -11079,7 +11124,27 @@
           "text": "I ain’t no Free City Prince or jeweled-up Godking, so I reckon I can’t announce the war’s over and anyone give a trapper’s piss. But I can write it, and so I will: the war is over.",
           "runs": [
             {
-              "text": "I ain’t no Free City Prince or jeweled-up Godking, so I reckon I can’t announce the war’s over and anyone give a trapper’s piss. But I can write it, and so I will: the war is over.",
+              "text": "I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no Free City Prince or jeweled-up ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Godking",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ", so I reckon I can’t announce the war’s over and anyone give a trapper’s piss. But I can write it, and so I will: the war is over.",
               "bold": false,
               "italic": false
             }
@@ -11101,7 +11166,17 @@
           "text": "You got time now, and time’s a forced march plumb straight to sadness. You don’t lose things all at once, I found. You lose ‘em piece by piece. There's a pair o' leather boots always stood outside the tent flap, and now them boots are gone. A few lads — all from the same village — sang the same song when working their blades, but now it's quiet. Just stone on steel.",
           "runs": [
             {
-              "text": "You got time now, and time’s a forced march plumb straight to sadness. You don’t lose things all at once, I found. You lose ‘em piece by piece. There's a pair o' leather boots always stood outside the tent flap, and now them boots are gone. A few lads — all from the same village — sang the same song when working their blades, but now it's quiet. Just stone on steel.",
+              "text": "You got time now, and time’s a forced march plumb straight to sadness. You don’t lose things all at once, I found. You lose ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " piece by piece. There's a pair o' leather boots always stood outside the tent flap, and now them boots are gone. A few lads — all from the same village — sang the same song when working their blades, but now it's quiet. Just stone on steel.",
               "bold": false,
               "italic": false
             }
@@ -11112,7 +11187,47 @@
           "text": "The war is over, and ye know it’s over, and ye gotta go on. Makes a man a bit ornery. Some o’ the newer lads thought there’d be parades. Women holding up their babes so yer shadow could fall on ‘em as you marched past, head high. Harlots lifting their skirts at a wink. Coppers and silvers being tossed at you like chickenfeed. But it ain’t like that. Not this war, leastwise. It ended way up in the mud, so far north that there weren’t no further north to go, and not a lot o’ eyes to see what you done.",
           "runs": [
             {
-              "text": "The war is over, and ye know it’s over, and ye gotta go on. Makes a man a bit ornery. Some o’ the newer lads thought there’d be parades. Women holding up their babes so yer shadow could fall on ‘em as you marched past, head high. Harlots lifting their skirts at a wink. Coppers and silvers being tossed at you like chickenfeed. But it ain’t like that. Not this war, leastwise. It ended way up in the mud, so far north that there weren’t no further north to go, and not a lot o’ eyes to see what you done.",
+              "text": "The war is over, and ye know it’s over, and ye ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gotta",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " go on. Makes a man a bit ornery. Some o’ the newer lads thought there’d be parades. Women holding up their babes so ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "yer",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " shadow could fall on ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " as you marched past, head high. Harlots lifting their skirts at a wink. Coppers and silvers being tossed at you like chickenfeed. But it ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " like that. Not this war, leastwise. It ended way up in the mud, so far north that there weren’t no further north to go, and not a lot o’ eyes to see what you done.",
               "bold": false,
               "italic": false
             }
@@ -11123,7 +11238,57 @@
           "text": "I ain’t no Barrow. I get jittery before a scrap and I been in enough of them to know that ain’t gonna change. But it’s worse after the scrap’s done. That’s when the fear really bubbles up. I made it, ye see, and others didn’t. I feel like I borrowed something from someone big and mean and I’m worried they gonna want it back. Would be a shame, I figure, to live through a war and then get kicked dead by a mule or catch the blight like did Greenlegs. ",
           "runs": [
             {
-              "text": "I ain’t no Barrow. I get jittery before a scrap and I been in enough of them to know that ain’t gonna change. But it’s worse after the scrap’s done. That’s when the fear really bubbles up. I made it, ye see, and others didn’t. I feel like I borrowed something from someone big and mean and I’m worried they gonna want it back. Would be a shame, I figure, to live through a war and then get kicked dead by a mule or catch the blight like did Greenlegs. ",
+              "text": "I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no Barrow. I get jittery before a scrap and I been in enough of them to know that ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gonna",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " change. But it’s worse after the scrap’s done. That’s when the fear really bubbles up. I made it, ye see, and others didn’t. I feel like I borrowed something from someone big and mean and I’m worried they ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gonna",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " want it back. Would be a shame, I figure, to live through a war and then get kicked dead by a mule or catch the blight like did ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Greenlegs",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". ",
               "bold": false,
               "italic": false
             }
@@ -11134,7 +11299,27 @@
           "text": "All them things – feeling sad and angry and scared – they perch on your shoulders. Heavy like. You feel ‘em like you do a stuffed pack, straps diggin’ into your skin. And our pack now is stone-heavy, true as silver. The Collector in one bag, the Sleeper in the other. Nothing twixt you and them but a layer of burlap. You see what they done, so ye know what they can do. Makes a man just want to put the pack down and walk away.",
           "runs": [
             {
-              "text": "All them things – feeling sad and angry and scared – they perch on your shoulders. Heavy like. You feel ‘em like you do a stuffed pack, straps diggin’ into your skin. And our pack now is stone-heavy, true as silver. The Collector in one bag, the Sleeper in the other. Nothing twixt you and them but a layer of burlap. You see what they done, so ye know what they can do. Makes a man just want to put the pack down and walk away.",
+              "text": "All them things – feeling sad and angry and scared – they perch on your shoulders. Heavy like. You feel ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " like you do a stuffed pack, straps ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "diggin",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ into your skin. And our pack now is stone-heavy, true as silver. The Collector in one bag, the Sleeper in the other. Nothing twixt you and them but a layer of burlap. You see what they done, so ye know what they can do. Makes a man just want to put the pack down and walk away.",
               "bold": false,
               "italic": false
             }
@@ -11145,7 +11330,17 @@
           "text": "May just be that’s a part of living so long - ye get to feelin’ like the world owes you something. But the world never signed no contract and never will. ",
           "runs": [
             {
-              "text": "May just be that’s a part of living so long - ye get to feelin’ like the world owes you something. But the world never signed no contract and never will. ",
+              "text": "May just be that’s a part of living so long - ye get to ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "feelin",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ like the world owes you something. But the world never signed no contract and never will. ",
               "bold": false,
               "italic": false
             }
@@ -11156,7 +11351,27 @@
           "text": "Quint’s horn. Time to move. Pack ain’t gonna carry itself.",
           "runs": [
             {
-              "text": "Quint’s horn. Time to move. Pack ain’t gonna carry itself.",
+              "text": "Quint’s horn. Time to move. Pack ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gonna",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " carry itself.",
               "bold": false,
               "italic": false
             }
@@ -11185,11 +11400,37 @@
           ]
         },
         {
+          "type": "heading",
+          "text": "REVEALED WHEN THE PARTY APPROACHED THE COLLECTOR’S VAULT IN FOREST HEART.",
+          "runs": [
+            {
+              "text": "REVEALED WHEN THE PARTY ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "APPROACHED THE COLLECTOR’S VAULT IN FOREST HEART",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "Dathra, mid. Forest Heart. Don’t ken the date. Been humping under the canopy so long makes the sky just a rumor.",
           "runs": [
             {
-              "text": "Dathra, mid. Forest Heart. Don’t ken the date. Been humping under the canopy so long makes the sky just a rumor.",
+              "text": "Dathra",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": ", mid. Forest Heart. Don’t ken the date. Been humping under the canopy so long makes the sky just a rumor.",
               "bold": false,
               "italic": true
             }
@@ -11222,7 +11463,17 @@
           "text": "When it happened, Ashpit was twenty feet ahead because Ashpit was always twenty feet ahead. He went down swinging and I don’t think he knew, there at the end, that we hadn’t caught up to him yet. I think ol’ Ash figured we was right there with him. Leastways I choose to think that.",
           "runs": [
             {
-              "text": "When it happened, Ashpit was twenty feet ahead because Ashpit was always twenty feet ahead. He went down swinging and I don’t think he knew, there at the end, that we hadn’t caught up to him yet. I think ol’ Ash figured we was right there with him. Leastways I choose to think that.",
+              "text": "When it happened, Ashpit was twenty feet ahead because Ashpit was always twenty feet ahead. He went down swinging and I don’t think he knew, there at the end, that we hadn’t caught up to him yet. I think ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ol",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ Ash figured we was right there with him. Leastways I choose to think that.",
               "bold": false,
               "italic": false
             }
@@ -11233,7 +11484,37 @@
           "text": "Brindle and Loam died together. Them two had marched together for eleven years and argued for every one of them. About laundry duty and latrine duty and cooking duty and sentry duty. Argued just about everything ‘cept the things that really mattered. When it mattered, well, they was always standing in the same place. And they was standing in the same place when they died.",
           "runs": [
             {
-              "text": "Brindle and Loam died together. Them two had marched together for eleven years and argued for every one of them. About laundry duty and latrine duty and cooking duty and sentry duty. Argued just about everything ‘cept the things that really mattered. When it mattered, well, they was always standing in the same place. And they was standing in the same place when they died.",
+              "text": "Brindle and Loam died together. Them two had marched together for eleven years and argued for every one of them. About laundry duty and latrine duty and cooking duty and sentry duty. Argued just about everything ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "cept",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " the things that really mattered. When it mattered, well, they ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " always standing in the same place. And they ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " standing in the same place when they died.",
               "bold": false,
               "italic": false
             }
@@ -11255,7 +11536,47 @@
           "text": "Didn’t know Fallow that well. Not sure anyone did. Maybe Friendly did ‘afor he toppled off the Stair o’ Grief. The lads say Fallow had a wife somewhere west of the Cloudspine. A wife. Didn’t know that was legal, to tell it true. Lads say Fallow didn’t mention her much and when he did he was all careful about it. Like the way men get careful ‘bout things they reckon the world may take away, were it to spot ‘em.",
           "runs": [
             {
-              "text": "Didn’t know Fallow that well. Not sure anyone did. Maybe Friendly did ‘afor he toppled off the Stair o’ Grief. The lads say Fallow had a wife somewhere west of the Cloudspine. A wife. Didn’t know that was legal, to tell it true. Lads say Fallow didn’t mention her much and when he did he was all careful about it. Like the way men get careful ‘bout things they reckon the world may take away, were it to spot ‘em.",
+              "text": "Didn’t know Fallow that well. Not sure anyone did. Maybe Friendly did ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "afor",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " he toppled off the Stair o’ Grief. The lads say Fallow had a wife somewhere west of the ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Cloudspine",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". A wife. Didn’t know that was legal, to tell it true. Lads say Fallow didn’t mention her much and when he ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "did",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " he was all careful about it. Like the way men get careful ‘bout things they reckon the world may take away, were it to spot ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
               "bold": false,
               "italic": false
             }
@@ -11266,7 +11587,57 @@
           "text": "Cotter, Fetter, Harrow, and Render ran. Not fast enough and not far enough. I do not like measuring a man on his last action, not when them same men had a lifetime of actions beforehand. Hell, I’d be in the mud twice over if it weren’t for Fetter. Cotter tended Jiggly and Greenlegs when the blight had them deep, all pus and black boils, and none else would go near. And crazy Harrow was the first through the breach in the hell that was Myrgard. Anyway, I said I’d write it true and the truth of it is that them boys ran when others didn’t. And their running probably put some of us in the mud that weren’t otherwise headin’ there, leastwise not today. ",
           "runs": [
             {
-              "text": "Cotter, Fetter, Harrow, and Render ran. Not fast enough and not far enough. I do not like measuring a man on his last action, not when them same men had a lifetime of actions beforehand. Hell, I’d be in the mud twice over if it weren’t for Fetter. Cotter tended Jiggly and Greenlegs when the blight had them deep, all pus and black boils, and none else would go near. And crazy Harrow was the first through the breach in the hell that was Myrgard. Anyway, I said I’d write it true and the truth of it is that them boys ran when others didn’t. And their running probably put some of us in the mud that weren’t otherwise headin’ there, leastwise not today. ",
+              "text": "Cotter, Fetter, Harrow, and Render ran. Not fast enough and not far enough. I do not like measuring a man on his last action, not when ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "them",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " same men had a lifetime of actions beforehand. Hell, I’d be in the mud twice over if it weren’t for Fetter. Cotter tended Jiggly and ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Greenlegs",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " when the blight had them deep, all pus and black boils, and none else would go near. And crazy Harrow was the first through the breach in the hell that was ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Myrgard",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Anyway, I said I’d write it true and the truth of it is that ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "them",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " boys ran when others didn’t. And their running probably put some of us in the mud that weren’t otherwise ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "headin",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ there, leastwise not today. ",
               "bold": false,
               "italic": false
             }
@@ -11277,7 +11648,27 @@
           "text": "But when you ain’t fighting against men – when yer squared up on something else entirely - well, that changes the math. ",
           "runs": [
             {
-              "text": "But when you ain’t fighting against men – when yer squared up on something else entirely - well, that changes the math. ",
+              "text": "But when you ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " fighting against men – when ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "yer",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " squared up on something else entirely - well, that changes the math. ",
               "bold": false,
               "italic": false
             }
@@ -11288,7 +11679,17 @@
           "text": "The fact them Brothers ran don’t make me miss ‘em any less. There’s your truth.",
           "runs": [
             {
-              "text": "The fact them Brothers ran don’t make me miss ‘em any less. There’s your truth.",
+              "text": "The fact them Brothers ran don’t make me miss ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " any less. There’s your truth.",
               "bold": false,
               "italic": false
             }
@@ -11299,7 +11700,57 @@
           "text": "Lastly, Barrow. Barrow held the line when there weren’t no line to hold. Bought us the heartbeats we needed. Pennick rounded us up, sent us back, him in the front like Ashpit reborn. Barrow weren’t no hero. He was a Brother buying time for other Brothers. He couldn’t ken these books and would’a laughed if he knew he was in ‘em. Once he asked me if I could somehow write a fart sound down on a page. Barrow bought time and it cost him everything and he paid without bitching because he was Barrow. ",
           "runs": [
             {
-              "text": "Lastly, Barrow. Barrow held the line when there weren’t no line to hold. Bought us the heartbeats we needed. Pennick rounded us up, sent us back, him in the front like Ashpit reborn. Barrow weren’t no hero. He was a Brother buying time for other Brothers. He couldn’t ken these books and would’a laughed if he knew he was in ‘em. Once he asked me if I could somehow write a fart sound down on a page. Barrow bought time and it cost him everything and he paid without bitching because he was Barrow. ",
+              "text": "Lastly, Barrow. Barrow held the line when there ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "weren’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no line to hold. Bought us the heartbeats we needed. Pennick rounded us up, sent us back, him in the front like Ashpit reborn. Barrow ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "weren’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no hero. He was a ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Brother",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " buying time for other Brothers. He couldn’t ken these books and ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "would’a",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " laughed if he knew he was in ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Once he asked me if I could somehow write a fart sound down on a page. Barrow bought time and it cost him everything and he paid without bitching because he was Barrow. ",
               "bold": false,
               "italic": false
             }
@@ -11321,7 +11772,47 @@
           "text": "So, there ye have it. Marked down in ink. Ten Brothers. We buried ‘em here best we could with swords and fingers. I never much liked wizards and Cymbals ain’t done changed my outlook none. But he done his craft well – shaped some stones with some words on ‘em. Even raised a stone monument from the ground like a dog’s pecker showing itself.  We’ll be long in the mud a’for that rock pecker falls, I figure.",
           "runs": [
             {
-              "text": "So, there ye have it. Marked down in ink. Ten Brothers. We buried ‘em here best we could with swords and fingers. I never much liked wizards and Cymbals ain’t done changed my outlook none. But he done his craft well – shaped some stones with some words on ‘em. Even raised a stone monument from the ground like a dog’s pecker showing itself.  We’ll be long in the mud a’for that rock pecker falls, I figure.",
+              "text": "So, there ye have it. Marked down in ink. Ten Brothers. We buried ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " here best we could with swords and fingers. I never much liked wizards and Cymbals ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " done changed my outlook none. But he done his craft well – shaped some stones with some words on ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Even raised a stone monument from the ground like a dog’s pecker showing itself.  We’ll be long in the mud ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "a’for",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " that rock pecker falls, I figure.",
               "bold": false,
               "italic": false
             }
@@ -11332,7 +11823,17 @@
           "text": "Quint says we gotta bury what we can’t haul and with near half of us gone that’d be a fair amount. Kits and coins and the like. And them things a man gathers to himself over years o’ marching. Them things strangers wouldn’t pilfer from an open purse, but for us – those of us who knew these fallen Brothers – them things shine brighter than the Caliph’s crown.",
           "runs": [
             {
-              "text": "Quint says we gotta bury what we can’t haul and with near half of us gone that’d be a fair amount. Kits and coins and the like. And them things a man gathers to himself over years o’ marching. Them things strangers wouldn’t pilfer from an open purse, but for us – those of us who knew these fallen Brothers – them things shine brighter than the Caliph’s crown.",
+              "text": "Quint says we ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gotta",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " bury what we can’t haul and with near half of us gone that’d be a fair amount. Kits and coins and the like. And them things a man gathers to himself over years o’ marching. Them things strangers wouldn’t pilfer from an open purse, but for us – those of us who knew these fallen Brothers – them things shine brighter than the Caliph’s crown.",
               "bold": false,
               "italic": false
             }
@@ -11372,6 +11873,27 @@
           ]
         },
         {
+          "type": "heading",
+          "text": "REVEALED WHEN THE PARTY ENTERED THE VAULT IN FOREST HEART.",
+          "runs": [
+            {
+              "text": "REVEALED WHEN THE PARTY ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "ENTERED THE VAULT IN FOREST HEART",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "I had a daughter.",
           "runs": [
@@ -11387,7 +11909,57 @@
           "text": "I ain’t ever said those words to no one since taking the Black. But a Knuckle lives tight, and you can’t hide what you cry out when yer dreaming on them before-times. I reckon some might know, or think they know, but them lads ain’t ever asked, and I ain’t never told, and that’s what I call a good contract.",
           "runs": [
             {
-              "text": "I ain’t ever said those words to no one since taking the Black. But a Knuckle lives tight, and you can’t hide what you cry out when yer dreaming on them before-times. I reckon some might know, or think they know, but them lads ain’t ever asked, and I ain’t never told, and that’s what I call a good contract.",
+              "text": "I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ever said those words to no one since taking the Black. But a Knuckle lives tight, and you can’t hide what you cry out when ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "yer",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " dreaming on them before-times. I reckon some might know, or think they know, but ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "them",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " lads ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ever asked, and I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " never told, and that’s what I call a good contract.",
               "bold": false,
               "italic": false
             }
@@ -11398,7 +11970,27 @@
           "text": "Her name was Jala. Leastwise, that was to be her name. She didn’t last to the sixth night, when my folk hang a name on a newborn. She come into the world and, in the time it takes a loaf to bake, I was a changed man. Had answers to questions I ain’t even known to ask the hour before.",
           "runs": [
             {
-              "text": "Her name was Jala. Leastwise, that was to be her name. She didn’t last to the sixth night, when my folk hang a name on a newborn. She come into the world and, in the time it takes a loaf to bake, I was a changed man. Had answers to questions I ain’t even known to ask the hour before.",
+              "text": "Her name was Jala. Leastwise, that was to be her name. She didn’t last to the sixth night, when my folk hang a name on a newborn. She come into the world and, in the ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "time",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " it takes a loaf to bake, I was a changed man. Had answers to questions I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " even known to ask the hour before.",
               "bold": false,
               "italic": false
             }
@@ -11409,7 +12001,17 @@
           "text": "And that’s why I write this now. This ain’t for the Annals. This here is for me. And maybe because there’s some sins I can forgive, and some I cannot.",
           "runs": [
             {
-              "text": "And that’s why I write this now. This ain’t for the Annals. This here is for me. And maybe because there’s some sins I can forgive, and some I cannot.",
+              "text": "And that’s why I write this now. This ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " for the Annals. This here is for me. And maybe because there’s some sins I can forgive, and some I cannot.",
               "bold": false,
               "italic": false
             }
@@ -11420,7 +12022,17 @@
           "text": "Before he was the Collector, he was Serevain. Them pinch-faced teachers up at Scholomance saved their final silver rod and highest hopes for him. Thought he’d be some marvel. Thought he’d do great things.",
           "runs": [
             {
-              "text": "Before he was the Collector, he was Serevain. Them pinch-faced teachers up at Scholomance saved their final silver rod and highest hopes for him. Thought he’d be some marvel. Thought he’d do great things.",
+              "text": "Before he was the Collector, he was ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Serevain",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Them pinch-faced teachers up at Scholomance saved their final silver rod and highest hopes for him. Thought he’d be some marvel. Thought he’d do great things.",
               "bold": false,
               "italic": false
             }
@@ -11431,7 +12043,17 @@
           "text": "What he actually did was fall for a woman. A Muirthemne lass named Samara. Spent years chasing her. That’s a no-no for Scholomance. Serevain didn’t care. He quit. Moved to the city. Kept chasing. Kept trying.",
           "runs": [
             {
-              "text": "What he actually did was fall for a woman. A Muirthemne lass named Samara. Spent years chasing her. That’s a no-no for Scholomance. Serevain didn’t care. He quit. Moved to the city. Kept chasing. Kept trying.",
+              "text": "What he actually did was fall for a woman. A Muirthemne lass named Samara. Spent years chasing her. That’s a no-no for Scholomance. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Serevain",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " didn’t care. He quit. Moved to the city. Kept chasing. Kept trying.",
               "bold": false,
               "italic": false
             }
@@ -11442,7 +12064,17 @@
           "text": "Then she took the blight. For all his training and all his smarts, Serevain couldn’t beat it. What he could do — and what he did do — was snatch up her soul and plunk it into a statue. A big, winged, beautiful white statue. Guess he reckoned that was love. A story old and empty as Khatovar.",
           "runs": [
             {
-              "text": "Then she took the blight. For all his training and all his smarts, Serevain couldn’t beat it. What he could do — and what he did do — was snatch up her soul and plunk it into a statue. A big, winged, beautiful white statue. Guess he reckoned that was love. A story old and empty as Khatovar.",
+              "text": "Then she took the blight. For all his training and all his smarts, ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Serevain",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " couldn’t beat it. What he could do — and what he did do — was snatch up her soul and plunk it into a statue. A big, winged, beautiful white statue. Guess he reckoned that was love. A story old and empty as Khatovar.",
               "bold": false,
               "italic": false
             }
@@ -11486,7 +12118,17 @@
           "text": "I can’t bear no more weight. Got enough to carry with battles lost and friends gone. But I’ll admit this: it does my heart warm to know Serevain’s sitting there, just a Head, on a pile o’ mouse turds. Surrounded by all them things he gathered and can’t touch. And whenever he looks around, he gets to see them cold white eyes staring hatred into what’s left of him.",
           "runs": [
             {
-              "text": "I can’t bear no more weight. Got enough to carry with battles lost and friends gone. But I’ll admit this: it does my heart warm to know Serevain’s sitting there, just a Head, on a pile o’ mouse turds. Surrounded by all them things he gathered and can’t touch. And whenever he looks around, he gets to see them cold white eyes staring hatred into what’s left of him.",
+              "text": "I can’t bear no more weight. Got enough to carry with battles lost and friends gone. But I’ll admit this: it does my heart warm to know Serevain’s sitting there, just a Head, on a pile o’ mouse turds. Surrounded by all ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "them",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " things he gathered and can’t touch. And whenever he looks around, he gets to see them cold white eyes staring hatred into what’s left of him.",
               "bold": false,
               "italic": false
             }
@@ -11515,11 +12157,52 @@
           ]
         },
         {
+          "type": "heading",
+          "text": "REVEALED WHEN THE PARTY SLEPT IN VILLAGE OF DUN THAVOK.",
+          "runs": [
+            {
+              "text": "REVEALED WHEN THE PARTY ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "SLEPT IN VILLAGE OF DUN THAVOK",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "28th Dathra. Dun Thavok.",
           "runs": [
             {
-              "text": "28th Dathra. Dun Thavok.",
+              "text": "28th ",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": "Dathra",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": ". Dun ",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": "Thavok",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": ".",
               "bold": false,
               "italic": true
             }
@@ -11541,7 +12224,42 @@
           "text": "Ain’t no reason for it. None of them lads here read what I write. Pennick says “if only” are the two saddest words and “I remember” only a jot less so, so he don’t wanna take no gander. But in the heyday, lads, when just about every night someone’d jump atop a wagon and do some reading, well, they was nice nights. Made a man want to pen stuff down. ",
           "runs": [
             {
-              "text": "Ain’t no reason for it. None of them lads here read what I write. Pennick says “if only” are the two saddest words and “I remember” only a jot less so, so he don’t wanna take no gander. But in the heyday, lads, when just about every night someone’d jump atop a wagon and do some reading, well, they was nice nights. Made a man want to pen stuff down. ",
+              "text": "Ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no reason for it. None of them lads here read what I write. Pennick says “if only” are the two saddest words and “I remember” only a jot less so, so he ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "don’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "wanna",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " take no gander. But in the heyday, lads, when just about every night someone’d jump atop a wagon and do some reading, well, they ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " nice nights. Made a man want to pen stuff down. ",
               "bold": false,
               "italic": false
             }
@@ -11552,7 +12270,17 @@
           "text": "Not tossing excuses but what with the scrap that sent Barrow and good men to the mud, and what with the sounds the forest makes at night, writing ain’t been easy for a spell. Not leastwise since we raised the monument to our fallen – them stacked stones surrounded by silent trees and a screaming forest.",
           "runs": [
             {
-              "text": "Not tossing excuses but what with the scrap that sent Barrow and good men to the mud, and what with the sounds the forest makes at night, writing ain’t been easy for a spell. Not leastwise since we raised the monument to our fallen – them stacked stones surrounded by silent trees and a screaming forest.",
+              "text": "Not tossing excuses but what with the scrap that sent Barrow and good men to the mud, and what with the sounds the forest makes at night, writing ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " been easy for a spell. Not leastwise since we raised the monument to our fallen – them stacked stones surrounded by silent trees and a screaming forest.",
               "bold": false,
               "italic": false
             }
@@ -11563,7 +12291,17 @@
           "text": "After we done that, the going weren't too hard. Didn't have Ashpit no more so the road became our guide. Left foot, right foot. Straight as rain, long as marriage. Don't ken what'd give out first, our boots or them trees. But out we come, blinking in the first dawn them trees let us see. ",
           "runs": [
             {
-              "text": "After we done that, the going weren't too hard. Didn't have Ashpit no more so the road became our guide. Left foot, right foot. Straight as rain, long as marriage. Don't ken what'd give out first, our boots or them trees. But out we come, blinking in the first dawn them trees let us see. ",
+              "text": "After we done that, the going ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "weren't",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " too hard. Didn't have Ashpit no more so the road became our guide. Left foot, right foot. Straight as rain, long as marriage. Don't ken what'd give out first, our boots or them trees. But out we come, blinking in the first dawn them trees let us see. ",
               "bold": false,
               "italic": false
             }
@@ -11574,7 +12312,57 @@
           "text": "I got a roof over me head now. It don’t stop the rain none but I pretend it does. Got a fire ‘aside me, too. Don’t need it. It’s cool at night but ain’t cold. Fire spittin’ and hissin’ as the drops find it from above. I hooked a barrel over - my writing desk. Has the word TINCE painted on it. I like that name. I pretend it’s a real nice place. Even got a chair. Only the one here. Quint grabbed it when we came in out the wet but he looked at me, deep-like, really looked, and then he just handed it over. No words. ",
           "runs": [
             {
-              "text": "I got a roof over me head now. It don’t stop the rain none but I pretend it does. Got a fire ‘aside me, too. Don’t need it. It’s cool at night but ain’t cold. Fire spittin’ and hissin’ as the drops find it from above. I hooked a barrel over - my writing desk. Has the word TINCE painted on it. I like that name. I pretend it’s a real nice place. Even got a chair. Only the one here. Quint grabbed it when we came in out the wet but he looked at me, deep-like, really looked, and then he just handed it over. No words. ",
+              "text": "I got a roof over ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "me",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " head now. It ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "don’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " stop the rain none but I pretend it does. Got a fire ‘aside me, too. Don’t need it. It’s cool at night but ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " cold. Fire ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "spittin",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ and ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "hissin",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ as the drops find it from above. I hooked a barrel over - my writing desk. Has the word TINCE painted on it. I like that name. I pretend it’s a real nice place. Even got a chair. Only the one here. Quint grabbed it when we came in out the wet but he looked at me, deep-like, really looked, and then he just handed it over. No words. ",
               "bold": false,
               "italic": false
             }
@@ -11596,7 +12384,27 @@
           "text": "Anyway, we done it. Plopped that old fucker’s head right on a little pile o’ rubble. Right atop mortar dust and rat droppings. Cymbals had pulled it out and made like to place it on some shiny marble table – blue and white streaked like you see in them fancy houses up in Tyr. But Cabbage said no. And Cabbage’s face showed he remembered what that head had done at Gregor’s Ditch, back when that head still had a body. And Cymbals – Cymbals who ain’t never heard someone tell him no and not bitch up a storm about it – just nodded. Cymbals is ornery but Cymbals ain’t dumb.",
           "runs": [
             {
-              "text": "Anyway, we done it. Plopped that old fucker’s head right on a little pile o’ rubble. Right atop mortar dust and rat droppings. Cymbals had pulled it out and made like to place it on some shiny marble table – blue and white streaked like you see in them fancy houses up in Tyr. But Cabbage said no. And Cabbage’s face showed he remembered what that head had done at Gregor’s Ditch, back when that head still had a body. And Cymbals – Cymbals who ain’t never heard someone tell him no and not bitch up a storm about it – just nodded. Cymbals is ornery but Cymbals ain’t dumb.",
+              "text": "Anyway, we done it. Plopped that old fucker’s head right on a little pile o’ rubble. Right atop mortar dust and rat droppings. Cymbals had pulled it out and made like to place it on some shiny marble table – blue and white streaked like you see in them fancy houses up in Tyr. But Cabbage said no. And Cabbage’s face showed he remembered what that head had done at Gregor’s Ditch, back when that head still had a body. And Cymbals – Cymbals who ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " never heard someone tell him no and not bitch up a storm about it – just nodded. Cymbals is ornery but Cymbals ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " dumb.",
               "bold": false,
               "italic": false
             }
@@ -11618,7 +12426,52 @@
           "text": "The Hand got us through. Sapling said it would. And I ain’t throwin’ no shade at Sapling, mind you, but we ain’t used to a plan working as a plan ought. I remember how we got that Hand, when we finally run the Collector to ground, way down at the world’s toe at Harran. Carved him up. Head off first, ‘course. Then one hand, then the other. A foot. Then the boys got creative – ‘specially them boys what were in the thick o’ it at Gregor’s – and it was tough to watch but tougher to realize you enjoyed watching it. The Collector squirmed and kicked through it all. Hands crawling around like two sunstroke crabs. That head, sitting on the mud, just yammering away – running us a blue streak up and down – until it weren’t. ",
           "runs": [
             {
-              "text": "The Hand got us through. Sapling said it would. And I ain’t throwin’ no shade at Sapling, mind you, but we ain’t used to a plan working as a plan ought. I remember how we got that Hand, when we finally run the Collector to ground, way down at the world’s toe at Harran. Carved him up. Head off first, ‘course. Then one hand, then the other. A foot. Then the boys got creative – ‘specially them boys what were in the thick o’ it at Gregor’s – and it was tough to watch but tougher to realize you enjoyed watching it. The Collector squirmed and kicked through it all. Hands crawling around like two sunstroke crabs. That head, sitting on the mud, just yammering away – running us a blue streak up and down – until it weren’t. ",
+              "text": "The Hand got us through. Sapling said it would. And I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "throwin",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ no shade at Sapling, mind you, but we ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " used to a plan working as a plan ought. I remember how we got that Hand, when we finally run the Collector to ground, way down at the world’s toe at Harran. Carved him up. Head off first, ‘course. Then one hand, then the other. A foot. Then the boys got creative – ‘specially them boys what were in the thick o’ it at Gregor’s – and it was tough to watch but tougher to realize you enjoyed watching it. The Collector squirmed and kicked through it all. Hands ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "crawling around like two sunstroke crabs. That head, sitting on the mud, just yammering away – running us a blue streak up and down – until it ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "weren’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". ",
               "bold": false,
               "italic": false
             }
@@ -11629,7 +12482,17 @@
           "text": "Already told you what I know about his woman. Maybe it’s just a tale to frighten kids. Statue just looked like a statue, to me. Big, sure. Beautiful as a sunrise when you been out all night and the hangover ain’t kicked in. But bugger me if I didn’t think I saw them white lips curl up when we plunked that head down.",
           "runs": [
             {
-              "text": "Already told you what I know about his woman. Maybe it’s just a tale to frighten kids. Statue just looked like a statue, to me. Big, sure. Beautiful as a sunrise when you been out all night and the hangover ain’t kicked in. But bugger me if I didn’t think I saw them white lips curl up when we plunked that head down.",
+              "text": "Already told you what I know about his woman. Maybe it’s just a tale to frighten kids. Statue just looked like a statue, to me. Big, sure. Beautiful as a sunrise when you been out all night and the hangover ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " kicked in. But bugger me if I didn’t think I saw them white lips curl up when we plunked that head down.",
               "bold": false,
               "italic": false
             }
@@ -11640,7 +12503,17 @@
           "text": "We looked around a bit, then. At all the things that done give him his name. Shiny things, dangerous things. But none o’ us poked and none o’ us grabbed nothing. Ain’t no reason for it. ",
           "runs": [
             {
-              "text": "We looked around a bit, then. At all the things that done give him his name. Shiny things, dangerous things. But none o’ us poked and none o’ us grabbed nothing. Ain’t no reason for it. ",
+              "text": "We looked around a bit, then. At all the things that done give him his name. Shiny things, dangerous things. But none o’ us poked and none o’ us grabbed nothing. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no reason for it. ",
               "bold": false,
               "italic": false
             }
@@ -11651,7 +12524,17 @@
           "text": "When you know the number o’ your days and that number ain’t high you tend to get all reflective and what-not: I remember one night – one night that I keep in my heart, tucked down and away, like maybe how Fallow tucked away the thought o’ his wife. Our whole Finger had made it. Not a scratch. One night when I had a red-haired goddess on me left leg and a woman whose hair was spun from Covenant gold on me right. My purse was full. My trencher was full and my cup was full and, I’ll say it, my heart was full. All my brothers around me and none, then, in the mud. If only I could have one more night like that one - just one - then maybe I’d have grabbed some shiny things and tucked them away, too.",
           "runs": [
             {
-              "text": "When you know the number o’ your days and that number ain’t high you tend to get all reflective and what-not: I remember one night – one night that I keep in my heart, tucked down and away, like maybe how Fallow tucked away the thought o’ his wife. Our whole Finger had made it. Not a scratch. One night when I had a red-haired goddess on me left leg and a woman whose hair was spun from Covenant gold on me right. My purse was full. My trencher was full and my cup was full and, I’ll say it, my heart was full. All my brothers around me and none, then, in the mud. If only I could have one more night like that one - just one - then maybe I’d have grabbed some shiny things and tucked them away, too.",
+              "text": "When you know the number o’ your days and that number ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " high you tend to get all reflective and what-not: I remember one night – one night that I keep in my heart, tucked down and away, like maybe how Fallow tucked away the thought o’ his wife. Our whole Finger had made it. Not a scratch. One night when I had a red-haired goddess on me left leg and a woman whose hair was spun from Covenant gold on me right. My purse was full. My trencher was full and my cup was full and, I’ll say it, my heart was full. All my brothers around me and none, then, in the mud. If only I could have one more night like that one - just one - then maybe I’d have grabbed some shiny things and tucked them away, too.",
               "bold": false,
               "italic": false
             }
@@ -11691,6 +12574,27 @@
           ]
         },
         {
+          "type": "heading",
+          "text": "REVEALED WHEN THE PARTY ARRIVED AT SCHOLOMANCE.",
+          "runs": [
+            {
+              "text": "REVEALED WHEN THE PARTY ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "ARRIVED AT SCHOLOMANCE",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
           "type": "paragraph",
           "text": "20th Nahrim. Scholomance. The dormitory.",
           "runs": [
@@ -11705,7 +12609,17 @@
               "italic": true
             },
             {
-              "text": " Nahrim. Scholomance. The dormitory.",
+              "text": " ",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": "Nahrim",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": ". Scholomance. The dormitory.",
               "bold": false,
               "italic": true
             }
@@ -11716,7 +12630,17 @@
           "text": "This book ain’t for recording the weather.",
           "runs": [
             {
-              "text": "This book ain’t for recording the weather.",
+              "text": "This book ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " for recording the weather.",
               "bold": false,
               "italic": false
             }
@@ -11727,7 +12651,37 @@
           "text": "But I got the quill and you don’t and I best needs get something out o’ me and, well, inking it seems as good a way as any. It is, in a word: harlot-fucking-hot. Ain’t even noon yet. Piggy fried his mornin’ eggs on the pavement, no fire needed, and I counted nineteen baked lizards between here and the dead tree. If you see these smudges in the ink, just know for once it ain’t the tears – it’s sweat dripping off me beak.  ",
           "runs": [
             {
-              "text": "But I got the quill and you don’t and I best needs get something out o’ me and, well, inking it seems as good a way as any. It is, in a word: harlot-fucking-hot. Ain’t even noon yet. Piggy fried his mornin’ eggs on the pavement, no fire needed, and I counted nineteen baked lizards between here and the dead tree. If you see these smudges in the ink, just know for once it ain’t the tears – it’s sweat dripping off me beak.  ",
+              "text": "But I got the quill and you don’t and I best needs get something out o’ me and, well, inking it seems as good a way as any. It is, in a word: harlot-fucking-hot. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " even noon yet. Piggy fried his ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "mornin",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "’ eggs on the pavement, no fire needed, and I counted nineteen baked lizards between here and the dead tree. If you see these smudges in the ink, just know for once it ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " the tears – it’s sweat dripping off me beak.  ",
               "bold": false,
               "italic": false
             }
@@ -11749,7 +12703,27 @@
           "text": "Here’s one for you. I had a woman up in Dengbi that would spread ‘em for only eight silvers. She was least an eighteen silver lay, maybe more. The discount was on ‘count of her toddler. Little guy would bang at the door of the bedroom and scream louder than an ice witch on embers. Those were some proper tantrums. ",
           "runs": [
             {
-              "text": "Here’s one for you. I had a woman up in Dengbi that would spread ‘em for only eight silvers. She was least an eighteen silver lay, maybe more. The discount was on ‘count of her toddler. Little guy would bang at the door of the bedroom and scream louder than an ice witch on embers. Those were some proper tantrums. ",
+              "text": "Here’s one for you. I had a woman up in ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Dengbi",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " that would spread ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " for only eight silvers. She was least an eighteen silver lay, maybe more. The discount was on ‘count of her toddler. Little guy would bang at the door of the bedroom and scream louder than an ice witch on embers. Those were some proper tantrums. ",
               "bold": false,
               "italic": false
             }
@@ -11760,7 +12734,17 @@
           "text": "That kid ain’t got nothing on our resident wizard. ",
           "runs": [
             {
-              "text": "That kid ain’t got nothing on our resident wizard. ",
+              "text": "That kid ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " got nothing on our resident wizard. ",
               "bold": false,
               "italic": false
             }
@@ -11771,7 +12755,27 @@
           "text": "Wizards, my ears have learned, can throw some o’ the most catastrophic, mountain-shaking, tree-breaking tantrums the world has ever weathered. Cymbals was no different. Just outside the forest, coming up out o’ Dun Thavok with an angry morning sun looking at us over them blasted Myr mountains, he was bucking like a scorpion-bit camel. Banging the bronze discs that give him his name, pulling at his beard, wringing his black cloak, yelling at the clouds, at the birds, at us. Said if we didn’t lock down the book, all the shit we was doing was for nothing. Said the seals would be opened and the uglies let loose and, well, that’d be no good for no one. ",
           "runs": [
             {
-              "text": "Wizards, my ears have learned, can throw some o’ the most catastrophic, mountain-shaking, tree-breaking tantrums the world has ever weathered. Cymbals was no different. Just outside the forest, coming up out o’ Dun Thavok with an angry morning sun looking at us over them blasted Myr mountains, he was bucking like a scorpion-bit camel. Banging the bronze discs that give him his name, pulling at his beard, wringing his black cloak, yelling at the clouds, at the birds, at us. Said if we didn’t lock down the book, all the shit we was doing was for nothing. Said the seals would be opened and the uglies let loose and, well, that’d be no good for no one. ",
+              "text": "Wizards, my ears have learned, can throw some o’ the most catastrophic, mountain-shaking, tree-breaking tantrums the world has ever weathered. Cymbals was no different. Just outside the forest, coming up out o’ Dun ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Thavok",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " with an angry morning sun looking at us over them blasted Myr mountains, he was bucking like a scorpion-bit camel. Banging the bronze discs that give him his name, pulling at his beard, wringing his black cloak, yelling at the clouds, at the birds, at us. Said if we didn’t lock down the book, all the shit we ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " doing was for nothing. Said the seals would be opened and the uglies let loose and, well, that’d be no good for no one. ",
               "bold": false,
               "italic": false
             }
@@ -11782,7 +12786,37 @@
           "text": "We seen that world. Ain’t a Brother here that wants that coming back.",
           "runs": [
             {
-              "text": "We seen that world. Ain’t a Brother here that wants that coming back.",
+              "text": "We ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "seen",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " that world. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " a ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Brother",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " here that wants that coming back.",
               "bold": false,
               "italic": false
             }
@@ -11793,7 +12827,52 @@
           "text": "So Quint, soft and calm like Quint gets when Quint’s had just about enough, asks the wizard what to do. Cymbals says Scholomance. We been past that place a couple times back when we was fighting the Myrs. Or maybe it was when we was fighting the bull-roarers o’ Gower. Don’t matter, I s’pose. Them fights were good and clean fights. Patron, contract, wet work. Against men. The good old days.",
           "runs": [
             {
-              "text": "So Quint, soft and calm like Quint gets when Quint’s had just about enough, asks the wizard what to do. Cymbals says Scholomance. We been past that place a couple times back when we was fighting the Myrs. Or maybe it was when we was fighting the bull-roarers o’ Gower. Don’t matter, I s’pose. Them fights were good and clean fights. Patron, contract, wet work. Against men. The good old days.",
+              "text": "So",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " Quint, soft and calm like Quint gets when Quint’s had just about enough, asks the wizard what to do. Cymbals says Scholomance. We been past that place a couple times back when we ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " fighting the ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Myrs",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Or maybe it was when we ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " fighting the bull-roarers o’ Gower. Don’t matter, I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "s’pose",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Them fights were good and clean fights. Patron, contract, wet work. Against men. The good old days.",
               "bold": false,
               "italic": false
             }
@@ -11804,7 +12883,17 @@
           "text": "Anyway, Scholomance. They got a lot o’ creepers here walking around like stretched puppets. Pale, dry as bonemeal, faces all pinched and frowning like they was a bunch of cuckolds. But they know their books, I reckon. Only fun they get ‘round here is making other people do stupid shit, and so they made us do some stupid shit. A little scrap, easy enough. A “word war” that we lost in grand fashion. (I was waiting for another one o’ Cymbals’ tantrums, but it never come.) And then some memory game that, if not for Pennick, we’d have lost, too.",
           "runs": [
             {
-              "text": "Anyway, Scholomance. They got a lot o’ creepers here walking around like stretched puppets. Pale, dry as bonemeal, faces all pinched and frowning like they was a bunch of cuckolds. But they know their books, I reckon. Only fun they get ‘round here is making other people do stupid shit, and so they made us do some stupid shit. A little scrap, easy enough. A “word war” that we lost in grand fashion. (I was waiting for another one o’ Cymbals’ tantrums, but it never come.) And then some memory game that, if not for Pennick, we’d have lost, too.",
+              "text": "Anyway, Scholomance. They got a lot o’ creepers here walking around like stretched puppets. Pale, dry as bonemeal, faces all pinched and frowning like they ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " a bunch of cuckolds. But they know their books, I reckon. Only fun they get ‘round here is making other people do stupid shit, and so they made us do some stupid shit. A little scrap, easy enough. A “word war” that we lost in grand fashion. (I was waiting for another one o’ Cymbals’ tantrums, but it never come.) And then some memory game that, if not for Pennick, we’d have lost, too.",
               "bold": false,
               "italic": false
             }
@@ -11815,7 +12904,12 @@
           "text": "We hopped through their little games, paid some gold – given our last Quartermaster’s in the mud up near Four Oak, let the record show it was a ‘shit-ton’ – and then their little dried heads licked and kissed and blew on the Annals. Makes me feel dirtier than a dockworker’s dick just touching the book right now. ",
           "runs": [
             {
-              "text": "We hopped through their little games, paid some gold – given our last Quartermaster’s in the mud up near Four Oak, let the record show it was a ‘shit-ton’ – and then their little dried heads licked and kissed and blew on the Annals. Makes me feel dirtier than a dockworker’s dick just touching the book right now. ",
+              "text": "We hopped through their little games, paid some gold – given our last Quartermaster’s in the mud up near Four Oak, let the record show it was a ‘shit-ton’ – and then their little dried heads licked ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "and kissed and blew on the Annals. Makes me feel dirtier than a dockworker’s dick just touching the book right now. ",
               "bold": false,
               "italic": false
             }
@@ -11837,7 +12931,27 @@
           "text": "I watched. The ink all ran together and the words all merged and danced to different corners of the pages like bugs scattering when the shutters are thrown wide. These pages, for a bit, looked to me like they must have looked to Barrow all the time. Who knows? Maybe they spelled out a fart sound after all. I found I could squint and fix my eyes and rub my dome and, eventually, them words all run back home to where they belonged. Which is a good thing, considering I was the one who wrote ‘em.",
           "runs": [
             {
-              "text": "I watched. The ink all ran together and the words all merged and danced to different corners of the pages like bugs scattering when the shutters are thrown wide. These pages, for a bit, looked to me like they must have looked to Barrow all the time. Who knows? Maybe they spelled out a fart sound after all. I found I could squint and fix my eyes and rub my dome and, eventually, them words all run back home to where they belonged. Which is a good thing, considering I was the one who wrote ‘em.",
+              "text": "I watched. The ink all ran together and the words all merged and danced to different corners of the pages like bugs scattering when the shutters are thrown wide. These pages, for a bit, looked to me like they must have looked to Barrow all the time. Who knows? Maybe they spelled out a fart sound after all. I found I could squint and fix my eyes and rub my dome and, eventually, ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "them",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " words all run back home to where they belonged. Which is a good thing, considering I was the one who wrote ‘",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
               "bold": false,
               "italic": false
             }
@@ -11848,7 +12962,17 @@
           "text": "That’s that. Might be the last thing we ever spend money on, come to think of it. ‘Tis the Drum for us, now. Twelve left. We were a hundred times that on the Grimfold, each one o’ us a shining killer, certain we had the world all but licked.",
           "runs": [
             {
-              "text": "That’s that. Might be the last thing we ever spend money on, come to think of it. ‘Tis the Drum for us, now. Twelve left. We were a hundred times that on the Grimfold, each one o’ us a shining killer, certain we had the world all but licked.",
+              "text": "That’s that. Might be the last thing we ever spend money on, come to think of it. ‘Tis the Drum for us, now. Twelve left. We were a hundred times that on the ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Grimfold",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ", each one o’ us a shining killer, certain we had the world all but licked.",
               "bold": false,
               "italic": false
             }
@@ -11864,11 +12988,714 @@
               "italic": false
             }
           ]
+        },
+        {
+          "type": "heading",
+          "text": "The Fourth Ur-Annals",
+          "runs": [
+            {
+              "text": "The Fourth Ur-Annals",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Hand of Chalk",
+          "runs": [
+            {
+              "text": "The Hand of Chalk",
+              "bold": true,
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "REVEALED WHEN THE PARTY ARRIVED NEAR GREGOR’S DITCH.",
+          "runs": [
+            {
+              "text": "REVEALED WHEN THE PARTY ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "ARRIVED ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "NEAR GREGOR’S DITCH",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "14th Ashwake. Gregor's Ditch.",
+          "runs": [
+            {
+              "text": "14th ",
+              "bold": true,
+              "italic": true
+            },
+            {
+              "text": "Ashwake",
+              "bold": true,
+              "italic": true
+            },
+            {
+              "text": ". Gregor's Ditch.",
+              "bold": true,
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Spied the towers at midday and Quint called the halt early, on account of nothing. Weather's fine. Road's fine. No reason for it that I could name, and Quint didn't name one neither. He just stood there looking at the walls on the horizon before he give the order to make camp out here when all sense would say march to them gates and on through to warm beds and dry rooms.",
+          "runs": [
+            {
+              "text": "Spied the towers at midday and Quint called the halt early, on account of nothing. Weather's fine. Road's fine. No reason for it that I could name, and Quint didn't name one neither. He just stood there looking at the walls on the horizon before he ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "give",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " the order to make camp out here when all sense would say march to them gates and on through to warm beds and dry rooms.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I didn't understand it then. I do now.",
+          "runs": [
+            {
+              "text": "I didn't understand it then. I do now.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This is the place.",
+          "runs": [
+            {
+              "text": "This is the place.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Long back — different stretch of this same war, though it don't feel like the same war no more, thinking on it — Sallow's Fist held this stronghold while the rest of us was in what they’s now calling the Third Battle of Denby. I knew Sallow and his boys. Old Brothers. Drank with 'em. Diced with 'em. Sallow owed me fourteen silver from a game at Strand he swore up and down was rigged, and I never did collect, and I find I'm glad of it now, on account of collecting a debt off a dead man feels like a low thing to want.",
+          "runs": [
+            {
+              "text": "Long back — different stretch of this same war, though it ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "don't",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " feel like the same war no more, thinking on it — ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Sallow's",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " Fist held this stronghold while the rest of us was in what ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "they’s",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " now calling the Third Battle of Denby. I knew Sallow and his boys. Old Brothers. Drank with '",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Diced with '",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Sallow owed me fourteen ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "silver",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " from a game at Strand he swore up and down was rigged, and I never did collect, and I find I'm glad of it now, on account of collecting a debt off a dead man feels like a low thing to want.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Back then, the Collector come up to Gregor’s after pushing back Bristlehair and his myrks down near Pitch. Guess he was banged up something fierce – all his brownies from o’er the Cloudspine rightwise banged up too. Called to our boys to let him in and let him in they did. Ain’t nothing odd about that. The Collector and his magic won us a few scraps we ain’t otherwise would’a won. ",
+          "runs": [
+            {
+              "text": "Back then, the Collector come up to Gregor’s after pushing back ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Bristlehair",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " and his ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "myrks",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " down near Pitch. Guess he was banged up something fierce – all his brownies from o’er the ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Cloudspine",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "rightwise",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " banged up too. Called to our boys to let him in and let him in they did. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " nothing odd about that. The Collector and his magic won us a few scraps we ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " otherwise ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "would’a",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " won. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "But these Taken play their own style o’ Tonk. We know that, now. Had to learn it the hard way, more times than one. They got the cards and they got the rules and they got the stakes. No one told Sallow and his boys the game had changed. Why would they? But change it had. Maybe one o’ them Taken had gotten too strong, or maybe another had gotten too weak, or maybe the stars moved one way and not the other. Who can ken the weather? ",
+          "runs": [
+            {
+              "text": "But these Taken play their own style o’ ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Tonk",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". We know that, now. Had to learn it the hard way, more times than one. They got the cards and they got the rules and they got the stakes. No one told Sallow and his boys the game had changed. Why would they? But change it had. Maybe one o’ them Taken had gotten too strong, or maybe another had gotten too weak, or maybe the stars moved one way and not the other. Who can ken the weather? ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The Collector called out to let him in and our boys let him in. Then it weren’t no battle. Just horror.",
+          "runs": [
+            {
+              "text": "The Collector called out to let him in and our boys let him in. Then it ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "weren’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no battle. Just horror.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "What come after took days, I'm told. I was there, with the quill, when the Old Man made Cabbage tell it. I ain’t never seen the Old Man be cruel – never once, not to no one – but I felt then, and I feel now, that making Cabbage tell it was cruel. That man weren’t broken, despite it all, despite what he done seen, but he broke with the telling. And he ain’t ever come back. Not whole.",
+          "runs": [
+            {
+              "text": "What ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "come",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " after took days, I'm told. I was there, with the quill, when the Old ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Man made",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " Cabbage tell it. I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " never seen the Old Man be cruel – never once, not to no one – but I felt then, and I feel now, that making Cabbage tell it was cruel. That man ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "weren’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " broken, despite it all, despite what he done seen, but he broke with the telling. And he ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ever come back. Not whole.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "When a Brother dies it’s the rules, far as I heard it from the man who wrote before me, that you write their name in this here book. But I ain’t gonna do it. Not for them at Gregor’s. Maybe that means I’m cursed, or a poor Annalist, or a bad Brother. Why? Well, best I can work out, it's this: naming a man who died a man – brave or foolish or cowardly – that does him honor. But naming a man who weren’t a man no more, naming a man who had his manhood ripped from him - that ain’t no honor I’d be doling out. That’s just more cruelty.",
+          "runs": [
+            {
+              "text": "When a ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Brother",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " dies it’s the rules, far as I heard it from the man who wrote before me, that you write their name in this here book. But I ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gonna",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " do it. Not for them at Gregor’s. Maybe that means I’m cursed, or a poor Annalist, or a bad Brother. Why? Well, best I can work out, it's this: naming a man who died a man – brave or foolish or cowardly – that does him honor. But naming a man who weren’t a man no more, naming a man who had his manhood ripped from him - that ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no honor I’d be doling out. That’s just more cruelty.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "What I will say is that when it was done the Collector had what remained of them put in the ground outside the wall, in the low place where the earth already dipped natural, like it'd been waiting on it. Weren't no Gregor's Ditch afore this. Here was just Gregor's. It's got the other name now on account of what's under it.",
+          "runs": [
+            {
+              "text": "What I will say is that when it was done the Collector had what remained of them put in the ground outside the wall, in the low place where the earth already dipped natural, like it'd been waiting on it. Weren't no Gregor's Ditch afore this. Here was just Gregor's. It's got the other name now on account of what's under it.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Word among the boys – them what have marched under the Collector’s banner – say he don't discard what he takes. Keeps it. Boys say he's got himself a vault of some sort up by way of Forest Heart. Shelves of things he's collected off the world over the years. May be the things he cut from our Brothers is up there on a shelf, too, floating in whatever bath he keeps such things in. I don't know if that's true. I find myself hoping it ain't and yet hoping it is, in the same breath, on account of if it is true, then there's a place we can go stand in front of and take it all back.",
+          "runs": [
+            {
+              "text": "Word among the boys – them what have marched under the Collector’s banner – say he don't discard what he takes. Keeps it. Boys say he's got himself a vault of some sort up by way of Forest Heart. Shelves of things he's collected off the world over the years. May be the things he cut from our ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Brothers",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " is up there on a shelf, too, floating in whatever bath he keeps such things in. I don't know if that's true. I find myself hoping it ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain't",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " and yet hoping it is, in the same breath, on account of if it is true, then there's a place we can go stand in front of and take it all back.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "So we’ll camp here, short of the ditch and short of that horror, and if there’s any such thing as right in this world, we’ll find him that did it. Can’t make it right, but we can make it even.",
+          "runs": [
+            {
+              "text": "So",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " we’ll camp here, short of the ditch and short of that horror, and if there’s any such thing as right in this world, we’ll find him that did it. Can’t make it right, but we can make it even.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Chalk, Annalist",
+          "runs": [
+            {
+              "text": "Chalk, Annalist",
+              "bold": false,
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Fourth Ur-Annals",
+          "runs": [
+            {
+              "text": "The Fourth Ur-Annals",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Hand of Chalk",
+          "runs": [
+            {
+              "text": "The Hand of Chalk",
+              "bold": true,
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "REVEALED WHEN THE PARTY ARRIVED AT THE GREGOR’S WORLD KNOT.",
+          "runs": [
+            {
+              "text": "REVEALED WHEN THE PARTY ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "ARRIVED AT ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "THE GREGOR’S WORLD KNOT",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Gregor's. The under-chamber.",
+          "runs": [
+            {
+              "text": "Gregor's. The under-chamber.",
+              "bold": true,
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Down the same old stair, same torches gone soft and green with the damp, same smell — wet stone and older stone under it. Sallow had the duty tonight, him and his boys, and he weren't happy about it, on account of it was the third rotation running his Fist got stuck minding the hole in the ground instead of a warm bunk.",
+          "runs": [
+            {
+              "text": "Down the same old stair, same torches gone soft and green with the damp, same smell — wet stone and older stone under it. Sallow had the duty tonight, him and his boys, and he weren't happy about it, on account of it was the third rotation running his Fist got stuck minding the hole in the ground instead of a warm bunk.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "We stepped through same as always. Weren't my first time at this particular Knot and won't be my last, I'd wager, though I couldn't tell you the trick of how Cymbals reads which stone does what — that's wizard business and he guards it close. All I know is you step in one place feeling the damp Sunkenlands air on your neck, and you step out somewhere else entire, and a man gets almost bored of the miracle of it after the fifth or sixth time, which I expect says something poor about men in general.",
+          "runs": [
+            {
+              "text": "We stepped through same as always. Weren't my first time at this particular Knot and won't be my last, I'd wager, though I couldn't tell you the trick of how Cymbals reads which stone does what — that's wizard business and he guards it close. All I know is you step in one place feeling the damp ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Sunkenlands",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " air on your neck, and you step out somewhere else entire, and a man gets almost bored of the miracle of it after the fifth or sixth time, which I expect says something poor about men in general.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "But this one. Even bored as I've got, this one took the wind out of me some.",
+          "runs": [
+            {
+              "text": "But this one. Even bored as I've got, this one took the wind out of me some.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Come out atop a cliff so high the clouds sat below us, not above, drifting along under our boots like the world had turned itself upside down for our benefit. Snow everywhere, and not the wet, ugly, gray snow that comes down on Gregor's — clean stuff, blinding in the sun, squeaking underfoot like it hadn't decided yet if it wanted to be ice or water. Air so thin and cold it hurt going in and hurt worse coming back out, and so quiet I could hear my own heart working.",
+          "runs": [
+            {
+              "text": "Come out atop a cliff so high the clouds sat below us, not above, drifting along under our boots like the world had turned itself upside down for our benefit. Snow everywhere, and not the wet, ugly, gray snow that comes down on Gregor's — clean stuff, blinding in the sun, squeaking underfoot like it hadn't decided yet if it wanted to be ice or water. Air so thin and cold it hurt going in and hurt worse coming back out, and so quiet I could hear my own heart working.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I stood there a good long while just looking, and I weren't the only one. Even Pennick, who's seen about everything there is to see and made a point of not being impressed by any of it, stood there with his mouth a little open, same as the rest of us.",
+          "runs": [
+            {
+              "text": "I stood there a good long while just looking, and I weren't the only one. Even Pennick, who's seen about everything there is to see and made a point of not being impressed by any of it, stood there with his mouth a little open, same as the rest of us.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Took us the length of a man's piss to walk through that Knot. I'd wager it'd take the better part of a season, and half of that spent hauling yourself up sheer rock with fingers gone numb, to reach that same spot on two legs and no magic at all. Maybe longer. Maybe there ain't no walking there at all, and the only door into that country is the one we just used and put behind us.",
+          "runs": [
+            {
+              "text": "Took us the length of a man's piss to walk through that Knot. I'd wager it'd take the better part of a season, and half of that spent hauling yourself up sheer rock with fingers gone numb, to reach that same spot on two legs and no magic at all. Maybe longer. Maybe there ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain't",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no walking there at all, and the only door into that country is the one we just used and put behind us.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Makes a man wonder what else is sitting on the other side of stones nobody's bothered to knock on yet.",
+          "runs": [
+            {
+              "text": "Makes a man wonder what else is sitting on the other side of stones nobody's bothered to knock on yet.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Anyway. Left what we come to leave. Didn't linger — the cold up there ain't the kind you get used to. Turned around and went home the way we come. There was Sallow, still grousing, still upright, still Sallow. Told him what we left. He said he didn't care, he just wanted his bunk, and I believed him, and that was the whole of that too.",
+          "runs": [
+            {
+              "text": "Anyway. Left what we come to leave. Didn't linger — the cold up there ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ain't",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " the kind you get used to. Turned around and went home the way we come. There was Sallow, still grousing, still upright, still Sallow. Told him what we left. He said he didn't care, he just wanted his bunk, and I believed him, and that was the whole of that too.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Chalk, Annalist",
+          "runs": [
+            {
+              "text": "Chalk, Annalist",
+              "bold": false,
+              "italic": true
+            }
+          ]
         }
       ],
-      "words": 3238,
-      "download": "assets/campaign/fourth-ur-annals.docx",
-      "originalName": "The_Fourth_Ur_Annals.docx"
+      "words": 4589,
+      "toc": [
+        {
+          "index": 2,
+          "label": "Revealed at Harran"
+        },
+        {
+          "index": 16,
+          "label": "Approaching the Collector’s Vault"
+        },
+        {
+          "index": 34,
+          "label": "Inside the Vault at Forest Heart"
+        },
+        {
+          "index": 48,
+          "label": "Dun Thavok"
+        },
+        {
+          "index": 65,
+          "label": "Scholomance"
+        },
+        {
+          "index": 83,
+          "label": "Near Gregor’s Ditch"
+        },
+        {
+          "index": 100,
+          "label": "The Gregor’s World Knot"
+        }
+      ]
     },
     {
       "published": "2026-07-04T11:46:56.071000+00:00",
@@ -12154,6 +13981,8 @@
       "label": "Session 3 · preamble",
       "period": "After Scales · the Sunkenlands",
       "description": "In the rain, Croaker reads a troubling old account. The Captain explains the new contract, and the LT speaks of the Taken.",
+      "originalName": "S3_Preamble_-_The_Road_to_Gregors_Ditch.docx",
+      "download": "assets/campaign/road-to-gregors-ditch.docx",
       "blocks": [
         {
           "type": "heading",
@@ -12681,9 +14510,7 @@
           ]
         }
       ],
-      "words": 1210,
-      "download": "assets/campaign/road-to-gregors-ditch.docx",
-      "originalName": "S3_Preamble_-_The_Road_to_Gregors_Ditch.docx"
+      "words": 1210
     },
     {
       "id": "ic-1541930604516475030",
@@ -12736,6 +14563,1588 @@
       "aside": false,
       "replyTo": null,
       "images": []
+    },
+    {
+      "id": "session-three",
+      "kind": "document",
+      "title": "Session 3 · War in the West",
+      "label": "Session 3 · summary",
+      "period": "Gregor’s Ditch, Marrow & the hunt for the White Rose",
+      "description": "Croaker’s account of the Ditch contract: the Chalkwood ambush, the siege at Marrow, Two Tower and Drumford, the hunt for the White Rose, the duel at the river crossing, and the night Crispus died.",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "The Annals of the Black Company",
+          "runs": [
+            {
+              "text": "The Annals of the Black Company",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "War in the West",
+          "runs": [
+            {
+              "text": "War in the West",
+              "bold": false,
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Being the account of Croaker, Annalist, some of it seen with his own eyes and the rest gathered from men who were there when he was not. Written in the months after the Catastrophe at Scales.",
+          "runs": [
+            {
+              "text": "Being the account of Croaker, Annalist, some of it seen with his own eyes and the rest gathered from men who were there when he was not. Written in the ",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": "months",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": " after ",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": "the Catastrophe at ",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": "Scales.",
+              "bold": false,
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "It started at Gregor's Ditch, in the mud of a spring that would not commit to being spring, under a black banner that flew no higher than it was told to.",
+          "runs": [
+            {
+              "text": "It started at Gregor's Ditch, in the mud of a spring that would not commit to being spring, under a black banner that flew no higher than it was told to.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Gregor's Ditch",
+          "runs": [
+            {
+              "text": "Gregor's Ditch",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Why the Ditch? Because Soulblighter, being Soulblighter, wanted all of it. The Kingsway, north and south. Lake Tarn. Scales and Lask and Pitch and Marrow and Tarn. The Avon and the Gregor. The Ditch is, as the LT remarked, “…the key to the Sunkenlands. Hold the Ditch, and you hold everything from the ‘Spine to Scales. Nothing moves without your say-so.” ",
+          "runs": [
+            {
+              "text": "Why the Ditch? B",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ecause Soulblighter",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ", being Soulblighter, wanted ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "all",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": " of it. The Kingsway, north and south. Lake Tarn. Scales and Lask and Pitch and Marrow and Tarn. The Avon and the Gregor. The Ditch ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "is, as the LT remarked, “…the key to the Sunkenlands. Hold the Ditch, and you hold everything from the ‘Spine to Scales. Nothing moves without your say-so.” ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Why us? At first, most of the lads felt Soulblighter signed us on account we know our way about wet work. Shining killers with no questions and fewer qualms. Later, I think, most of us – ‘leastwise the Salts and them with thinking caps – figured Soulblighter signed us because he had more coin than he had stitched. Didn’t want to dwell on what might happen when the math flipped.",
+          "runs": [
+            {
+              "text": "Why us? ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "A",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "t first, most of the lads felt ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Soulblighter",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " signed us ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "on account we know our way about wet work. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Shining killers",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " with no questions and fewer qualms. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Later, I think, most of us ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "– ‘leastwise the Salts and ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "them with thinking caps",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " – figured ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Soulblighter",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " signed us because he had more coin than he had stitched. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Didn’t want to dwell on what might happen when the math flipped",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Soulblighter’s factor – Administrator Crispus - met us under the gatehouse. A ledger book has more spark than was in those black eyes. I seen a lot of Evil – and I use a capital ‘E’ on purpose, mind you – in this world. Our former patron is Evil. So, far as I ken, are all his spook friends. Crispus was Evil in a different fashion – same core, just dressed in bureaucracy and banality. Makes it worse. A thing should resemble the thing it is.",
+          "runs": [
+            {
+              "text": "Soulblighter’s factor – ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Administrator Crispus ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "- ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "met us under the gatehouse",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". A ledger book has more spark than was in those black eyes. I seen a lot of Evil – and I use a capital ‘E’ on purpose, mind you – in this world. Our former patron is Evil. So, far as I ken, are all his spook friends. Crispus was Evil in a different fashion – same core, just dressed in bureaucracy and banality. Makes it worse. A thing should resemble the thing it is.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Then, when we first arrived, most of us didn’t know what was underfoot. Buried in a muddy scar a bowshot from the gatehouse. I know now. I wish I did not.",
+          "runs": [
+            {
+              "text": "Then, when we first arrived, most of us didn’t know what was underfoot. Buried in a muddy scar a bowshot from the gatehouse. I know now. I wish I did not.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Chalkwood Ambush and the Siege at Marrow",
+          "runs": [
+            {
+              "text": "The Chalkwood Ambush and the Siege at Marrow",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "First orders came inside a month: march to Marrow, hold it for SB, do it by the fast road. The LT did not like the fast road. The LT is seldom wrong about roads, and he was not wrong about this one — the Chalkwood put a bandit chief named Pons into the trees above us with a bow he'd clearly spent a hard life learning to use, and he found the Captain's hip with it before the Knuckle ran him down and put him in the mud, as ordered. I have since heard men swear up and down that a second man rode with Pons that day, some Lask officer with a grudge. I can't find him in anyone's honest account, and I have looked. Some stories grow a second rider the way a wound grows proud flesh — for no good reason, and best cut away.",
+          "runs": [
+            {
+              "text": "First o",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "rders came inside a month: march to Marrow, hold it for ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "SB",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ", do it by the fast road. The LT did not like the fast road. The LT is seldom wrong about roads, and he was not wrong about this one — the Chalkwood put a bandit chief named Pons into the trees above us with a bow he'd clearly spent a hard life learning to use, and he found the Captain's hip with it before the Knuckle ran him down and put him in the mud, as ordered. I have since heard men swear up and down that a second man rode with Pons that day, some Lask officer with a grudge. I can't find him in anyone's honest account, and I have looked. Some stories grow a second rider the way a wound grows proud flesh — for no good reason, and best cut away.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Marrow itself we took the hard way, shoulder to shoulder with Sir Fetterer's Lask men, the Knuckle minding the catapults while the enemy – a host from Tarn – came at us like a drunk looking to brawl. Tulip said watching catapult stone answer catapult stone from behind a screen of Lask engineers is not glorious work, but the widow Aldis saw the field tip our way and sallied out with what was left of her nerve, and the day was ours.",
+          "runs": [
+            {
+              "text": "Marrow itself we took the hard way, shoulder to shoulder with Sir Fetterer's Lask men, the Knuckle minding the catapults while ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "the enemy – a host from Tarn – came at us like a drunk looking to brawl. Tulip said ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "watching ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "catapult ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "stone answer ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "catapult ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "stone from behind a screen of Lask engineers is ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "not glorious work, but the widow Aldis saw ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "the",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " field tip our way and sallied out with what was left of her nerve, and the day ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "was",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ours.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "We did our contract right and Lady Marrow wrong, after the feast. Packed her up, on Crispus’ orders, to a wagon bound for Scales. Ain’t a man in the outfit don’t know what that meant. Shame of it is her boy stayed behind at Marrow believing his mother had gone to do a great man a service. Don’t know if she somehow got out, or survived the Catastrophe, but I hope she did. On a tally list that’s overloaded with sad ticks, would be nice to put in a happier one.",
+          "runs": [
+            {
+              "text": "We did our contract right and Lady Marrow wrong, after the feast. Packed her up, on Crispus’ orders, to a wagon bound for Scales. Ain’t a man in the outfit don’t know what that meant. Shame of it is h",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "er boy stayed behind at Marrow believing his mother had gone to do a great man a service. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Don’t know if ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "she ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "somehow got out, or survived the Catastrophe, but I hope she did. On a tally list that’s overloaded with sad ticks, would be nice to put in a happier one",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Two Tower and Drumford",
+          "runs": [
+            {
+              "text": "Two Tower",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": " and Drumford",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Weeks passed at the Ditch before the next horn — training, watch rotations, the boredom that a Company either welcomes or resents depending on how recently it has bled. No wizards to be seen and the Old Man kept me in the dark just as much as anyone else. I did not think much of it then. I think of little else now.",
+          "runs": [
+            {
+              "text": "Weeks passed at the Ditch before the next horn — training, watch rotations, the boredom that a Company either welcomes or resents depending on how recently it has bled. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "No wizards to be seen and the Old Man kept me in the dark just as much as anyone else. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "I did not think much of it then. I think of little else now.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Two Tower climbed up from the horizon, stone by stone, until it covered the sky. I sat in the lead barge, head tipped backward, and stared at those turrets. A man in a stone house that strong don’t need to worry ‘bout nothing. He could just perch on a battlement, sip his tea, and watch the world flop in the slop below. But them gates opened before we e’en started crafting scaling ladders. The Lord of Two Tower, Lord Hrodulf, spoke a great deal about a “Voice” and how he was a “Listener” and how he was told to do what he done. Crazy as a two-dick popinjay. ",
+          "runs": [
+            {
+              "text": "Two Tower ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "climbed up from the horizon, stone by stone, until it covered the sky. I sat in the lead barge, head tipped backward, and stared at those turrets. A man in a stone house that strong don’t need to worry ‘bout nothing. He could just perch on a battlement, sip his tea, and watch the world flop in the slop below. But them gates opened before we e’en started ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "crafting",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " scaling ladders. The Lord of Two Tower, ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Lord Hrodulf",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ",",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " spoke a great deal about a ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "“",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Voice",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "” and how he was a “Listener” and how he was told to do what he done. Crazy as a two-dick popinjay. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Company got orders to do what the Company does to undefended villages. Ashweir, in this case. A decent-sized river hamlet with good orchards, fields, and fishponds. So we did. I was not proud of that day, and I was not there for it either, which I have decided does not make it easier to carry, only harder to write about honestly.",
+          "runs": [
+            {
+              "text": "Company got orders to do what the Company does to undefended villages. Ashweir, in this case. A decent-sized river hamlet with good orchards, fields, and fishponds. So we did. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "I was not proud of that day, and I was not there for it either, which I have decided does not make it easier to carry, only harder to write about honestly.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "No easy yet ugly work for the Knuckle, though. They was sent to Drumford Keep to see if they could wrangle up some recruits that ain’t yet jerking it to the Voice. Farnmen. Tough, tattooed islanders. Prancer did some of his best work. Left the impression he and his boys were hungry and lost and ripe for being ankles-up hog-tied. Them Listener boys came out that night thinking Prancer was about to play the bottom, but found out right quick they’d be the ones grasping the bedsheets. That little ruse got us a Fist’s worth of Mercy-approved Farnmen, and at small cost.",
+          "runs": [
+            {
+              "text": "No easy ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "yet",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ugly work for the Knuckle, though. They was sent to Drumford Keep to see if they could wrangle up some recruits that ain’t yet jerking it to the Voice. Farnmen. Tough, tattooed islanders. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Prancer did some of his best work. Left the impression he and his boys were hungry and lost and ripe for being ankles-up hog-tied. Them Listener boys came out that night thinking Prancer was about to play the bottom, but found out right quick they’d be the ones grasping the bedsheets. That little ruse got us a Fist’s worth of Mercy-approved Farnmen, and at small cost",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The First Knot",
+          "runs": [
+            {
+              "text": "The First Knot",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A few weeks later – the First Day of Threshing, I believe – something popped out of a sealed archway in one of the forty or so sub-basement beneath Gregor’s. Woman-like said the men who saw it, but with sideways horns and bulging eyes wider than those on a sunburnt man clenching his pecker. Killed two of our newest islander Brothers before being brought down. Captain ain’t one to have an unknown threat dangling right where his tender parts do, so in went the knuckle.",
+          "runs": [
+            {
+              "text": "A few weeks later – the First Day of Threshing, I believe – something popped out of a sealed archway in one of the forty or so sub-basement beneath Gregor’s. Woman-like said the men who saw it, but with sideways horns and bulging eyes wider than those on a sunburnt man clenching his pecker. Killed two of our newest islander Brothers before being brought down. Captain ain’t one to have an unknown threat dangling right where his tender parts do, so in went the knuckle",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Bumble is the one I turn to when I need tales of shit that don’t make sense. He has a manner that makes the confusing seem simple. He ain’t dumb; he just shoots straight. (Had I asked Twitch for the particulars, I’d still be writing the story and the body count of floating demon-women personally feathered by Twitch would still be climbing.) Bumble says there were carved caves then natural ones, then a pocket in the mountain – like a giant air bubble that never got released. Inside that was a ring of pillars.  And inside that was a floating “momma bitch” with a few tricks of her own. Knuckle’s gonna knuckle, said Bumble, and so momma was put down. The boys went through and back something I now know is called a World Knot. More on that later.",
+          "runs": [
+            {
+              "text": "Bumble is the one I turn to when I need tales of shit that don’t make sense. He has a manner that makes the confusing seem simple. He ain’t dumb; he just shoots straight. (Had I asked Twitch for the particulars, I’d still be writing the story and the body count of floating demon-women personally feathered by Twitch would still be climbing.) Bumble says there were carved caves then natural ones, then a pocket in the mountain – like a giant air bubble that never got released. Inside that was a ring of pillars.  And inside ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "that ",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": "was a floating “momma bitch” with a few tricks of her own",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " Knuckle’s ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "gonna knuckle, said Bumble, and so momma was put down. The boys went through and back something I now know is called a World Knot. More on that later.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Rose",
+          "runs": [
+            {
+              "text": "The Rose",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "SB come to the Ditch himself not long after - the first time most of us got to see him plain rather than at a smoky distance. Not that many of us took the chance to take a good gander. We was off and marching, all hell-bent, toward Leek’s Folly, the next morning. But one o’ SB’s riders come barreling up our ass end. Said the Limper – he’s another one of them Taken spooks – had up and turned around right before a fight with Widowmaker. ",
+          "runs": [
+            {
+              "text": "SB come t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "o the Ditch himself not long after",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " - ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "the first time most of ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "us got to see",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " him plain rather than ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "at a smoky distance",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". Not that many of us took the chance to take a good gander. We was off and marching, all hell-bent, toward Leek’s Folly, the next morning. But one o’ SB’s riders come barreling up our ass end. Said the Limper – he’s another one of them Taken spooks – had up and turned around right before a fight with Widowmaker. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Didn’t know it then, but learned it since: SB changed his whole plan. Don’t know if he meant to fight Limper, fight Widowmaker, fight ‘em both, or join ‘em for tea and crumb cakes. Turns out SB figured the only thing that would ever turn the Limper back was if he was scared. And the only thing that scares the Limper, so it’s said, is losing his phylactery.",
+          "runs": [
+            {
+              "text": "Didn’t know it then, but learned it since: SB changed his whole plan. Don’t know if he meant to fight Limper, fight Widowmaker, fight ‘em both, or join ‘em for tea and crumb cakes. Turns out SB figured the only thing that would ever turn the Limper back was if he was scared. And the only thing that scares the Limper, so it’s said, is losing his phylactery.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Phylactery. Odd word. In this case it’s a white rose. Some Ages-old little knickknack that, if the yarns the Knuckle spins are true, lets someone live forever. Or maybe close to forever. Or maybe it just heals them when they get busted up. ",
+          "runs": [
+            {
+              "text": "Phylactery. Odd word. In this case it’s a white rose. Some Ages-old little knickknack that, if the yarns the Knuckle spins are true, lets someone live forever. Or maybe close to forever. Or maybe it just heals them when they get busted up. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Our patron orders all of us – every swingin’ Richard and even the camp cooks – to scatter all over the Sunkenlands. The goal: find that White Rose. The story now, like so many, is that of the Knuckle’s. They was posted up in Dunrow and turns out that’s where the Rose had been. They followed, per orders. Grimace says they was on the trail of a wizard but didn’t know it till they got bit once or twice. Not sure what that means, but Grimace was earning his name and I don’t ask questions of an unsmiling Grimace.",
+          "runs": [
+            {
+              "text": "Our patron orders all of us – every swingin’ Richard and even the camp cooks – to scatter all over the Sunkenlands. The goal: find that White Rose. The story now, like so many, is that of the Knuckle’s. They was posted up in Dunrow and turns out that’s where the Rose had been. They followed, per orders. Grimace says they was on the trail of a wizard but didn’t know it till they got bit once or twice. Not sure what that means, but Grimace was earning his name and I don’t ask questions of an unsmiling Grimace.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "They found the Rose, and the thief, on the banks of the Tyrian River. Tyrian, not Tinnian. Bumble says the distinction is an important one to make. The thief? Bormanz, a wizard and a scholar that had been biding his time and thinking clever thoughts for some thousand years. Of course. Grimace said Bormanz was high in the Limper’s confidence, till he weren’t.",
+          "runs": [
+            {
+              "text": "The",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "y found the Rose, and the thief, on the banks of the Tyrian River. Tyrian, not Tinnian. Bumble says the distinction is an important one to make. The thief? ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Bormanz, ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "a wizard and a scholar that had been biding his time and thinking clever thoughts for some thousand years. Of course. Grimace said Bormanz was high in the Limper’s confidence, till he weren’t",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Here I must be honest about the limits of what I know, because this is the part of the account I trust least and think about most.",
+          "runs": [
+            {
+              "text": "Here I must be honest about the limits of what I know, because this is the part of the account I trust least and think about most.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The Knuckle spoke with Bormanz of the Thousand Year Sleep a long while. He told them things about the Taken that I do not intend to set down where careless eyes might find them. Before it was to end, the Knuckle asked him for a kindness - some working that would let a man lie and not be caught at it, for reasons I understood better once I learned what they meant to do with it. Bormanz delivered some berries on the following morning which, he said, would allow a man to lie up down and sideways without being pegged. For a time. That little gift is worth remarking, because I ain’t yet seen a fox at the end of a chase prepare a side dish for the hounds that done caught him. ",
+          "runs": [
+            {
+              "text": "The Knuckle spoke with ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Bormanz of the Thousand Year Sleep",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " a long while. He told them things about the Taken that I do not intend to set down where careless eyes might find them",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Before ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "it was to end, ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "the Knuckle asked him for a kindness",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " - ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "some working that would let a man lie and not be caught at it, for reasons I understood better once I learned what they meant to do with it. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Bormanz delivered some berries on the following ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "morning",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " which, he said, would allow a man to lie up down and sideways without being pegged. For a time. That little gift is worth remarking, because I ain’t yet seen a fox at the end of a chase prepare a side dish for the hounds that done caught him. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The wizard died shortly after – not to the mud, but to dust, him and the Rose both.",
+          "runs": [
+            {
+              "text": "The wizard ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "died shortly after",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " – not to the mud, but to dust, him and the Rose both",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Or, did he? Drains swears he saw berry stains on the wizard’s teeth before he winked out. ",
+          "runs": [
+            {
+              "text": "Or, did he? Drains swears he saw berry stains on the wizard’s teeth before he winked out. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I do not know if Bormanz is dead. And I don’t know if I should be rooting for one outcome over the other. A man clever enough to spend a millennium plotting one move does not strike me as a man who dies clumsy at the very moment his trick would serve him best. But I was not there, and dust does not answer questions, and the rose is gone from every hand that would show it to me.",
+          "runs": [
+            {
+              "text": "I do not know if Bormanz is dead. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "And I don’t know if I should be rooting for one outcome over the other. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "A man clever enough to spend ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "a millennium",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " plotting one move does not strike me as a man ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "who dies clumsy at the very moment his trick would serve him best. But I was not there, and dust does not answer questions, and the rose is gone from every hand that would show it to me.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Whatever the truth of the wizard, the Knuckle's own trick worked on us. Crispus and Soulblighter questioned every Finger that came home from that hunt, and I am told - by men who were in the courtyard - that the Knuckle answered true on everything but the two things that mattered: that a wizard had made them something, and what that something was for. Our patron walked away from that inquiry believing his mercenaries had simply lost the trail. He was wrong, and did not know he was wrong, and that not-knowing is worth more to this Company than the rose itself would have been.",
+          "runs": [
+            {
+              "text": "Whatever the truth of the wizard, the Knuckle's own trick worked on us. Crispus and Soulblighter questioned every Finger that came home from that hunt, and I am told",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " - b",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "y men who were in the ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "courtyard - ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "that the Knuckle answered true on everything but the two things that mattered: that a wizard had made them something, and what that something was for. Our ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "patron",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " walked away from that inquiry believing his mercenaries had simply lost the trail. He was wrong, and did not know he was wrong, and that not-knowing is worth more to this Company than the rose itself would have been.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Harranmen",
+          "runs": [
+            {
+              "text": "The Harranmen",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Word came down separately that a portion of the Harran garrison – four out of five fingers, to tell it true – took the opportunity of the spread-out White Rose net to skedaddle. Disappear. Desert. Can’t blame ‘em; they aren’t mercenaries, this ain’t their war. Their war ended when they – and us – defended the walls of their city. Anyway, the Knuckle was sent after a finger of the fugitives. Tulip said they was located, their backs to an old granary wall, and nothing else around but open fields and hopelessness. I didn’t ask Tulip for more, and he didn’t offer.",
+          "runs": [
+            {
+              "text": "Word came down separately that a portion of the Harran garrison",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " – four out of five fingers, to tell it true – took the opportunity of the spread-out White Rose net to skedaddle. Disappear. Desert. Can’t blame ‘em; they aren’t mercenaries, this ain’t their war. Their war ended when they – and us – defended the walls of their city. Anyway, the Knuckle was sent after a finger of the fugitives. Tulip said the",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "y",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " was located, their backs to an old granary wall, and nothing else around but open fields and hopelessness. I didn’t ask Tulip for more, and he didn’t offer",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "The Duel",
+          "runs": [
+            {
+              "text": "The ",
+              "bold": true,
+              "italic": false
+            },
+            {
+              "text": "Duel",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Days after, word came that the Widowmaker vs. Limper scrap was again in the cards. Don’t know what changed. But they was nearing a river crossing only a few days southwest of the Ditch and the Knuckle was sent to see which way the wind ended up blowing. Don’t know if those orders came from Crispus or the Captain, to be honest.",
+          "runs": [
+            {
+              "text": "Days after, word came that the Widowmaker vs. Limper scrap was again in the cards. Don’t know what changed. But they was nearing a river crossing only a few days southwest of the Ditch and the Knuckle was sent to see which way the wind ended up blowing. Don’t know if those orders came from Crispus or the Cap",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "tain",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ", to be honest",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Wouldn’t have thought it, but Pussy has a keen eye for these types of things. He gave me the tactical blow by blow of the battle. Seemed like just any other scrap where men kill men for some reason people will forget about in twenty years’ time. But it changed near the end. Pussy said the two spooks met in the middle and shit happened faster than the eye could see. Lightning, earthquakes, purple magic bolts. A regular pocket of hell, opened up, right between both armies, consuming some of each. Widowmaker died – Pussy was clear on that score – and his army melted away like frost in the sun. ",
+          "runs": [
+            {
+              "text": "Wouldn’t have thought it, but Pussy has a keen eye for these types of things. He gave me the tactical blow by blow of the battle. Seemed like just any other scrap where men kill men for some reason people will forget about in twenty years’ time. But it changed near the end. Pussy said the two spooks met in the middle and shit happened fast",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "er",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " than the eye could see. Lightning, earthquakes, purple magic bolts. A regular pocket of hell, opened up, right between both armies, consuming some of each. Widowmaker died – Pussy was clear on that score – and his army melted away like frost in the sun. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Limper was dragged from the field. An empty wineskin, to hear Pussy tell it. No magic to be seen. His men plopped this Ages-old Taken into a wagon like a bag of turnips and rattled into the tree line. And it was in that condition - wounded, diminished, hunting the last trace of what had been stolen from him - that he ran the Knuckle down on the road back to Gregor’s.",
+          "runs": [
+            {
+              "text": "Limper was dragged from the field.",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " An empty wineskin, to hear Pussy tell it. No magic to be seen. His men plopped this Ages-old Taken into a wagon like a bag of turnips and rattled into the tree line. And ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "it was in that condition",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " - ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "wounded, diminished, hunting the last trace of what had been stolen from him",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " - ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "that he ran the Knuckle down on the road ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "back to Gregor’s",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Gallows ain’t a hero. None of them boys are - though Drains had been in his younger, less complicated days. Aye, no heroes here, but ol’ Gallows played one this night. None of the Knuckle tell it differently. Our scarf-wearing friend jumped atop that turnip wagon, put boot to horse’s flank, and took Limper – bouncing and cursing and gurgling – on a rackety rumpus across the Sunkenlands. Then, when the ol’ spook was ready to settle scores, Gallows cut the traces – him one way, the second horse another, and Limper standing dick-out atop a horseless wagon in the middle of a black night.",
+          "runs": [
+            {
+              "text": "Gallows ain’t a hero. None of them boys are - though Drains had been in his younger, less complicated days. Aye, no heroes here, but ol’ Gallows played one this night. None of the Knuckle tell it differently. Our scarf-wearing friend jumped atop that turnip wagon, put boot to horse’s flank, and took Limper – bouncing and cursing and gurgling – on a rackety rumpus across the Sunkenlands. Then, when the ol’ spook was ready to settle scores, Gallows cut the traces – him one way, the second horse another, and Limper standing dick-out atop a horseless wagon in the middle of a black night.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I don’t mean to short-change the rest; from what I hear, and these tales don’t differ neither, Limper’s guard weren’t no joke. But the Knuckle put ‘em in the mud just the same. And all of them, Gallows included, made it back to the Ditch. This outfit needs some clean wins, time to time, and this was one.",
+          "runs": [
+            {
+              "text": "I don’t mean to short-change the rest; from what I hear, and these tales don’t differ neither, Limper’s guard weren’t no joke. But the Knuckle put ‘em in the mud just the same. And all of them, Gallows included, made it back to the Ditch.",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " This outfit needs some clean wins, time to time, and this was one.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Last Orders",
+          "runs": [
+            {
+              "text": "Last Orders",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "It had been some long months, there at Gregor’s, doing whatever Soulblighter said to do and – worse – doing it how he said to do it. The grumbling was worse than anything I heard on the Steppes. Brothers was coming to blows over stubbed toes and questionable Tonk plays. We was a tinder box waiting to ignite. And the wizards? Nowhere to be found. The Captain? Silent, distant, brooding. I know that man better than I know anyone, including myself, but he was as unreadable as rain water, even to me.",
+          "runs": [
+            {
+              "text": "It had been some long months, there at Gregor’s, doing whatever Soulblighter said to do and – worse – doing it how he said to do it. The grumbling was worse than anything I heard on the Steppes. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Brothers was coming to blows over stubbed toes and questionable Tonk plays. We was a tinder box waiting to ignite.",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "And the wizards? Nowhere to be found. The Captain? Silent, distant, brooding. I know that man better than I know anyone, including myself, but he was as unreadable as rain water, even to me.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "It all changed the night the Knuckle was called into the Captain’s hall to get their next orders. ",
+          "runs": [
+            {
+              "text": "It all changed the night the Knuckle was called into the Captain’s hall to get their next orders. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Crispus read them. A summons to Scales. Each man in that room knew what that meant, even if we didn’t know the why of it. I was there. I saw Mercy give a nod to Twitch and I saw Twitch step forward and level his crossbow middle-middle at Crispus’ gleaming forehead. That was the third time Twitch done that, and I ain’t jerking your chain. But this time – this time – he pulled the trigger. From my vantage it looked like a flower sprouted out the back of the Administrator’s head, ‘cept this flower was the color of brain matter.",
+          "runs": [
+            {
+              "text": "Crispus read them. A summons to Scales. Each man in that room knew what that meant, even if we didn’t know the why of it. I was there. I saw Mercy give a nod to Twitch and I saw Twitch step forward and level his crossbow ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "middle-middle",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " at Crispus’ gleaming forehead. That was the third time ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Twitch",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " done that, and I ain’t jerking your chain. But this time – ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "this time",
+              "bold": false,
+              "italic": true
+            },
+            {
+              "text": " – he pulled ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "the",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " trigger. From my vantage it look",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ed",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " like a flower sprouted out the back of the Administrator’s head, ‘cept this flower was the color of brain matter.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Jaws hit the floor about the same time as Crispus’ body. Nobody moved.",
+          "runs": [
+            {
+              "text": "Jaws hit the floor about the same time as Crispus’ body. Nobody moved.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Except the Captain. He strode forward. I was behind him, so I couldn’t see his face, but I could see his shoulders and they was set and wide and proud like the Captain I once knew. I was so stunned with the speed of events and the gristle dripping down my chin that I’m not sure I caught all the Old Man’s words. But I caught the message, and the message was everything:",
+          "runs": [
+            {
+              "text": "Except the Captain. He strode forward. I was behind him, so I couldn’t see his face, but I could see his shoulders and they was set and wide and proud like the Captain I once knew. I was so stunned with the speed of events and the gristle dripping down my chin that I’m not sure I caught all the Old Man’s words. But I caught the message",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ", and ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "the message was everything:",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“I kept the wizards off the Chalkwood Trace. Away from Marrow and Two Tower and Ashweir and Drumford. I kept them out of every scrape this outfit has been in since Harren. Good men have died because of that. I know it. I am reminded each rollcall. But they needed to finish their work.”",
+          "runs": [
+            {
+              "text": "“",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "I kept the wizards off the ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Chalkwood ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Trace. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Away from",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " Marrow",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " and Two Tower and Ashweir and Drumford. I kept them out of every scrape this outfit has been in since Harren. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Good men have died because of that. I know it. I am reminded each rollcall. But they needed to finish their work.”",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "With that, the Old Man stepped forward and handed four baubles – they looked like blue marbles – to Prancer. “It is a time of wolves, now. You leave for the Anatomium – World Knot to World Knot. Not at first light. Now. When it is done you do not come back to this camp. You do not look for us. You go to ground. We will find you.”",
+          "runs": [
+            {
+              "text": "With that, the Old Man stepped forward and handed four baubles – they looked like blue marbles – to Prancer. “",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "It is a time of wolves, now. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "You ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "leave for the Anatomium – World Knot to World Knot. ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Not at first light. Now. When it is done you do not come back to this camp. You do not look for ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "us",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". You ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "go to ground. We will find you.”",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The men filed out. The room emptied. I was left, slack-jawed as a fancy lad, wondering how to pen this one in the book. Only Mercy was still there. And he was doing something I ain’t ever seen him do: smiling. My face must have been wearing a what-the-fuck-just-happened look.  He leaned forward and poked my chest with his finger. “We’re gonna put those spooks, every last one of them, in the fucking mud.”  ",
+          "runs": [
+            {
+              "text": "The men filed out. The room emptied. I was left, slack-jawed as a fancy lad, wondering how to pen this one in the book. Only Mercy was still there. And he was doing something I ain’t ever seen him do: smiling. My face must have been wearing a what-the-fuck-just-happened look.  He leaned forward and poked my chest with his finger. “We’re gonna put those spooks, every last one of them, in the fucking mud.”  ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "He was still smiling when he left. ",
+          "runs": [
+            {
+              "text": "He was still smiling when he left. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Now",
+          "runs": [
+            {
+              "text": "Now",
+              "bold": true,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "It is early autumn now, by the feel of the air if not by any calendar I trust. The season turned somewhere in the middle of all this and none of us marked the day it happened — there was always a wagon to load or a wound to close or a march to hump, and a man loses track of the sun when his whole attention is on staying upright until the next one.",
+          "runs": [
+            {
+              "text": "It is early autumn now, by the feel of the air if not by any calendar I trust. The season turned somewhere in the middle of all this and none of us marked the day it happened — there was always a ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "wagon to load or a wound to close or a ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "march to hump",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ", and a man loses track of the sun when his whole attention is on staying upright until the next one.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I continue to keep these Annals. I am not sure if that is noble or foolish or just the practiced routine of a man too old and worn to do something new. ",
+          "runs": [
+            {
+              "text": "I continue to keep these Annals. I am not sure if that is noble or foolish or just the practiced routine of a man too old and worn to do something new. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The question that keeps haunting me – each morning, each night, each time I pen a new entry – is this: Are we still the Black Company? Are we yet the Last of the Free Companies of Khatovar?",
+          "runs": [
+            {
+              "text": "The question that keeps haunting me – each morning, each night, each time I pen a new entry – is this: Are we ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "still ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "the Black Company? Are we yet the Last of the Free Companies of Khatovar?",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I do not know that answer. ",
+          "runs": [
+            {
+              "text": "I do not know that answer. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I look down the road ahead and down the road behind, and both ways I see the same thing — long empty stretches where Brothers used to march. We're thin now. Bloodless. Reedy as a runt chick still wet from the shell, the kind that's bound to tumble from the nest. ",
+          "runs": [
+            {
+              "text": "I look down the road ahead and down the road behind, and both ways I see the same thing — long empty stretches where Brothers used to march. We're thin now. Bloodless. Reedy as a runt chick still wet from the shell, the kind that's bound to tumble from the nest. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Would be good, I know, to climb atop a wagon and read some old, despairing passage from the Annals - find the entry where our ancient Brothers faced nights like these ones and came out the other side of ‘em.",
+          "runs": [
+            {
+              "text": "Would be good, I know, to climb atop a wagon and read some old, despairing passage from the Annals",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " - ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "find the entry where our ancient Brothers faced ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "nights",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " like th",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "ese ones",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " and came out the other side of ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "‘em",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ".",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "But there ain’t no wagon no more. And – though I have scoured every book in my kit – I’ve yet to find an entry as desperate as ours.",
+          "runs": [
+            {
+              "text": "But there",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " ain’t ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "no wagon",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": " no more",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ". And ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "– though I have scoured every book in my kit – I’ve yet to find an ",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "entry as desperate as ours.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "What I have instead is smaller than that, and it come to me unbid, standing here with the quill and no book in reach — something Chalk wrote, that Prancer read to me once, on a night neither of us much talks about now: “Can't make it right, but we can make it even.”",
+          "runs": [
+            {
+              "text": "What I have instead is smaller than that, and it come to me unbid, standing here with the quill and no book in reach — something Chalk wrote, that Prancer read to me once, on a night neither of us much talks about now",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": ": “",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "Can't make it right, but we can make it even.",
+              "bold": false,
+              "italic": false
+            },
+            {
+              "text": "”",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I don't know if that's a promise or just a thing a desperate man told himself so he could sleep. I've decided, for now, it doesn't matter which. It's what we have. ",
+          "runs": [
+            {
+              "text": "I don't know if that's a promise or just a thing a desperate man told himself so he could sleep. I've decided, for now, it doesn't matter which. It's what we have. ",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "It'll have to serve.",
+          "runs": [
+            {
+              "text": "It'll have to serve.",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        }
+      ],
+      "words": 3341,
+      "download": "assets/campaign/session-three.docx",
+      "originalName": "S3 Summary Annals.docx",
+      "author": "smalls",
+      "source": "supplied_docs",
+      "published": "2026-09-21T00:00:00.000000+00:00",
+      "dateKind": "added",
+      "addedAt": "2026-09-21",
+      "summary": true,
+      "summaryOrder": 3
     }
   ]
 }

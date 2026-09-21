@@ -1,4 +1,4 @@
-import {sceneRecaps} from './campaign-recaps.js?v=recaps1';
+import {sceneRecaps} from './campaign-recaps.js?v=summaries1';
 /** Editorial scene boundaries. Original records remain unchanged in data/campaign.json. */
 export const sceneDefinitions = [
   {

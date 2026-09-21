@@ -1,4 +1,4 @@
-import {renderCampaign} from './campaign.js?v=recaps1';
+import {renderCampaign} from './campaign.js?v=summaries1';
 import {conditionalGroups,weaponPresets} from './conditional-rules.js?v=weaponinputs1';
 import {calculateBonuses} from './sheet-math.js?v=weaponinputs1';
 import {createFieldDesk, isDeskPath, renderRoster, renderDossier, renderHome} from './field-desk.js?v=annals1';
